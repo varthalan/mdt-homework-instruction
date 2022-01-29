@@ -18,6 +18,7 @@
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextField.swift */; };
 		E68B7C8C27A4D86700CC8E43 /* UIButton+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8B27A4D86700CC8E43 /* UIButton+Styling.swift */; };
+		E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8E27A4DD6C00CC8E43 /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextField.swift; sourceTree = "<group>"; };
 		E68B7C8B27A4D86700CC8E43 /* UIButton+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styling.swift"; sourceTree = "<group>"; };
+		E68B7C8E27A4DD6C00CC8E43 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 		E68B7C7C27A42BCE00CC8E43 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				E68B7C8D27A4DD5500CC8E43 /* Registration */,
 				E68B7C7D27A42BD400CC8E43 /* Login */,
 			);
 			path = Account;
@@ -179,6 +182,14 @@
 				E68B7C8B27A4D86700CC8E43 /* UIButton+Styling.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E68B7C8D27A4DD5500CC8E43 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C8E27A4DD6C00CC8E43 /* RegistrationViewController.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +326,7 @@
 				E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */,
 				E68B7C8C27A4D86700CC8E43 /* UIButton+Styling.swift in Sources */,
 				E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */,
+				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
 				E64AEB8D27A42876000C1884 /* AppDelegate.swift in Sources */,
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
 			);
