@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         configureWindow()
         configureNavigationController()
+        bindEventsFromLogin()
     }
     
     private func configureWindow() {
@@ -58,5 +59,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+}
+
+//Modules creation
+extension SceneDelegate {
+    private func showRegistration() {
+        
+    }
+}
+
+
+//Events listener
+extension SceneDelegate {
+    func bindEventsFromLogin() {
+        
+        loginViewController.onRegister = { [weak self] in
+            guard let self = self else { return }
+            self.showRegistration()
+        }
+        
+    }
 }
 

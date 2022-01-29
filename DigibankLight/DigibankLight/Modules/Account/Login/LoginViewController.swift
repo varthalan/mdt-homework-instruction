@@ -38,6 +38,8 @@ class LoginViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    var onRegister: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +111,8 @@ extension LoginViewController {
             font: .systemFont(ofSize: 20, weight: .black),
             borderColor: .black,
             cornerRadius: 35.0)
+        
+        registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
     }
     
     private func setupLoginButtton() {
@@ -127,5 +131,20 @@ extension LoginViewController {
             font: .systemFont(ofSize: 20, weight: .black),
             borderColor: .black,
             cornerRadius: 35.0)
+        
+        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+    }
+}
+
+//MARK: - Actions
+
+extension LoginViewController {
+    
+    @objc func register(_ sender: AnyObject) {
+        onRegister?()
+    }
+    
+    @objc func login(_ sender: AnyObject) {
+        //Call API
     }
 }
