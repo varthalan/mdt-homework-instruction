@@ -79,6 +79,7 @@ extension SceneDelegate {
 
 //Modules creation
 extension SceneDelegate {
+    
     private func showRegistration() {
         let registrationViewController = ModuleComposer.composeRegistration()
         
@@ -87,7 +88,43 @@ extension SceneDelegate {
             self.pop()
         }
         
+        registrationViewController.onRegister = { [weak self] in
+            guard let self = self else { return }
+            
+            self.showDashboard()
+        }
+        
         push(registrationViewController)
+    }
+    
+    private func showDashboard() {
+        let dashboardViewController = ModuleComposer.composeDashboard()
+        
+        dashboardViewController.onLogout = { [weak self] in
+            guard let self = self else { return }
+            
+            self.popToRoot()
+        }
+        
+        dashboardViewController.onMakeTransfer = { [weak self] in
+            guard let self = self else { return }
+
+            self.showMakeTransfer()
+        }
+        
+        push(dashboardViewController)
+    }
+    
+    private func showMakeTransfer() {
+        let makeTransferViewController = ModuleComposer.composeMakeTransfer()
+        
+        makeTransferViewController.onBack = { [weak self] in
+            guard let self = self else { return }
+            
+            self.pop()
+        }
+        
+        push(makeTransferViewController)
     }
 }
 

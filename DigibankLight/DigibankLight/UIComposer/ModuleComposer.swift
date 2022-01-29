@@ -14,4 +14,12 @@ final class ModuleComposer {
     static func composeRegistration() -> RegistrationViewController {
         return RegistrationViewController()
     }
+    
+    static func composeDashboard() -> DashboardViewController {
+        DashboardViewController()
+    }
+    
+    static func composeMakeTransfer() -> MakeTransferViewController {
+        MakeTransferViewController()
+    }
 }

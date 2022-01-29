@@ -8,6 +8,8 @@ class RegistrationViewController: UIViewController {
     
     private let backButton: UIButton = {
         let button = UIButton(type: .roundedRect)
+        button.setImage(UIImage(named: "back"), for: .normal)
+        button.tintColor = .black
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -45,6 +47,7 @@ class RegistrationViewController: UIViewController {
     }()
 
     var onBack: (() -> Void)?
+    var onRegister: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,8 +80,6 @@ extension RegistrationViewController {
             backButton.heightAnchor.constraint(equalToConstant: 40.0)
         ])
         
-        backButton.setTitle("Back", for: .normal)
-        backButton.setTitleColor(.black, for: .normal)
         backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
     }
     
@@ -160,5 +161,6 @@ extension RegistrationViewController {
     
     @objc func register(_ sender: AnyObject) {
         //Validate equality for Password,Confirm password & Call API
+        onRegister?()
     }
 }
