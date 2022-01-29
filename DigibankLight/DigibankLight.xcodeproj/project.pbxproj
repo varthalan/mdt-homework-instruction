@@ -27,6 +27,7 @@
 		E68B7CA927A527A100CC8E43 /* PayeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CA827A527A100CC8E43 /* PayeesViewController.swift */; };
 		E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CAC27A5298B00CC8E43 /* LoginViewModel.swift */; };
 		E68B7CAF27A52BF500CC8E43 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E68B7CAE27A52BF500CC8E43 /* Localizable.strings */; };
+		E68B7CB327A52E0C00CC8E43 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CB227A52E0C00CC8E43 /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E68B7CA827A527A100CC8E43 /* PayeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayeesViewController.swift; sourceTree = "<group>"; };
 		E68B7CAC27A5298B00CC8E43 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E68B7CAE27A52BF500CC8E43 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E68B7CB227A52E0C00CC8E43 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,7 +212,8 @@
 		E68B7C8D27A4DD5500CC8E43 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7C8E27A4DD6C00CC8E43 /* RegistrationViewController.swift */,
+				E68B7CB127A52DEB00CC8E43 /* View */,
+				E68B7CB027A52DE600CC8E43 /* ViewModel */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -276,6 +279,22 @@
 			isa = PBXGroup;
 			children = (
 				E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E68B7CB027A52DE600CC8E43 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CB227A52E0C00CC8E43 /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E68B7CB127A52DEB00CC8E43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C8E27A4DD6C00CC8E43 /* RegistrationViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -421,6 +440,7 @@
 				E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */,
 				E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */,
 				E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */,
+				E68B7CB327A52E0C00CC8E43 /* RegistrationViewModel.swift in Sources */,
 				E64AEB8D27A42876000C1884 /* AppDelegate.swift in Sources */,
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
 				E68B7C9227A4E47700CC8E43 /* DashboardViewController.swift in Sources */,

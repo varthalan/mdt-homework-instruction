@@ -61,7 +61,7 @@ extension RegistrationViewController {
             usernameField.topAnchor.constraint(equalTo: view.topAnchor, constant: 170.0),
             usernameField.heightAnchor.constraint(equalToConstant: 80.0)
         ])
-        usernameField.setHeader("Username")
+        usernameField.setHeader(RegistrationViewModel.usernameFieldTitle)
     }
     
     private func setupPasswordField() {
@@ -72,7 +72,7 @@ extension RegistrationViewController {
             passwordField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 20),
             passwordField.heightAnchor.constraint(equalTo: usernameField.heightAnchor)
         ])
-        passwordField.setHeader("Password")
+        passwordField.setHeader(RegistrationViewModel.passwordFieldTitle)
         passwordField.setFieldType(.secured)
     }
     
@@ -84,7 +84,7 @@ extension RegistrationViewController {
             confirmPasswordField.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 20),
             confirmPasswordField.heightAnchor.constraint(equalTo: passwordField.heightAnchor)
         ])
-        confirmPasswordField.setHeader("Confirm Password")
+        confirmPasswordField.setHeader(RegistrationViewModel.confirmPasswordFieldTitle)
         confirmPasswordField.setFieldType(.secured)
     }
 }
@@ -93,9 +93,9 @@ extension RegistrationViewController {
 extension RegistrationViewController {
 
     private func customizeParent() {
-        setTitle("Register")
+        setTitle(RegistrationViewModel.title)
         configureBottomActionButtonWith(
-            title: "REGISTER",
+            title: RegistrationViewModel.registerButtonTitle,
             target: self,
             action: #selector(register)
         )
