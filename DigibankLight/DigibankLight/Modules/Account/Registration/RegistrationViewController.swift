@@ -4,24 +4,8 @@
 
 import UIKit
 
-class RegistrationViewController: UIViewController {
-    
-    private let backButton: UIButton = {
-        let button = UIButton(type: .roundedRect)
-        button.setImage(UIImage(named: "back"), for: .normal)
-        button.tintColor = .black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 30, weight: .black)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
+class RegistrationViewController: BaseViewController {
+        
     private let usernameField: LFTextFieldView = {
         let field = LFTextFieldView()
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -54,48 +38,23 @@ class RegistrationViewController: UIViewController {
         
         setupUI()
     }
-}
-
-
-//MARK: - Setup
-extension RegistrationViewController {
     
-    private func setupUI() {
-        view.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+    override func setupUI() {
+        super.setupUI()
+        setTitle("Register")
+        addTarget(target: self, action: #selector(back))
         
-        setupBackButton()
-        setupTitleLabel()
         setupUsernameField()
         setupPasswordField()
         setupConfirmPasswordField()
         setupRegisterButton()
     }
-    
-    private func setupBackButton() {
-        view.addSubview(backButton)
-        NSLayoutConstraint.activate([
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
-            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40.0),
-            backButton.widthAnchor.constraint(equalToConstant: 40.0),
-            backButton.heightAnchor.constraint(equalToConstant: 40.0)
-        ])
-        
-        backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
-    }
-    
-    private func setupTitleLabel() {
-        view.addSubview(titleLabel)
+}
 
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 95.0),
-            titleLabel.heightAnchor.constraint(equalToConstant: 40.0)
-        ])
-        
-        titleLabel.text = "Register"
-    }
-    
+
+//MARK: - Setup
+extension RegistrationViewController {
+
     private func setupUsernameField() {
         view.addSubview(usernameField)
         NSLayoutConstraint.activate([

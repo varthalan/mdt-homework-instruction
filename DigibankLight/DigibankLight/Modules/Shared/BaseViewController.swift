@@ -8,22 +8,85 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    
+    private let backButton: UIButton = {
+        let button = UIButton(type: .roundedRect)
+        button.setImage(UIImage(named: "back"), for: .normal)
+        button.tintColor = .black
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 30, weight: .black)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupUI() {
+        view.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+        
+        setupBackButton()
+        setupTitleLabel()
     }
-    */
 
 }
+
+extension BaseViewController {
+    
+    private func setupBackButton() {
+        view.addSubview(backButton)
+        NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40.0),
+            backButton.widthAnchor.constraint(equalToConstant: 40.0),
+            backButton.heightAnchor.constraint(equalToConstant: 40.0)
+        ])
+    }
+    
+    private func setupTitleLabel() {
+        view.addSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 95.0),
+            titleLabel.heightAnchor.constraint(equalToConstant: 40.0)
+        ])
+    }
+}
+
+
+//MARK: - Customizations
+extension BaseViewController {
+    
+    func setTitle(
+        _ title: String,
+        color: UIColor = .black,
+        font: UIFont = .systemFont(ofSize: 30, weight: .bold)
+    ) {
+        titleLabel.text = title
+        titleLabel.textColor = color
+        titleLabel.font = font
+    }
+    
+    func setBackButtonHidden(_ isHidden: Bool) {
+        backButton.isHidden = isHidden
+    }
+    
+}
+
+//MARK: - Actions
+extension BaseViewController {
+    
+    func addTarget(target: Any?, action: Selector) {
+        backButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+}
+
