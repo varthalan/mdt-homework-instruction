@@ -18,23 +18,23 @@ final class LoginViewModel {
 //MARK: - Strings
 extension LoginViewModel {
     static var title: String {
-        "Login"
+        NSLocalizedString("login_title", comment: "login")
     }
         
     static var usernameFieldTitle: String {
-        "Username"
+        NSLocalizedString("username_field_title", comment: "username")
     }
     
     static var passwordFieldTitle: String {
-        "Password"
+        NSLocalizedString("password_field_title", comment: "password")
     }
     
     static var registerButtonTitle: String {
-        "REGISTER"
+        NSLocalizedString("register_button_title", comment: "register")
     }
     
     static var loginButtonTitle: String {
-        "LOGIN"
+        NSLocalizedString("login_button_title", comment: "login")
     }
 }
 
