@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum LFTextFieldViewType {
+    case normal
+    case secured
+    case number
+}
+
 class LFTextFieldView: UIView {
     
     private let containerView: UIView = {
@@ -94,6 +100,7 @@ extension LFTextFieldView {
             textField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: -4.0),
             textField.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.75, constant: 0.0)
         ])
+        setFieldType(.normal)
     }
     
     private func setupUI() {
@@ -127,6 +134,19 @@ extension LFTextFieldView {
             feedbackLabel.text = message
             feedbackLabel.textColor = color
             feedbackLabel.font = font
+    }
+    
+    func setFieldType(_ type: LFTextFieldViewType) {
+        switch type {
+        case .normal:
+            textField.keyboardType = .default
+            
+        case .secured:
+            textField.isSecureTextEntry = true
+            
+        case .number:
+            textField.keyboardType = .numbersAndPunctuation
+        }
     }
 }
 
