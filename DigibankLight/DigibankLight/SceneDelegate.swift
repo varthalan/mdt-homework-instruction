@@ -1,8 +1,5 @@
 //
 //  SceneDelegate.swift
-//  DigibankLight
-//
-//  Created by Nagaraju on 28/1/22.
 //
 
 import UIKit
@@ -10,20 +7,28 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    private lazy var loginViewController = ModuleComposer.composeLoginWith()
+    private lazy var navigationController = UINavigationController(
+        rootViewController: loginViewController)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
         configureWindow()
+        configureNavigationController()
     }
     
-    func configureWindow() {
+    private func configureWindow() {
         window?.backgroundColor = .white
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 
+    private func configureNavigationController() {
+        navigationController.isNavigationBarHidden = true
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

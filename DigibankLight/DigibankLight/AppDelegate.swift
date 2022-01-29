@@ -1,8 +1,5 @@
 //
 //  AppDelegate.swift
-//  DigibankLight
-//
-//  Created by Nagaraju on 28/1/22.
 //
 
 import UIKit
