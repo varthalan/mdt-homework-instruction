@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  DigibankLight
+*/
+
+//Login
+"login_title" = "Login";
+"username_field_title" = "Username";
+"password_field_title" = "Password";
+"register_button_title" = "REGISTER";
+"login_button_title" = "LOGIN";
+

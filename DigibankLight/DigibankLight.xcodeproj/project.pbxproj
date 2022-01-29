@@ -26,6 +26,7 @@
 		E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CA027A5168A00CC8E43 /* LFTextView.swift */; };
 		E68B7CA927A527A100CC8E43 /* PayeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CA827A527A100CC8E43 /* PayeesViewController.swift */; };
 		E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CAC27A5298B00CC8E43 /* LoginViewModel.swift */; };
+		E68B7CAF27A52BF500CC8E43 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E68B7CAE27A52BF500CC8E43 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		E68B7CA027A5168A00CC8E43 /* LFTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextView.swift; sourceTree = "<group>"; };
 		E68B7CA827A527A100CC8E43 /* PayeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayeesViewController.swift; sourceTree = "<group>"; };
 		E68B7CAC27A5298B00CC8E43 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E68B7CAE27A52BF500CC8E43 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				E64AEB9527A42877000C1884 /* Assets.xcassets */,
 				E64AEB9727A42877000C1884 /* LaunchScreen.storyboard */,
 				E64AEB9A27A42877000C1884 /* Info.plist */,
+				E68B7CAE27A52BF500CC8E43 /* Localizable.strings */,
 			);
 			path = DigibankLight;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E64AEB9927A42877000C1884 /* LaunchScreen.storyboard in Resources */,
+				E68B7CAF27A52BF500CC8E43 /* Localizable.strings in Resources */,
 				E64AEB9627A42877000C1884 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
