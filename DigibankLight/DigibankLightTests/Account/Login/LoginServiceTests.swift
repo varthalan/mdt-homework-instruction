@@ -14,11 +14,11 @@ class LoginServiceTests: XCTestCase {
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
 
-    func test_load_sendsLoginRequest() {
+    func test_login_sendsLoginRequest() {
         let url = URL(string: "https://any-url.com/login")!
         let (sut, client) = makeSUT(url)
         
-        sut.load(username: "an username", password: "a password") { _ in }
+        sut.login(username: "an username", password: "a password") { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -35,7 +35,7 @@ class LoginServiceTests: XCTestCase {
         let expectedResponse = LoginService.Result.success(failureResponse)
         
         let exp = expectation(description: "Wait for login completion")
-        sut.load(username: "invalid user", password: "invalid password") { receivedResponse in
+        sut.login(username: "invalid user", password: "invalid password") { receivedResponse in
             switch (receivedResponse, expectedResponse) {
             case let (.success(receivedResult), .success(expectedResult)):
                 XCTAssertEqual(receivedResult, expectedResult)
@@ -63,7 +63,7 @@ class LoginServiceTests: XCTestCase {
         let expectedResponse = LoginService.Result.success(successResponse)
         
         let exp = expectation(description: "Wait for login completion")
-        sut.load(username: "valid user", password: "valid password") { receivedResponse in
+        sut.login(username: "valid user", password: "valid password") { receivedResponse in
             switch (receivedResponse, expectedResponse) {
             case let (.success(receivedResult), .success(expectedResult)):
                 XCTAssertEqual(receivedResult, expectedResult)

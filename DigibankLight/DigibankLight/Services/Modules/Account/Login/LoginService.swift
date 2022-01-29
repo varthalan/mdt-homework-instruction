@@ -18,7 +18,7 @@ final class LoginService {
         self.client = client
     }
     
-    func load(username: String, password: String, completion: @escaping (Result) -> Void) {
+    func login(username: String, password: String, completion: @escaping (Result) -> Void) {
         client.load(request: request()) { result in
             switch result {
             case let .success(value):
