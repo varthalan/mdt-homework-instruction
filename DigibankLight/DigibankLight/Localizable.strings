@@ -22,6 +22,9 @@
 "description_field_title" = "Description";
 "transfer_now_button_title" = "Transfer Now";
 
+//Payees
+"payees_title" = "Payees";
+
 //Common
 "username_field_title" = "Username";
 "password_field_title" = "Password";

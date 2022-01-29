@@ -31,6 +31,7 @@
 		E68B7CB527A5301400CC8E43 /* NSLocalizedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */; };
 		E68B7CB927A531E200CC8E43 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CB827A531E200CC8E43 /* DashboardViewModel.swift */; };
 		E68B7CBD27A5333A00CC8E43 /* MakeTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CBC27A5333A00CC8E43 /* MakeTransferViewModel.swift */; };
+		E68B7CC127A5358700CC8E43 /* PayeesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CC027A5358700CC8E43 /* PayeesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLocalizedString+Extension.swift"; sourceTree = "<group>"; };
 		E68B7CB827A531E200CC8E43 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		E68B7CBC27A5333A00CC8E43 /* MakeTransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferViewModel.swift; sourceTree = "<group>"; };
+		E68B7CC027A5358700CC8E43 /* PayeesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,8 +165,8 @@
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7CA727A5278E00CC8E43 /* Payee */,
 				E68B7C9627A4FEFC00CC8E43 /* Shared */,
+				E68B7CA727A5278E00CC8E43 /* Payee */,
 				E68B7C9327A4E68D00CC8E43 /* MakeTransfer */,
 				E68B7C9027A4E46600CC8E43 /* Dashboard */,
 				E68B7C7C27A42BCE00CC8E43 /* Account */,
@@ -271,7 +273,8 @@
 		E68B7CA727A5278E00CC8E43 /* Payee */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7CA827A527A100CC8E43 /* PayeesViewController.swift */,
+				E68B7CBF27A5356E00CC8E43 /* View */,
+				E68B7CBE27A5356A00CC8E43 /* ViewModel */,
 			);
 			path = Payee;
 			sourceTree = "<group>";
@@ -336,6 +339,22 @@
 			isa = PBXGroup;
 			children = (
 				E68B7C9427A4E69D00CC8E43 /* MakeTransferViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E68B7CBE27A5356A00CC8E43 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CC027A5358700CC8E43 /* PayeesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E68B7CBF27A5356E00CC8E43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CA827A527A100CC8E43 /* PayeesViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -489,6 +508,7 @@
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
 				E68B7C9227A4E47700CC8E43 /* DashboardViewController.swift in Sources */,
 				E68B7C9527A4E69D00CC8E43 /* MakeTransferViewController.swift in Sources */,
+				E68B7CC127A5358700CC8E43 /* PayeesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

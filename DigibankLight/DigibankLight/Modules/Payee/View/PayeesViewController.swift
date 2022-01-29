@@ -2,8 +2,6 @@
 //  PayeesViewController.swift
 //  DigibankLight
 //
-//  Created by Nagaraju on 29/1/22.
-//
 
 import UIKit
 
@@ -28,7 +26,7 @@ class PayeesViewController: BaseViewController {
 extension PayeesViewController {
     
     fileprivate func customizeParentSetup() {
-        setTitle("Payees")
+        setTitle(PayeesViewModel.payeesTitle)
         addBackButtonTarget(target: self, action: #selector(back))
     }
 }
