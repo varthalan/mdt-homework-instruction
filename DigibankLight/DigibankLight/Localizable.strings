@@ -11,6 +11,10 @@
 "registration_title" = "Register";
 "confirm_password_field_title" = "Confirm Password";
 
+//Dashboard
+"logout_button_title" = "Logout";
+"make_transfer_button_title" = "Make Transfer";
+
 //Common
 "username_field_title" = "Username";
 "password_field_title" = "Password";
