@@ -47,7 +47,7 @@ extension DashboardViewController {
             logoutButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40.0),
             logoutButton.heightAnchor.constraint(equalToConstant: 40.0)
         ])
-        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.setTitle(DashboardViewModel.logoutButtonTitle, for: .normal)
         logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
     }
 }
@@ -60,7 +60,7 @@ extension DashboardViewController {
         setBackButtonHidden(true)
         
         configureBottomActionButtonWith(
-            title: "Make Transfer",
+            title: DashboardViewModel.makeTransferButtonTitle,
             target: self,
             action: #selector(makeTransfer)
         )
