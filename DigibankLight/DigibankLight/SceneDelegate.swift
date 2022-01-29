@@ -75,6 +75,14 @@ extension SceneDelegate {
     private func popToRoot() {
         navigationController.popToRootViewController(animated: true)
     }
+    
+    private func present(_ viewController: UIViewController, animated: Bool = true) {
+        navigationController.present(viewController, animated: animated, completion: nil)
+    }
+    
+    private func dismiss(_ viewController: UIViewController, animated: Bool = true) {
+        viewController.dismiss(animated: animated, completion: nil)
+    }
 }
 
 //Modules creation
@@ -134,7 +142,14 @@ extension SceneDelegate {
     }
     
     private func showPayees() {
+        let payeesViewController = ModuleComposer.composePayees()
+        payeesViewController.modalPresentationStyle = .fullScreen
+        payeesViewController.onBack = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(payeesViewController)
+        }
         
+        present(payeesViewController)
     }
 }
 

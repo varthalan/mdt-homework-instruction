@@ -22,4 +22,8 @@ final class ModuleComposer {
     static func composeMakeTransfer() -> MakeTransferViewController {
         MakeTransferViewController()
     }
+    
+    static func composePayees() -> PayeesViewController {
+        PayeesViewController()
+    }
 }
