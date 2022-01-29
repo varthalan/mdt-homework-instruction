@@ -71,12 +71,14 @@ extension LoginViewController {
             registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
             registerButton.heightAnchor.constraint(equalToConstant: 70.0)
         ])
+        
         registerButton.setTitle("REGISTER", for: .normal)
-        registerButton.setTitleColor(.black, for: .normal)
-        registerButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .black)
-        registerButton.layer.cornerRadius = 35.0
-        registerButton.layer.borderWidth = 2.0
-        registerButton.layer.borderColor = UIColor.black.cgColor
+        registerButton.decorateWith(
+            .white,
+            textColor: .black,
+            font: .systemFont(ofSize: 20, weight: .black),
+            borderColor: .black,
+            cornerRadius: 35.0)
     }
     
     private func setupLoginButtton() {
@@ -88,12 +90,13 @@ extension LoginViewController {
             loginButton.heightAnchor.constraint(equalTo: registerButton.heightAnchor)
         ])
         loginButton.setTitle("LOGIN", for: .normal)
-        loginButton.setTitleColor(.white, for: .normal)
-        loginButton.backgroundColor = .black
-        loginButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .black)
-        loginButton.layer.cornerRadius = 35.0
-        loginButton.layer.borderWidth = 2.0
-        loginButton.layer.borderColor = UIColor.black.cgColor
+        
+        loginButton.decorateWith(
+            .black,
+            textColor: .white,
+            font: .systemFont(ofSize: 20, weight: .black),
+            borderColor: .black,
+            cornerRadius: 35.0)
     }
     
     private func setupUI() {
