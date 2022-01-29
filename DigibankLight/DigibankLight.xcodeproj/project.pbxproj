@@ -135,7 +135,7 @@
 		E64AEB8B27A42876000C1884 /* DigibankLight */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7CC227A5576E00CC8E43 /* CoreServices */,
+				E68B7CC227A5576E00CC8E43 /* Services */,
 				E68B7C8727A42CEF00CC8E43 /* CustomViews */,
 				E68B7C8427A42C1A00CC8E43 /* UIComposer */,
 				E68B7C7B27A42BC000CC8E43 /* Modules */,
@@ -364,13 +364,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E68B7CC227A5576E00CC8E43 /* CoreServices */ = {
+		E68B7CC227A5576E00CC8E43 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CC727A55A2300CC8E43 /* Core */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E68B7CC727A55A2300CC8E43 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				E68B7CC327A5579A00CC8E43 /* HTTPClient.swift */,
 				E68B7CC527A5585100CC8E43 /* URLSessionHTTPClient.swift */,
 			);
-			path = CoreServices;
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
