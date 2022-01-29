@@ -32,6 +32,7 @@
 		E68B7CB927A531E200CC8E43 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CB827A531E200CC8E43 /* DashboardViewModel.swift */; };
 		E68B7CBD27A5333A00CC8E43 /* MakeTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CBC27A5333A00CC8E43 /* MakeTransferViewModel.swift */; };
 		E68B7CC127A5358700CC8E43 /* PayeesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CC027A5358700CC8E43 /* PayeesViewModel.swift */; };
+		E68B7CC427A5579A00CC8E43 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CC327A5579A00CC8E43 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		E68B7CB827A531E200CC8E43 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		E68B7CBC27A5333A00CC8E43 /* MakeTransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferViewModel.swift; sourceTree = "<group>"; };
 		E68B7CC027A5358700CC8E43 /* PayeesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeesViewModel.swift; sourceTree = "<group>"; };
+		E68B7CC327A5579A00CC8E43 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		E64AEB8B27A42876000C1884 /* DigibankLight */ = {
 			isa = PBXGroup;
 			children = (
+				E68B7CC227A5576E00CC8E43 /* CoreServices */,
 				E68B7C8727A42CEF00CC8E43 /* CustomViews */,
 				E68B7C8427A42C1A00CC8E43 /* UIComposer */,
 				E68B7C7B27A42BC000CC8E43 /* Modules */,
@@ -359,6 +362,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E68B7CC227A5576E00CC8E43 /* CoreServices */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CC327A5579A00CC8E43 /* HTTPClient.swift */,
+			);
+			path = CoreServices;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -496,6 +507,7 @@
 				E68B7CA927A527A100CC8E43 /* PayeesViewController.swift in Sources */,
 				E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */,
 				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
+				E68B7CC427A5579A00CC8E43 /* HTTPClient.swift in Sources */,
 				E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */,
 				E68B7CBD27A5333A00CC8E43 /* MakeTransferViewModel.swift in Sources */,
 				E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */,
