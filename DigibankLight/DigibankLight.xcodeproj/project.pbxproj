@@ -33,6 +33,7 @@
 		E68B7CC127A5358700CC8E43 /* PayeesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CC027A5358700CC8E43 /* PayeesViewModel.swift */; };
 		E68B7CC427A5579A00CC8E43 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CC327A5579A00CC8E43 /* HTTPClient.swift */; };
 		E68B7CC627A5585100CC8E43 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CC527A5585100CC8E43 /* URLSessionHTTPClient.swift */; };
+		E68B7CCE27A55C7600CC8E43 /* LoginServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CCD27A55C7600CC8E43 /* LoginServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		E68B7CC027A5358700CC8E43 /* PayeesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeesViewModel.swift; sourceTree = "<group>"; };
 		E68B7CC327A5579A00CC8E43 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		E68B7CC527A5585100CC8E43 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		E68B7CCD27A55C7600CC8E43 /* LoginServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		E64AEBA227A42878000C1884 /* DigibankLightTests */ = {
 			isa = PBXGroup;
 			children = (
+				E68B7CCD27A55C7600CC8E43 /* LoginServiceTests.swift */,
 			);
 			path = DigibankLightTests;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 					};
 					E64AEB9E27A42877000C1884 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 						TestTargetID = E64AEB8827A42876000C1884;
 					};
 					E64AEBA827A42878000C1884 = {
@@ -537,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68B7CCE27A55C7600CC8E43 /* LoginServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,14 +758,21 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ocbc.DigibankLightTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DigibankLight.app/DigibankLight";
@@ -772,10 +784,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ocbc.DigibankLightTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
