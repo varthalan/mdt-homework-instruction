@@ -5,6 +5,10 @@
 
 import UIKit
 
+protocol LFNonEditableTextFieldViewDelegate: AnyObject {
+    func onFieldBeginEditing()
+}
+
 final class LFNonEditableTextFieldView: LFTextFieldView {
     
     private let arrowImageView: UIImageView = {
@@ -12,6 +16,8 @@ final class LFNonEditableTextFieldView: LFTextFieldView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    weak var delegate: LFNonEditableTextFieldViewDelegate?
     
     override func setupUI() {
         super.setupUI()
@@ -40,6 +46,7 @@ final class LFNonEditableTextFieldView: LFTextFieldView {
 extension LFNonEditableTextFieldView {
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        delegate?.onFieldBeginEditing()
         return false
     }
     

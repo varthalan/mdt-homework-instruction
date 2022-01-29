@@ -23,6 +23,7 @@
 		E68B7C9527A4E69D00CC8E43 /* MakeTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C9427A4E69D00CC8E43 /* MakeTransferViewController.swift */; };
 		E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C9727A4FF0B00CC8E43 /* BaseViewController.swift */; };
 		E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C9C27A511E600CC8E43 /* LFNonEditableTextFieldView.swift */; };
+		E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CA027A5168A00CC8E43 /* LFTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E68B7C9427A4E69D00CC8E43 /* MakeTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferViewController.swift; sourceTree = "<group>"; };
 		E68B7C9727A4FF0B00CC8E43 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E68B7C9C27A511E600CC8E43 /* LFNonEditableTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFNonEditableTextFieldView.swift; sourceTree = "<group>"; };
+		E68B7CA027A5168A00CC8E43 /* LFTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,8 +184,8 @@
 		E68B7C8727A42CEF00CC8E43 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7C8827A42D1300CC8E43 /* LFTextField.swift */,
-				E68B7C9C27A511E600CC8E43 /* LFNonEditableTextFieldView.swift */,
+				E68B7C9F27A5166000CC8E43 /* TextView */,
+				E68B7C9E27A5165300CC8E43 /* TextField */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -226,6 +228,23 @@
 				E68B7C9727A4FF0B00CC8E43 /* BaseViewController.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		E68B7C9E27A5165300CC8E43 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C8827A42D1300CC8E43 /* LFTextField.swift */,
+				E68B7C9C27A511E600CC8E43 /* LFNonEditableTextFieldView.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		E68B7C9F27A5166000CC8E43 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CA027A5168A00CC8E43 /* LFTextView.swift */,
+			);
+			path = TextView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +382,7 @@
 				E68B7C8C27A4D86700CC8E43 /* UIButton+Styling.swift in Sources */,
 				E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */,
 				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
+				E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */,
 				E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */,
 				E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */,
 				E64AEB8D27A42876000C1884 /* AppDelegate.swift in Sources */,
