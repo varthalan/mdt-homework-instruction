@@ -2,8 +2,6 @@
 //  RegistrationViewModel.swift
 //  DigibankLight
 //
-//  Created by Nagaraju on 29/1/22.
-//
 
 import Foundation
 
@@ -15,22 +13,22 @@ final class RegistrationViewModel {
 extension RegistrationViewModel {
     
     static var title: String {
-        "Register"
+        localize("registration_title")
     }
     
     static var usernameFieldTitle: String {
-        "Username"
+        localize("username_field_title")
     }
     
     static var passwordFieldTitle: String {
-        "Password"
+        localize("password_field_title")
     }
     
     static var confirmPasswordFieldTitle: String {
-        "Confirm Password"
+        localize("confirm_password_field_title")
     }
 
     static var registerButtonTitle: String {
-        "REGISTER"
+        localize("register_button_title")
     }
 }
