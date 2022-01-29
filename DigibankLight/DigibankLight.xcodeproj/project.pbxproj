@@ -34,6 +34,9 @@
 		E68B7CC427A5579A00CC8E43 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CC327A5579A00CC8E43 /* HTTPClient.swift */; };
 		E68B7CC627A5585100CC8E43 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CC527A5585100CC8E43 /* URLSessionHTTPClient.swift */; };
 		E68B7CCE27A55C7600CC8E43 /* LoginServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CCD27A55C7600CC8E43 /* LoginServiceTests.swift */; };
+		E68B7CD327A56A0600CC8E43 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CD227A56A0600CC8E43 /* LoginService.swift */; };
+		E68B7CD527A56A3000CC8E43 /* LoginServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CD427A56A3000CC8E43 /* LoginServiceMapper.swift */; };
+		E68B7CD827A56A5800CC8E43 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CD727A56A5800CC8E43 /* LoginResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,9 @@
 		E68B7CC327A5579A00CC8E43 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		E68B7CC527A5585100CC8E43 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		E68B7CCD27A55C7600CC8E43 /* LoginServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceTests.swift; sourceTree = "<group>"; };
+		E68B7CD227A56A0600CC8E43 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		E68B7CD427A56A3000CC8E43 /* LoginServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceMapper.swift; sourceTree = "<group>"; };
+		E68B7CD727A56A5800CC8E43 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +197,7 @@
 		E68B7C7D27A42BD400CC8E43 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				E68B7CD627A56A4200CC8E43 /* Model */,
 				E68B7CAB27A5297F00CC8E43 /* View */,
 				E68B7CAA27A5297A00CC8E43 /* ViewModel */,
 			);
@@ -368,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				E68B7CC727A55A2300CC8E43 /* Core */,
+				E68B7CCF27A569E500CC8E43 /* Modules */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -379,6 +387,39 @@
 				E68B7CC527A5585100CC8E43 /* URLSessionHTTPClient.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		E68B7CCF27A569E500CC8E43 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CD027A569F200CC8E43 /* Account */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E68B7CD027A569F200CC8E43 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CD127A569F900CC8E43 /* Login */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		E68B7CD127A569F900CC8E43 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CD227A56A0600CC8E43 /* LoginService.swift */,
+				E68B7CD427A56A3000CC8E43 /* LoginServiceMapper.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E68B7CD627A56A4200CC8E43 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CD727A56A5800CC8E43 /* LoginResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,9 +568,12 @@
 				E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */,
 				E68B7CB527A5301400CC8E43 /* NSLocalizedString+Extension.swift in Sources */,
 				E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */,
+				E68B7CD827A56A5800CC8E43 /* LoginResponse.swift in Sources */,
 				E68B7CC627A5585100CC8E43 /* URLSessionHTTPClient.swift in Sources */,
 				E68B7CB327A52E0C00CC8E43 /* RegistrationViewModel.swift in Sources */,
 				E64AEB8D27A42876000C1884 /* AppDelegate.swift in Sources */,
+				E68B7CD527A56A3000CC8E43 /* LoginServiceMapper.swift in Sources */,
+				E68B7CD327A56A0600CC8E43 /* LoginService.swift in Sources */,
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
 				E68B7C9227A4E47700CC8E43 /* DashboardViewController.swift in Sources */,
 				E68B7C9527A4E69D00CC8E43 /* MakeTransferViewController.swift in Sources */,
