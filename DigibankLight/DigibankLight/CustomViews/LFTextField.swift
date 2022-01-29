@@ -53,6 +53,13 @@ class LFTextFieldView: UIView {
     required init?(coder: NSCoder) {
         fatalError("Not implemented to support")
     }
+    
+    func setupUI() {
+        setupContainerView()
+        setupFeedbackLabel()
+        setupTitleLabel()
+        setupTextField()
+    }
 }
 
 
@@ -100,13 +107,6 @@ extension LFTextFieldView {
             textField.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.75, constant: 0.0)
         ])
         setFieldType(.normal)
-    }
-    
-    private func setupUI() {
-        setupContainerView()
-        setupFeedbackLabel()
-        setupTitleLabel()
-        setupTextField()
     }
 }
 

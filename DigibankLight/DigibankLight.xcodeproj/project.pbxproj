@@ -22,6 +22,7 @@
 		E68B7C9227A4E47700CC8E43 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C9127A4E47700CC8E43 /* DashboardViewController.swift */; };
 		E68B7C9527A4E69D00CC8E43 /* MakeTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C9427A4E69D00CC8E43 /* MakeTransferViewController.swift */; };
 		E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C9727A4FF0B00CC8E43 /* BaseViewController.swift */; };
+		E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C9C27A511E600CC8E43 /* LFNonEditableTextFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		E68B7C9127A4E47700CC8E43 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		E68B7C9427A4E69D00CC8E43 /* MakeTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferViewController.swift; sourceTree = "<group>"; };
 		E68B7C9727A4FF0B00CC8E43 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E68B7C9C27A511E600CC8E43 /* LFNonEditableTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFNonEditableTextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				E68B7C8827A42D1300CC8E43 /* LFTextField.swift */,
+				E68B7C9C27A511E600CC8E43 /* LFNonEditableTextFieldView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */,
 				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
 				E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */,
+				E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */,
 				E64AEB8D27A42876000C1884 /* AppDelegate.swift in Sources */,
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
 				E68B7C9227A4E47700CC8E43 /* DashboardViewController.swift in Sources */,
