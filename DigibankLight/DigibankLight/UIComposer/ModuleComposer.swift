@@ -7,7 +7,11 @@ import Foundation
 
 final class ModuleComposer {
     
-    static func composeLoginWith() -> LoginViewController {
+    static func composeLogin() -> LoginViewController {
         return LoginViewController()
+    }
+    
+    static func composeRegistration() -> RegistrationViewController {
+        return RegistrationViewController()
     }
 }

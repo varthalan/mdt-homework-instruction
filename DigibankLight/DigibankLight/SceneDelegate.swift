@@ -7,7 +7,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    private lazy var loginViewController = ModuleComposer.composeLoginWith()
+    private lazy var loginViewController = ModuleComposer.composeLogin()
     private lazy var navigationController = UINavigationController(
         rootViewController: loginViewController)
 
@@ -61,10 +61,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+//Navigations creation
+extension SceneDelegate {
+
+    private func push(_ viewController: UIViewController, animated: Bool = true) {
+        navigationController.pushViewController(viewController, animated: animated)
+    }
+
+    private func pop() {
+        navigationController.popViewController(animated: true)
+    }
+    
+    private func popToRoot() {
+        navigationController.popToRootViewController(animated: true)
+    }
+}
+
 //Modules creation
 extension SceneDelegate {
     private func showRegistration() {
+        let registrationViewController = ModuleComposer.composeRegistration()
         
+        registrationViewController.onBack = { [weak self] in
+            guard let self = self else { return }
+            self.pop()
+        }
+        
+        push(registrationViewController)
     }
 }
 

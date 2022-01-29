@@ -52,6 +52,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     private func setupUI() {
+        view.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
         setupTitleLabel()
         setupUsernameField()
         setupPasswordField()
