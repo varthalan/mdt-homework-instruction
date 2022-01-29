@@ -13,23 +13,23 @@ final class MakeTransferViewModel {
 extension MakeTransferViewModel {
     
     static var transferTitle: String {
-        "Transfer"
+        localize("transfer_title")
     }
 
     static var payeeFieldTitle: String {
-        "Payee"
+        localize("payee_field_title")
     }
 
     static var amountFieldTitle: String {
-        "Amount"
+        localize("amount_field_title")
     }
 
     static var descriptionFieldTitle: String {
-        "Description"
+        localize("description_field_title")
     }
     
     static var transferNowButtonTitle: String {
-        "Transfer Now"
+        localize("transfer_now_button_title")
     }
     
 }

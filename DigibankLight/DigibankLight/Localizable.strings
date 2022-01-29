@@ -15,6 +15,13 @@
 "logout_button_title" = "Logout";
 "make_transfer_button_title" = "Make Transfer";
 
+//Transfer
+"transfer_title" = "Transfer";
+"payee_field_title" = "Payee";
+"amount_field_title" = "Amount";
+"description_field_title" = "Description";
+"transfer_now_button_title" = "Transfer Now";
+
 //Common
 "username_field_title" = "Username";
 "password_field_title" = "Password";
