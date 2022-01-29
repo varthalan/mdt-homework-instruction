@@ -138,6 +138,10 @@ extension SceneDelegate {
             self.showRegistration()
         }
         
+        loginViewController.onLogin = { [weak self] in
+            guard let self = self else { return }
+            self.showDashboard()
+        }
     }
 }
 

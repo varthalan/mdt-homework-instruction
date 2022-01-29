@@ -32,6 +32,7 @@ class LoginViewController: BaseViewController {
     }()
     
     var onRegister: (() -> Void)?
+    var onLogin: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,5 +130,6 @@ extension LoginViewController {
     
     @objc func login(_ sender: AnyObject) {
         //Call API
+        onLogin?()
     }
 }
