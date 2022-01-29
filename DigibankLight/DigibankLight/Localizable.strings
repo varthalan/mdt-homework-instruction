@@ -5,8 +5,14 @@
 
 //Login
 "login_title" = "Login";
+"login_button_title" = "LOGIN";
+
+//Registration
+"registration_title" = "Register";
+"confirm_password_field_title" = "Confirm Password";
+
+//Common
 "username_field_title" = "Username";
 "password_field_title" = "Password";
 "register_button_title" = "REGISTER";
-"login_button_title" = "LOGIN";
 
