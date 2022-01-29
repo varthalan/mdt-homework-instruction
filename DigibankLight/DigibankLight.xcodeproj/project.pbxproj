@@ -14,6 +14,9 @@
 		E64AEBA427A42878000C1884 /* DigibankLightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64AEBA327A42878000C1884 /* DigibankLightTests.swift */; };
 		E64AEBAE27A42878000C1884 /* DigibankLightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64AEBAD27A42878000C1884 /* DigibankLightUITests.swift */; };
 		E64AEBB027A42878000C1884 /* DigibankLightUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64AEBAF27A42878000C1884 /* DigibankLightUITestsLaunchTests.swift */; };
+		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
+		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
+		E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		E64AEBA927A42878000C1884 /* DigibankLightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigibankLightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64AEBAD27A42878000C1884 /* DigibankLightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigibankLightUITests.swift; sourceTree = "<group>"; };
 		E64AEBAF27A42878000C1884 /* DigibankLightUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigibankLightUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
+		E68B7C8827A42D1300CC8E43 /* LFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,9 @@
 		E64AEB8B27A42876000C1884 /* DigibankLight */ = {
 			isa = PBXGroup;
 			children = (
+				E68B7C8727A42CEF00CC8E43 /* CustomViews */,
+				E68B7C8427A42C1A00CC8E43 /* UIComposer */,
+				E68B7C7B27A42BC000CC8E43 /* Modules */,
 				E64AEB8C27A42876000C1884 /* AppDelegate.swift */,
 				E64AEB8E27A42876000C1884 /* SceneDelegate.swift */,
 				E64AEB9527A42877000C1884 /* Assets.xcassets */,
@@ -119,6 +128,46 @@
 				E64AEBAF27A42878000C1884 /* DigibankLightUITestsLaunchTests.swift */,
 			);
 			path = DigibankLightUITests;
+			sourceTree = "<group>";
+		};
+		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C7C27A42BCE00CC8E43 /* Account */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E68B7C7C27A42BCE00CC8E43 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C7D27A42BD400CC8E43 /* Login */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		E68B7C7D27A42BD400CC8E43 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E68B7C8427A42C1A00CC8E43 /* UIComposer */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */,
+			);
+			path = UIComposer;
+			sourceTree = "<group>";
+		};
+		E68B7C8727A42CEF00CC8E43 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C8827A42D1300CC8E43 /* LFTextField.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +300,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */,
+				E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */,
+				E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */,
 				E64AEB8D27A42876000C1884 /* AppDelegate.swift in Sources */,
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
 			);

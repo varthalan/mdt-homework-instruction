@@ -1,8 +1,5 @@
 //
 //  DigibankLightUITestsLaunchTests.swift
-//  DigibankLightUITests
-//
-//  Created by Nagaraju on 28/1/22.
 //
 
 import XCTest
