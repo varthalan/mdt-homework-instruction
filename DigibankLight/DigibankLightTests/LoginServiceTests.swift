@@ -56,7 +56,7 @@ final class LoginService {
         self.client = client
     }
     
-    func load(completion: @escaping (Result) -> Void) {
+    func load(username: String, password: String, completion: @escaping (Result) -> Void) {
         client.load(request: request()) { result in
             switch result {
             case let .success(value):
@@ -91,7 +91,7 @@ class LoginServiceTests: XCTestCase {
         let client = HTTPClientSpy()
         let sut = LoginService(url: url, client: client)
         
-        sut.load { _ in }
+        sut.load(username: "an username", password: "a password") { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -109,7 +109,7 @@ class LoginServiceTests: XCTestCase {
         let expectedResponse = LoginService.Result.success(failureResponse)
         
         let exp = expectation(description: "Wait for login completion")
-        sut.load { receivedResponse in
+        sut.load(username: "invalid user", password: "invalid password") { receivedResponse in
             switch (receivedResponse, expectedResponse) {
             case let (.success(receivedResult), .success(expectedResult)):
                 XCTAssertEqual(receivedResult, expectedResult)
@@ -138,7 +138,7 @@ class LoginServiceTests: XCTestCase {
         let expectedResponse = LoginService.Result.success(successResponse)
         
         let exp = expectation(description: "Wait for login completion")
-        sut.load { receivedResponse in
+        sut.load(username: "valid user", password: "valid password") { receivedResponse in
             switch (receivedResponse, expectedResponse) {
             case let (.success(receivedResult), .success(expectedResult)):
                 XCTAssertEqual(receivedResult, expectedResult)
