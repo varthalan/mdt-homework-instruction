@@ -11,7 +11,6 @@
 		E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64AEB8E27A42876000C1884 /* SceneDelegate.swift */; };
 		E64AEB9627A42877000C1884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64AEB9527A42877000C1884 /* Assets.xcassets */; };
 		E64AEB9927A42877000C1884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64AEB9727A42877000C1884 /* LaunchScreen.storyboard */; };
-		E64AEBA427A42878000C1884 /* DigibankLightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64AEBA327A42878000C1884 /* DigibankLightTests.swift */; };
 		E64AEBAE27A42878000C1884 /* DigibankLightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64AEBAD27A42878000C1884 /* DigibankLightUITests.swift */; };
 		E64AEBB027A42878000C1884 /* DigibankLightUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64AEBAF27A42878000C1884 /* DigibankLightUITestsLaunchTests.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
@@ -61,7 +60,6 @@
 		E64AEB9827A42877000C1884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E64AEB9A27A42877000C1884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E64AEB9F27A42878000C1884 /* DigibankLightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigibankLightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E64AEBA327A42878000C1884 /* DigibankLightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigibankLightTests.swift; sourceTree = "<group>"; };
 		E64AEBA927A42878000C1884 /* DigibankLightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigibankLightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64AEBAD27A42878000C1884 /* DigibankLightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigibankLightUITests.swift; sourceTree = "<group>"; };
 		E64AEBAF27A42878000C1884 /* DigibankLightUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigibankLightUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 		E64AEBA227A42878000C1884 /* DigibankLightTests */ = {
 			isa = PBXGroup;
 			children = (
-				E64AEBA327A42878000C1884 /* DigibankLightTests.swift */,
 			);
 			path = DigibankLightTests;
 			sourceTree = "<group>";
@@ -540,7 +537,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E64AEBA427A42878000C1884 /* DigibankLightTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
