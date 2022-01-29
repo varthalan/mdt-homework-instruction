@@ -28,6 +28,7 @@
 		E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CAC27A5298B00CC8E43 /* LoginViewModel.swift */; };
 		E68B7CAF27A52BF500CC8E43 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E68B7CAE27A52BF500CC8E43 /* Localizable.strings */; };
 		E68B7CB327A52E0C00CC8E43 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CB227A52E0C00CC8E43 /* RegistrationViewModel.swift */; };
+		E68B7CB527A5301400CC8E43 /* NSLocalizedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		E68B7CAC27A5298B00CC8E43 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E68B7CAE27A52BF500CC8E43 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E68B7CB227A52E0C00CC8E43 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLocalizedString+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				E68B7C8B27A4D86700CC8E43 /* UIButton+Styling.swift */,
+				E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */,
 				E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */,
 				E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */,
+				E68B7CB527A5301400CC8E43 /* NSLocalizedString+Extension.swift in Sources */,
 				E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */,
 				E68B7CB327A52E0C00CC8E43 /* RegistrationViewModel.swift in Sources */,
 				E64AEB8D27A42876000C1884 /* AppDelegate.swift in Sources */,
