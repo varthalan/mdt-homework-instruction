@@ -9,10 +9,7 @@ import Foundation
 
 final class LoginViewModel {
     
-    init() {
-        
-    }
-    
+    init() {}
 }
 
 //MARK: - Strings
