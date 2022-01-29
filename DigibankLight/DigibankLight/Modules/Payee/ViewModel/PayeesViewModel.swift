@@ -13,6 +13,6 @@ final class PayeesViewModel {
 extension PayeesViewModel {
     
     static var payeesTitle: String {
-        "Payees"
+        localize("payees_title")
     }
 }
