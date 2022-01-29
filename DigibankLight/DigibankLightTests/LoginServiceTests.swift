@@ -10,17 +10,28 @@ import XCTest
 
 struct LoginResponse: Equatable {
     let status: String
-    let error: String
+    let jwtToken: String?
+    let userName: String?
+    let accountNumber: String?
+    let error: String?
 }
 
 final class LoginServiceMapper {
     
     private struct Response: Decodable {
         let status: String
-        let error: String
+        let token: String?
+        let username: String?
+        let accountNo: String?
+        let error: String?
         
         var loginResponse: LoginResponse {
-            LoginResponse(status: status, error: error)
+            LoginResponse(
+                status: status,
+                jwtToken: token,
+                userName: username,
+                accountNumber: accountNo,
+                error: error)
         }
     }
     
@@ -111,14 +122,57 @@ class LoginServiceTests: XCTestCase {
         client.complete(with: makeJSON(with: json))
         wait(for: [exp], timeout: 1.0)
     }
+    
+    func test_load_authenticatesWithValidCredentials() {
+        let url = URL(string: "https://any-url.com/login")!
+        let client = HTTPClientSpy()
+        let sut = LoginService(url: url, client: client)
+        
+        let (successResponse, json) = makeLoginResponseWith(
+            status: "success",
+            jwtToken: "any token",
+            username: "an username",
+            accountNumber: "an account number"
+        )
+        
+        let expectedResponse = LoginService.Result.success(successResponse)
+        
+        let exp = expectation(description: "Wait for login completion")
+        sut.load { receivedResponse in
+            switch (receivedResponse, expectedResponse) {
+            case let (.success(receivedResult), .success(expectedResult)):
+                XCTAssertEqual(receivedResult, expectedResult)
+                
+            default:
+                XCTFail("Expected \(expectedResponse), got \(receivedResponse)")
+            }
+            exp.fulfill()
+        }
+        client.complete(with: makeJSON(with: json))
+        wait(for: [exp], timeout: 1.0)
+    }
 
     //MARK: - Helper
     
-    private func makeLoginResponseWith(status: String, error: String) -> (response: LoginResponse, json: [String: String]) {
-        let response = LoginResponse(status: status, error: error)
+    private func makeLoginResponseWith(
+        status: String,
+        jwtToken: String? = nil,
+        username: String? = nil,
+        accountNumber: String? = nil,
+        error: String? = nil) -> (response: LoginResponse, json: [String: String]) {
+            
+        let response = LoginResponse(
+            status: status,
+            jwtToken: jwtToken,
+            userName: username,
+            accountNumber: accountNumber,
+            error: error)
         
         let json = [
             "status": status,
+            "token": jwtToken,
+            "username": username,
+            "accountNo": accountNumber,
             "error": error
         ].compactMapValues { $0 }
         
