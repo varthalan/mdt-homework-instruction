@@ -9,15 +9,14 @@ import XCTest
 class LoginServiceTests: XCTestCase {
     
     func test_init_doesNotSendLoginRequest() {
-        let client = HTTPClientSpy()
+        let (_, client) = makeSUT()
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
 
     func test_load_sendsLoginRequest() {
         let url = URL(string: "https://any-url.com/login")!
-        let client = HTTPClientSpy()
-        let sut = LoginService(url: url, client: client)
+        let (sut, client) = makeSUT(url)
         
         sut.load(username: "an username", password: "a password") { _ in }
         
@@ -26,8 +25,7 @@ class LoginServiceTests: XCTestCase {
 
     func test_load_deliversFailureWithInvalidCredentials() {
         let url = URL(string: "https://any-url.com/login")!
-        let client = HTTPClientSpy()
-        let sut = LoginService(url: url, client: client)
+        let (sut, client) = makeSUT(url)
         
         let (failureResponse, json) = makeLoginResponseWith(
             status: "failed",
@@ -53,8 +51,7 @@ class LoginServiceTests: XCTestCase {
     
     func test_load_authenticatesWithValidCredentials() {
         let url = URL(string: "https://any-url.com/login")!
-        let client = HTTPClientSpy()
-        let sut = LoginService(url: url, client: client)
+        let (sut, client) = makeSUT(url)
         
         let (successResponse, json) = makeLoginResponseWith(
             status: "success",
@@ -81,6 +78,12 @@ class LoginServiceTests: XCTestCase {
     }
 
     //MARK: - Helpers
+    
+    private func makeSUT(_ url: URL = URL(string: "https://any-url.com")!) -> (sut: LoginService, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = LoginService(url: url, client: client)
+        return (sut, client)
+    }
     
     private func makeLoginResponseWith(
         status: String,
