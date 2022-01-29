@@ -25,6 +25,7 @@
 		E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C9C27A511E600CC8E43 /* LFNonEditableTextFieldView.swift */; };
 		E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CA027A5168A00CC8E43 /* LFTextView.swift */; };
 		E68B7CA927A527A100CC8E43 /* PayeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CA827A527A100CC8E43 /* PayeesViewController.swift */; };
+		E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CAC27A5298B00CC8E43 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		E68B7C9C27A511E600CC8E43 /* LFNonEditableTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFNonEditableTextFieldView.swift; sourceTree = "<group>"; };
 		E68B7CA027A5168A00CC8E43 /* LFTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextView.swift; sourceTree = "<group>"; };
 		E68B7CA827A527A100CC8E43 /* PayeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayeesViewController.swift; sourceTree = "<group>"; };
+		E68B7CAC27A5298B00CC8E43 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +173,8 @@
 		E68B7C7D27A42BD400CC8E43 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */,
+				E68B7CAB27A5297F00CC8E43 /* View */,
+				E68B7CAA27A5297A00CC8E43 /* ViewModel */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -256,6 +259,22 @@
 				E68B7CA827A527A100CC8E43 /* PayeesViewController.swift */,
 			);
 			path = Payee;
+			sourceTree = "<group>";
+		};
+		E68B7CAA27A5297A00CC8E43 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CAC27A5298B00CC8E43 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E68B7CAB27A5297F00CC8E43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +413,7 @@
 				E68B7CA927A527A100CC8E43 /* PayeesViewController.swift in Sources */,
 				E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */,
 				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
+				E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */,
 				E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */,
 				E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */,
 				E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */,

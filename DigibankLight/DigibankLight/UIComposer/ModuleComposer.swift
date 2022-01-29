@@ -8,7 +8,8 @@ import Foundation
 final class ModuleComposer {
     
     static func composeLogin() -> LoginViewController {
-        return LoginViewController()
+        let viewModel = LoginViewModel()
+        return LoginViewController(viewModel: viewModel)
     }
     
     static func composeRegistration() -> RegistrationViewController {

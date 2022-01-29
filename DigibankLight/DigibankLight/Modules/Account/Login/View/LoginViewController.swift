@@ -25,9 +25,20 @@ final class LoginViewController: BaseViewController {
         return button
     }()
     
+    private let viewModel: LoginViewModel
+    
     var onRegister: (() -> Void)?
     var onLogin: (() -> Void)?
-
+        
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +67,7 @@ extension LoginViewController {
             usernameField.topAnchor.constraint(equalTo: view.topAnchor, constant: 170.0),
             usernameField.heightAnchor.constraint(equalToConstant: 80.0)
         ])
-        usernameField.setHeader("Username")
+        usernameField.setHeader(LoginViewModel.usernameFieldTitle)
     }
     
     private func setupPasswordField() {
@@ -67,7 +78,7 @@ extension LoginViewController {
             passwordField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 20),
             passwordField.heightAnchor.constraint(equalTo: usernameField.heightAnchor)
         ])
-        passwordField.setHeader("Password")
+        passwordField.setHeader(LoginViewModel.passwordFieldTitle)
         passwordField.setFieldType(.secured)
     }
     
@@ -79,7 +90,7 @@ extension LoginViewController {
             loginButton.bottomAnchor.constraint(equalTo: bottomActionButton.topAnchor, constant: -20.0),
             loginButton.heightAnchor.constraint(equalTo: bottomActionButton.heightAnchor)
         ])
-        loginButton.setTitle("LOGIN", for: .normal)
+        loginButton.setTitle(LoginViewModel.loginButtonTitle, for: .normal)
         
         loginButton.decorate(
             .black,
@@ -98,11 +109,11 @@ extension LoginViewController {
 extension LoginViewController {
 
     private func customizeParentSetup() {
-        setTitle("Login")
+        setTitle(LoginViewModel.title)
         setBackButtonHidden(true)
 
         configureBottomActionButtonWith(
-            title: "REGISTER",
+            title: LoginViewModel.registerButtonTitle,
             target: self,
             action: #selector(register),
             color: .white,
