@@ -124,7 +124,17 @@ extension SceneDelegate {
             self.pop()
         }
         
+        makeTransferViewController.onPayee = { [weak self] in
+            guard let self = self else { return }
+            
+            self.showPayees()
+        }
+        
         push(makeTransferViewController)
+    }
+    
+    private func showPayees() {
+        
     }
 }
 
@@ -135,11 +145,13 @@ extension SceneDelegate {
         
         loginViewController.onRegister = { [weak self] in
             guard let self = self else { return }
+            
             self.showRegistration()
         }
         
         loginViewController.onLogin = { [weak self] in
             guard let self = self else { return }
+            
             self.showDashboard()
         }
     }

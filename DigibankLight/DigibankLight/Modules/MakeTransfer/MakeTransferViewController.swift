@@ -26,14 +26,23 @@ class MakeTransferViewController: BaseViewController {
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
+    
+    private let descriptionField: LFTextView = {
+        let view = LFTextView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     
     var onBack: (() -> Void)?
+    var onPayee: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(stopEditing)))
     }
     
     override func setupUI() {
@@ -42,6 +51,7 @@ class MakeTransferViewController: BaseViewController {
         customizeParentSetup()
         setupPayeeField()
         setupAmountField()
+        setupDescriptionField()
     }
 }
 
@@ -50,6 +60,7 @@ extension MakeTransferViewController {
     
     private func setupPayeeField() {
         view.addSubview(payeeField)
+        payeeField.delegate = self
         NSLayoutConstraint.activate([
             payeeField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
             payeeField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
@@ -71,6 +82,17 @@ extension MakeTransferViewController {
         amountField.setFieldType(.number)
     }
 
+    private func setupDescriptionField() {
+        view.addSubview(descriptionField)
+        
+        NSLayoutConstraint.activate([
+            descriptionField.leadingAnchor.constraint(equalTo: payeeField.leadingAnchor),
+            descriptionField.widthAnchor.constraint(equalTo: payeeField.widthAnchor),
+            descriptionField.topAnchor.constraint(equalTo: amountField.bottomAnchor, constant: 20.0),
+            descriptionField.heightAnchor.constraint(equalToConstant: 150)
+        ])
+        descriptionField.setHeader("Description")
+    }
 }
 
 //MARK: - Customization
@@ -98,4 +120,15 @@ extension MakeTransferViewController {
         //API call
     }
     
+    @objc func stopEditing() {
+        descriptionField.dismissEditing()
+    }
+    
+}
+
+extension MakeTransferViewController: LFNonEditableTextFieldViewDelegate {
+    
+    func onFieldBeginEditing() {
+        onPayee?()
+    }
 }
