@@ -8,8 +8,29 @@
 import XCTest
 @testable import DigibankLight
 
-struct LoginResponse {
+struct LoginResponse: Equatable {
+    let status: String
+    let error: String
+}
+
+final class LoginServiceMapper {
     
+    private struct Response: Decodable {
+        let status: String
+        let error: String
+        
+        var loginResponse: LoginResponse {
+            LoginResponse(status: status, error: error)
+        }
+    }
+    
+    static func map(_ data: Data, from response: HTTPURLResponse) throws -> LoginResponse {
+        guard let response = try? JSONDecoder().decode(Response.self, from: data) else {
+            throw NSError(domain: "Parsing error in LoginService", code: 0)
+        }
+        
+        return response.loginResponse
+    }
 }
 
 final class LoginService {
@@ -26,7 +47,18 @@ final class LoginService {
     
     func load(completion: @escaping (Result) -> Void) {
         client.load(request: request()) { result in
-            
+            switch result {
+            case let .success(value):
+                let (data, response) = value
+                do {
+                    completion(.success(try LoginServiceMapper.map(data, from: response)))
+                } catch {
+                    completion(.failure(error))
+                }
+                
+            case let .failure(error):
+                completion(.failure(error))
+            }
         }
     }
     
@@ -53,14 +85,68 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url])
     }
 
+    func test_load_deliversFailureWithInvalidCredentials() {
+        let url = URL(string: "https://any-url.com/login")!
+        let client = HTTPClientSpy()
+        let sut = LoginService(url: url, client: client)
+        
+        let (failureResponse, json) = makeLoginResponseWith(
+            status: "failed",
+            error: "any error"
+        )
+        
+        let expectedResponse = LoginService.Result.success(failureResponse)
+        
+        let exp = expectation(description: "Wait for login completion")
+        sut.load { receivedResponse in
+            switch (receivedResponse, expectedResponse) {
+            case let (.success(receivedResult), .success(expectedResult)):
+                XCTAssertEqual(receivedResult, expectedResult)
+                
+            default:
+                XCTFail("Expected \(expectedResponse), got \(receivedResponse)")
+            }
+            exp.fulfill()
+        }
+        client.complete(with: makeJSON(with: json))
+        wait(for: [exp], timeout: 1.0)
+    }
 
     //MARK: - Helper
     
+    private func makeLoginResponseWith(status: String, error: String) -> (response: LoginResponse, json: [String: String]) {
+        let response = LoginResponse(status: status, error: error)
+        
+        let json = [
+            "status": status,
+            "error": error
+        ].compactMapValues { $0 }
+        
+        return (response, json)
+    }
+    
+    private func makeJSON(with json: [String: Any]) -> Data {
+        try! JSONSerialization.data(withJSONObject: json)
+    }
+    
     private final class HTTPClientSpy: HTTPClient {
-        var requestedURLs = [URL]()
+        private var messages = [(request: URLRequest, completion: (HTTPClient.Result) -> Void)]()
+        
+        var requestedURLs: [URL] {
+            messages.map { $0.request.url! }
+        }
         
         func load(request: URLRequest, completion: @escaping (HTTPClient.Result) -> Void) {
-            requestedURLs.append(request.url!)
+            messages.append((request, completion))
+        }
+        
+        func complete(with data: Data, at index: Int = 0) {
+            let response = HTTPURLResponse(
+                url: requestedURLs[index],
+                statusCode: 200,
+                httpVersion: nil,
+                headerFields: nil)!
+            messages[index].completion(.success((data, response)))
         }
 
     }
