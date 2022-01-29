@@ -7,6 +7,14 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 30, weight: .black)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let usernameField: LFTextFieldView = {
         let field = LFTextFieldView()
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -40,6 +48,28 @@ class LoginViewController: UIViewController {
 
 //MARK: - UI Setup
 extension LoginViewController {
+    
+    private func setupUI() {
+        setupTitleLabel()
+        setupUsernameField()
+        setupPasswordField()
+        setupRegisterButton()
+        setupLoginButtton()
+    }
+    
+    private func setupTitleLabel() {
+        view.addSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 95.0),
+            titleLabel.heightAnchor.constraint(equalToConstant: 40.0)
+        ])
+        
+        titleLabel.text = "Login"
+    }
+    
     private func setupUsernameField() {
         view.addSubview(usernameField)
         NSLayoutConstraint.activate([
@@ -97,12 +127,5 @@ extension LoginViewController {
             font: .systemFont(ofSize: 20, weight: .black),
             borderColor: .black,
             cornerRadius: 35.0)
-    }
-    
-    private func setupUI() {
-        setupUsernameField()
-        setupPasswordField()
-        setupRegisterButton()
-        setupLoginButtton()
     }
 }
