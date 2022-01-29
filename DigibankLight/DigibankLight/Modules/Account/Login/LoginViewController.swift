@@ -5,7 +5,7 @@
 
 import UIKit
 
-class LoginViewController: BaseViewController {
+final class LoginViewController: BaseViewController {
 
     private let usernameField: LFTextFieldView = {
         let field = LFTextFieldView()
@@ -24,12 +24,6 @@ class LoginViewController: BaseViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-    private let registerButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
     var onRegister: (() -> Void)?
     var onLogin: (() -> Void)?
@@ -39,16 +33,14 @@ class LoginViewController: BaseViewController {
         
         setupUI()
     }
+
     
     override func setupUI() {
         super.setupUI()
-        
-        setTitle("Login")
-        setBackButtonHidden(true)
+        customizeParentSetup()
         
         setupUsernameField()
         setupPasswordField()
-        setupRegisterButton()
         setupLoginButtton()
     }
 }
@@ -79,45 +71,46 @@ extension LoginViewController {
         passwordField.setFieldType(.secured)
     }
     
-    private func setupRegisterButton() {
-        view.addSubview(registerButton)
-        NSLayoutConstraint.activate([
-            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
-            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
-            registerButton.heightAnchor.constraint(equalToConstant: 70.0)
-        ])
-        
-        registerButton.setTitle("REGISTER", for: .normal)
-        registerButton.decorateWith(
-            .white,
-            textColor: .black,
-            font: .systemFont(ofSize: 20, weight: .black),
-            borderColor: .black,
-            cornerRadius: 35.0)
-        
-        registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
-    }
-    
     private func setupLoginButtton() {
         view.addSubview(loginButton)
         NSLayoutConstraint.activate([
-            loginButton.leadingAnchor.constraint(equalTo: registerButton.leadingAnchor),
-            loginButton.widthAnchor.constraint(equalTo: registerButton.widthAnchor),
-            loginButton.bottomAnchor.constraint(equalTo: registerButton.topAnchor, constant: -20.0),
-            loginButton.heightAnchor.constraint(equalTo: registerButton.heightAnchor)
+            loginButton.leadingAnchor.constraint(equalTo: bottomActionButton.leadingAnchor),
+            loginButton.widthAnchor.constraint(equalTo: bottomActionButton.widthAnchor),
+            loginButton.bottomAnchor.constraint(equalTo: bottomActionButton.topAnchor, constant: -20.0),
+            loginButton.heightAnchor.constraint(equalTo: bottomActionButton.heightAnchor)
         ])
         loginButton.setTitle("LOGIN", for: .normal)
         
-        loginButton.decorateWith(
+        loginButton.decorate(
             .black,
             textColor: .white,
             font: .systemFont(ofSize: 20, weight: .black),
             borderColor: .black,
-            cornerRadius: 35.0)
+            cornerRadius: 35.0,
+            borderWidth: 2.0
+        )
         
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
     }
+}
+
+//MARK: - Customizations
+extension LoginViewController {
+
+    private func customizeParentSetup() {
+        setTitle("Login")
+        setBackButtonHidden(true)
+
+        configureBottomActionButtonWith(
+            title: "REGISTER",
+            target: self,
+            action: #selector(register),
+            color: .white,
+            textColor: .black,
+            borderColor: .black
+        )        
+    }
+    
 }
 
 //MARK: - Actions

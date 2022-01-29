@@ -6,7 +6,13 @@
 import UIKit
 
 extension UIButton {
-    func decorateWith(_ color: UIColor, textColor: UIColor, font: UIFont, borderColor: UIColor, cornerRadius: CGFloat, borderWidth: CGFloat = 2.0) {
+    func decorate(
+        _ color: UIColor = .black,
+        textColor: UIColor = .white,
+        font: UIFont,
+        borderColor: UIColor,
+        cornerRadius: CGFloat,
+        borderWidth: CGFloat) {
         backgroundColor = color
         setTitleColor(textColor, for: .normal)
         titleLabel?.font = font

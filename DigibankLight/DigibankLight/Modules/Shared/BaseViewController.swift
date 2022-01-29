@@ -25,6 +25,12 @@ class BaseViewController: UIViewController {
         return label
     }()
 
+    private(set) var bottomActionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -34,6 +40,7 @@ class BaseViewController: UIViewController {
         
         setupBackButton()
         setupTitleLabel()
+        setupBottomActionButton()
     }
 
 }
@@ -42,6 +49,7 @@ extension BaseViewController {
     
     private func setupBackButton() {
         view.addSubview(backButton)
+        
         NSLayoutConstraint.activate([
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
             backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40.0),
@@ -60,6 +68,17 @@ extension BaseViewController {
             titleLabel.heightAnchor.constraint(equalToConstant: 40.0)
         ])
     }
+    
+    func setupBottomActionButton() {
+        view.addSubview(bottomActionButton)
+        
+        NSLayoutConstraint.activate([
+            bottomActionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            bottomActionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            bottomActionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
+            bottomActionButton.heightAnchor.constraint(equalToConstant: 70.0)
+        ])
+    }
 }
 
 
@@ -76,16 +95,43 @@ extension BaseViewController {
         titleLabel.font = font
     }
     
+    func setTitleHidden(_ isHidden: Bool) {
+        titleLabel.isHidden = true
+    }
+    
     func setBackButtonHidden(_ isHidden: Bool) {
         backButton.isHidden = isHidden
     }
     
+    func configureBottomActionButtonWith(
+        title: String,
+        target: Any?,
+        action: Selector,
+        color: UIColor = .black,
+        textColor: UIColor = .white,
+        font: UIFont = .systemFont(ofSize: 20, weight: .black),
+        borderColor: UIColor = .black,
+        cornerRadius: CGFloat = 35.0,
+        borderWidth: CGFloat = 2.0
+    ) {
+        bottomActionButton.setTitle(title, for: .normal)
+        bottomActionButton.decorate(
+            color,
+            textColor: textColor,
+            font: font,
+            borderColor: borderColor,
+            cornerRadius: cornerRadius,
+            borderWidth: borderWidth
+        )
+        
+        bottomActionButton.addTarget(self, action: action, for: .touchUpInside)
+    }
 }
 
 //MARK: - Actions
 extension BaseViewController {
     
-    func addTarget(target: Any?, action: Selector) {
+    func addBackButtonTarget(target: Any?, action: Selector) {
         backButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }

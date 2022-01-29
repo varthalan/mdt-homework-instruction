@@ -7,18 +7,12 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: BaseViewController {
     
     private let logoutButton: UIButton = {
         let button = UIButton(type: .roundedRect)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .black)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private let makeTransferButton: UIButton = {
-        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -32,18 +26,18 @@ class DashboardViewController: UIViewController {
 
         setupUI()
     }
+    
+    override func setupUI() {
+        super.setupUI()
+        customizeParent()
+        
+        setupLogoutButton()
+    }
 }
 
 
 //MARK: - Setup
 extension DashboardViewController {
-    
-    private func setupUI() {
-        view.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
-        
-        setupLogoutButton()
-        setupMakeTransferButton()
-    }
     
     private func setupLogoutButton() {
         view.addSubview(logoutButton)
@@ -56,25 +50,20 @@ extension DashboardViewController {
         logoutButton.setTitle("Logout", for: .normal)
         logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
     }
+}
+
+//MARK: - Customizations
+extension DashboardViewController {
     
-    private func setupMakeTransferButton() {
-        view.addSubview(makeTransferButton)
-        NSLayoutConstraint.activate([
-            makeTransferButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
-            makeTransferButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
-            makeTransferButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
-            makeTransferButton.heightAnchor.constraint(equalToConstant: 70.0)
-        ])
+    private func customizeParent() {
+        setTitleHidden(true)
+        setBackButtonHidden(true)
         
-        makeTransferButton.setTitle("Make Transfer", for: .normal)
-        makeTransferButton.decorateWith(
-            .black,
-            textColor: .white,
-            font: .systemFont(ofSize: 20, weight: .black),
-            borderColor: .black,
-            cornerRadius: 35.0)
-        
-        makeTransferButton.addTarget(self, action: #selector(makeTransfer), for: .touchUpInside)
+        configureBottomActionButtonWith(
+            title: "Make Transfer",
+            target: self,
+            action: #selector(makeTransfer)
+        )
     }
 }
 

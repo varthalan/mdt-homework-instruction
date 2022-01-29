@@ -9,12 +9,12 @@ import UIKit
 
 class MakeTransferViewController: BaseViewController {
         
-    private let payeesButton: UIButton = {
+    private let transferNowButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
     var onBack: (() -> Void)?
 
     override func viewDidLoad() {
@@ -25,36 +25,23 @@ class MakeTransferViewController: BaseViewController {
     
     override func setupUI() {
         super.setupUI()
-        setTitle("Transfer")
-        addTarget(target: self, action: #selector(back))
         
-        setupPayeesButton()
+        customizeParentSetup()
     }
 }
 
-//MARK: - Setup
+//MARK: - Customization
 extension MakeTransferViewController {
     
-    private func setupPayeesButton() {
-        view.addSubview(payeesButton)
-        NSLayoutConstraint.activate([
-            payeesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
-            payeesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
-            payeesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
-            payeesButton.heightAnchor.constraint(equalToConstant: 70.0)
-        ])
-        
-        payeesButton.setTitle("Transfer Now", for: .normal)
-        payeesButton.decorateWith(
-            .black,
-            textColor: .white,
-            font: .systemFont(ofSize: 20, weight: .black),
-            borderColor: .black,
-            cornerRadius: 35.0)
-        
-        payeesButton.addTarget(self, action: #selector(transfer), for: .touchUpInside)
-    }
-    
+    fileprivate func customizeParentSetup() {
+        setTitle("Transfer")
+        configureBottomActionButtonWith(
+            title: "Transfer Now",
+            target: self,
+            action: #selector(transfer)
+        )
+        addBackButtonTarget(target: self, action: #selector(back))
+    }    
 }
 
 //MARK: - Actions

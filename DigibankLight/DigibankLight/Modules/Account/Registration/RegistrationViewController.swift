@@ -4,7 +4,7 @@
 
 import UIKit
 
-class RegistrationViewController: BaseViewController {
+final class RegistrationViewController: BaseViewController {
         
     private let usernameField: LFTextFieldView = {
         let field = LFTextFieldView()
@@ -41,13 +41,11 @@ class RegistrationViewController: BaseViewController {
     
     override func setupUI() {
         super.setupUI()
-        setTitle("Register")
-        addTarget(target: self, action: #selector(back))
+        customizeParent()
         
         setupUsernameField()
         setupPasswordField()
         setupConfirmPasswordField()
-        setupRegisterButton()
     }
 }
 
@@ -89,25 +87,19 @@ extension RegistrationViewController {
         confirmPasswordField.setHeader("Confirm Password")
         confirmPasswordField.setFieldType(.secured)
     }
-    
-    private func setupRegisterButton() {
-        view.addSubview(registerButton)
-        NSLayoutConstraint.activate([
-            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
-            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
-            registerButton.heightAnchor.constraint(equalToConstant: 70.0)
-        ])
-        
-        registerButton.setTitle("REGISTER", for: .normal)
-        registerButton.decorateWith(
-            .black,
-            textColor: .white,
-            font: .systemFont(ofSize: 20, weight: .black),
-            borderColor: .black,
-            cornerRadius: 35.0)
-        
-        registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
+}
+
+//MARK: - Customizations
+extension RegistrationViewController {
+
+    private func customizeParent() {
+        setTitle("Register")
+        configureBottomActionButtonWith(
+            title: "REGISTER",
+            target: self,
+            action: #selector(register)
+        )
+        addBackButtonTarget(target: self, action: #selector(back))
     }
 }
 
