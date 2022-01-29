@@ -67,7 +67,7 @@ extension MakeTransferViewController {
             payeeField.topAnchor.constraint(equalTo: view.topAnchor, constant: 170.0),
             payeeField.heightAnchor.constraint(equalToConstant: 80.0)
         ])
-        payeeField.setHeader("Payee")
+        payeeField.setHeader(MakeTransferViewModel.payeeFieldTitle)
     }
     
     private func setupAmountField() {
@@ -78,7 +78,7 @@ extension MakeTransferViewController {
             amountField.topAnchor.constraint(equalTo: payeeField.bottomAnchor, constant: 20),
             amountField.heightAnchor.constraint(equalTo: payeeField.heightAnchor)
         ])
-        amountField.setHeader("Amount")
+        amountField.setHeader(MakeTransferViewModel.amountFieldTitle)
         amountField.setFieldType(.number)
     }
 
@@ -91,7 +91,7 @@ extension MakeTransferViewController {
             descriptionField.topAnchor.constraint(equalTo: amountField.bottomAnchor, constant: 20.0),
             descriptionField.heightAnchor.constraint(equalToConstant: 150)
         ])
-        descriptionField.setHeader("Description")
+        descriptionField.setHeader(MakeTransferViewModel.descriptionFieldTitle)
     }
 }
 
@@ -99,9 +99,9 @@ extension MakeTransferViewController {
 extension MakeTransferViewController {
     
     fileprivate func customizeParentSetup() {
-        setTitle("Transfer")
+        setTitle(MakeTransferViewModel.transferTitle)
         configureBottomActionButtonWith(
-            title: "Transfer Now",
+            title: MakeTransferViewModel.transferNowButtonTitle,
             target: self,
             action: #selector(transfer)
         )
