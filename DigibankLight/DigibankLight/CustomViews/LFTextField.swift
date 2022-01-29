@@ -2,8 +2,6 @@
 //  LFTextField.swift
 //  DigibankLight
 //
-//  Created by Nagaraju on 28/1/22.
-//
 
 import UIKit
 
@@ -13,6 +11,7 @@ enum LFTextFieldViewType {
     case number
 }
 
+//LFTextField - Labelled-Feedback TextField
 class LFTextFieldView: UIView {
     
     private let containerView: UIView = {
