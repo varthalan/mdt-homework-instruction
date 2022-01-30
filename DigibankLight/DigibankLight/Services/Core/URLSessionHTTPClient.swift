@@ -25,6 +25,6 @@ final class URLSessionHTTPClient: HTTPClient {
                     throw NSError(domain: "Unexpected error", code: 0)
                 }
             })
-        }
+        }.resume()
     }
 }
