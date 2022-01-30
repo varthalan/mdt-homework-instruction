@@ -8,19 +8,23 @@ import XCTest
 
 struct RegistrationResponse: Equatable {
     let status: String
-    let error: String
+    let jwtToken: String?
+    let error: String?
 }
 
 final class RegistrationServiceMapper {
     
     private struct Result: Decodable {
         let status: String
-        let error: String
+        let token: String?
+        let error: String?
         
         var response: RegistrationResponse {
             RegistrationResponse(
                 status: status,
-                error: error)
+                jwtToken: token,
+                error: error
+            )
         }
     }
     
@@ -88,7 +92,7 @@ class RegistrationServiceTests: XCTestCase {
             status: "failed",
             error: "any error")
         
-        let expectedResponse = RegistrationService.Result.success(failedResponse)        
+        let expectedResponse = RegistrationService.Result.success(failedResponse)
         let exp = expectation(description: "Wait for registration")
         sut.createAccount(for: "an existing username", password: "a password") { actualResponse in
             switch (actualResponse, expectedResponse) {
@@ -105,6 +109,33 @@ class RegistrationServiceTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_createAccount_createsAccountForNewUser() {
+        let url = URL(string: "https://any-url.com/register")!
+        let (sut, client) = makeSUT(url)
+        
+        let (successResponse, json) = makeRegistrationResponse(
+            status: "success",
+            jwtToken: "any token"
+        )
+        
+        let expectedResponse = RegistrationService.Result.success(successResponse)
+        let exp = expectation(description: "Wait for registration")
+        sut.createAccount(for: "a username", password: "a password") { actualResponse in
+            switch (actualResponse, expectedResponse) {
+            case let (.success(returnedResult), .success(expectedResult)):
+                XCTAssertEqual(returnedResult, expectedResult)
+                
+            default:
+                XCTFail("Expected \(expectedResponse), got \(actualResponse)")
+            }
+            exp.fulfill()
+        }
+        client.complete(with: makeJSON(with: json))
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+
+    
     
     //MARK: - Helpers
     
@@ -114,16 +145,21 @@ class RegistrationServiceTests: XCTestCase {
         return (sut, client)
     }
     
-    private func makeRegistrationResponse(status: String, error: String) -> (response: RegistrationResponse, json: [String: String] ) {
+    private func makeRegistrationResponse(
+        status: String,
+        jwtToken: String? = nil,
+        error: String? = nil) -> (response: RegistrationResponse, json: [String: String] ) {
         let response = RegistrationResponse(
             status: status,
+            jwtToken: jwtToken,
             error: error
         )
         
         let json = [
             "status": status,
+            "token": jwtToken,
             "error": error
-        ]
+        ].compactMapValues { $0 }
         
         return (response, json)
     }
