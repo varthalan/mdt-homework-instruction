@@ -22,9 +22,8 @@ final class LoginService {
         client.load(request: request()) { result in
             switch result {
             case let .success(value):
-                let (data, response) = value
                 do {
-                    completion(.success(try LoginServiceMapper.map(data, from: response)))
+                    completion(.success(try LoginServiceMapper.map(value.0, from: value.1)))
                 } catch {
                     completion(.failure(error))
                 }
