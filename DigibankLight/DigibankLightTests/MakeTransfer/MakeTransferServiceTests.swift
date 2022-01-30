@@ -8,13 +8,17 @@ import XCTest
 struct MakeTransferResponse: Equatable {
     
     struct Error: Equatable {
-        let name: String
-        let message: String
-        let tokenExpiredDate: String
+        let name: String?
+        let message: String?
+        let tokenExpiredDate: String?
     }
     
     let status: String
-    let error: Error
+    let transactionId: String?
+    let amount: Int?
+    let description: String?
+    let accountNumber: String?
+    let error: Error?
 }
 
 final class MakeTransferServiceMapper {
@@ -22,21 +26,29 @@ final class MakeTransferServiceMapper {
     private struct Result: Decodable {
         
         private struct Error: Decodable {
-            let name: String
-            let message: String
-            let expiredAt: String
+            let name: String?
+            let message: String?
+            let expiredAt: String?
         }
         
         private let status: String
-        private let error: Error
+        private let transactionId: String?
+        private let amount: Int?
+        private let description: String?
+        private let recipientAccount: String?
+        private let error: Error?
         
         var transferResponse: MakeTransferResponse {
             MakeTransferResponse(
                 status: status,
+                transactionId: transactionId,
+                amount: amount,
+                description: description,
+                accountNumber: recipientAccount,
                 error: .init(
-                    name: error.name,
-                    message: error.message,
-                    tokenExpiredDate: error.expiredAt
+                    name: error?.name,
+                    message: error?.message,
+                    tokenExpiredDate: error?.expiredAt
                 )
             )
         }
@@ -125,6 +137,30 @@ class MakeTransferServiceTests: XCTestCase {
         client.complete(with: makeJSON(with: json))
     }
     
+    func test_transfer_finishesSuccessfullyWithValidJWTToken() {
+        let url = URL(string: "https://any-url.com/transfer")!
+        let (sut, client) = makeSUT(url)
+        let (successResponse, json) = makeMakeTransferResponse(
+            status: "success",
+            transactionId: "any transaction id",
+            amount: 100,
+            description: "any description",
+            accountNumber: "an account number"
+        )
+        
+        let expectedResult = MakeTransferService.Result.success(successResponse)
+        sut.transfer(jwtToken: "an expired token") { actualResult in
+            switch (actualResult, expectedResult) {
+            case let (.success(actualResponse), .success(expectedResponse)):
+                XCTAssertEqual(actualResponse, expectedResponse)
+                
+            default:
+                XCTFail("Expected \(expectedResult), got \(actualResult)")
+            }
+        }
+        client.complete(with: makeJSON(with: json))
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(_ url: URL = URL(string: "https://any-url.com")!) -> (sut: MakeTransferService, client: HTTPClientSpy) {
@@ -135,21 +171,37 @@ class MakeTransferServiceTests: XCTestCase {
     
     private func makeMakeTransferResponse(
         status: String,
-        error: MakeTransferResponse.Error
+        transactionId: String? = nil,
+        amount: Int? = nil,
+        description: String? = nil,
+        accountNumber: String? = nil,
+        error: MakeTransferResponse.Error? = nil
     ) -> (response: MakeTransferResponse, json: [String: Any]) {
         let response = MakeTransferResponse(
             status: status,
-            error: error
+            transactionId: transactionId,
+            amount: amount,
+            description: description,
+            accountNumber: accountNumber,
+            error: .init(
+                name: error?.name,
+                message: error?.message,
+                tokenExpiredDate: error?.tokenExpiredDate
+            )
         )
         
         let json: [String: Any] = [
             "status": status,
+            "transactionId": transactionId,
+            "amount": amount,
+            "description": description,
+            "recipientAccount": accountNumber,
             "error": [
-                "name": error.name,
-                "message": error.message,
-                "expiredAt": error.tokenExpiredDate
+                "name": error?.name,
+                "message": error?.message,
+                "expiredAt": error?.tokenExpiredDate
             ]
-        ]
+        ].compactMapValues { $0 }
         
         return (response, json)
     }
