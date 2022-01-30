@@ -13,6 +13,9 @@
 		E64AEB9927A42877000C1884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64AEB9727A42877000C1884 /* LaunchScreen.storyboard */; };
 		E64AEBAE27A42878000C1884 /* DigibankLightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64AEBAD27A42878000C1884 /* DigibankLightUITests.swift */; };
 		E64AEBB027A42878000C1884 /* DigibankLightUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64AEBAF27A42878000C1884 /* DigibankLightUITestsLaunchTests.swift */; };
+		E67B416027A66950003D3B87 /* MakeTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B415F27A66950003D3B87 /* MakeTransferService.swift */; };
+		E67B416227A6696D003D3B87 /* MakeTransferServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416127A6696D003D3B87 /* MakeTransferServiceMapper.swift */; };
+		E67B416527A66990003D3B87 /* MakeTransferResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416427A66990003D3B87 /* MakeTransferResponse.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextField.swift */; };
@@ -77,6 +80,9 @@
 		E64AEBA927A42878000C1884 /* DigibankLightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigibankLightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64AEBAD27A42878000C1884 /* DigibankLightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigibankLightUITests.swift; sourceTree = "<group>"; };
 		E64AEBAF27A42878000C1884 /* DigibankLightUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigibankLightUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E67B415F27A66950003D3B87 /* MakeTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferService.swift; sourceTree = "<group>"; };
+		E67B416127A6696D003D3B87 /* MakeTransferServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferServiceMapper.swift; sourceTree = "<group>"; };
+		E67B416427A66990003D3B87 /* MakeTransferResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferResponse.swift; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextField.swift; sourceTree = "<group>"; };
@@ -196,6 +202,23 @@
 			path = DigibankLightUITests;
 			sourceTree = "<group>";
 		};
+		E67B415E27A66929003D3B87 /* MakeTransfer */ = {
+			isa = PBXGroup;
+			children = (
+				E67B415F27A66950003D3B87 /* MakeTransferService.swift */,
+				E67B416127A6696D003D3B87 /* MakeTransferServiceMapper.swift */,
+			);
+			path = MakeTransfer;
+			sourceTree = "<group>";
+		};
+		E67B416327A66984003D3B87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E67B416427A66990003D3B87 /* MakeTransferResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +299,7 @@
 		E68B7C9327A4E68D00CC8E43 /* MakeTransfer */ = {
 			isa = PBXGroup;
 			children = (
+				E67B416327A66984003D3B87 /* Model */,
 				E68B7CBB27A5332A00CC8E43 /* View */,
 				E68B7CBA27A5332200CC8E43 /* ViewModel */,
 			);
@@ -417,6 +441,7 @@
 		E68B7CCF27A569E500CC8E43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E67B415E27A66929003D3B87 /* MakeTransfer */,
 				E68B7CF727A6555200CC8E43 /* Dashboard */,
 				E68B7CD027A569F200CC8E43 /* Account */,
 			);
@@ -689,6 +714,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */,
+				E67B416527A66990003D3B87 /* MakeTransferResponse.swift in Sources */,
 				E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */,
 				E68B7C8C27A4D86700CC8E43 /* UIButton+Styling.swift in Sources */,
 				E68B7CE827A6361300CC8E43 /* RegistrationResponse.swift in Sources */,
@@ -696,6 +722,7 @@
 				E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */,
 				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
 				E68B7CC427A5579A00CC8E43 /* HTTPClient.swift in Sources */,
+				E67B416027A66950003D3B87 /* MakeTransferService.swift in Sources */,
 				E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */,
 				E68B7CF227A654ED00CC8E43 /* BalanceServiceMapper.swift in Sources */,
 				E68B7CBD27A5333A00CC8E43 /* MakeTransferViewModel.swift in Sources */,
@@ -706,6 +733,7 @@
 				E68B7CB527A5301400CC8E43 /* NSLocalizedString+Extension.swift in Sources */,
 				E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */,
 				E68B7CD827A56A5800CC8E43 /* LoginResponse.swift in Sources */,
+				E67B416227A6696D003D3B87 /* MakeTransferServiceMapper.swift in Sources */,
 				E68B7CC627A5585100CC8E43 /* URLSessionHTTPClient.swift in Sources */,
 				E68B7CB327A52E0C00CC8E43 /* RegistrationViewModel.swift in Sources */,
 				E64AEB8D27A42876000C1884 /* AppDelegate.swift in Sources */,
