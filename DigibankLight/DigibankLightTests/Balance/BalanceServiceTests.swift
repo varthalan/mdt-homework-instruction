@@ -29,18 +29,25 @@ final class BalanceService {
 class BalanceServiceTests: XCTestCase {
     
     func test_init_doesNotSendRequestToRetrieveAccountBalance() {
-        let client = HTTPClientSpy()
+        let (_, client) = makeSUT()
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_loadBalance_sendsRequestToRetrieveAccountBalance() {
         let url = URL(string: "https://any-url.com/balance")!
-        let client = HTTPClientSpy()
-        let sut = BalanceService(url: url, client: client)
+        let (sut, client) = makeSUT(url)
         
         sut.loadBalance(jwtToken: "any token") { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
+    }
+    
+    //MARK: - Helpers
+    
+    private func makeSUT(_ url: URL = URL(string: "https://any-url.com")!) -> (sut: BalanceService, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = BalanceService(url: url, client: client)
+        return (sut, client)
     }
 }
