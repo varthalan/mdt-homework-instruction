@@ -26,18 +26,25 @@ final class MakeTransferService {
 class MakeTransferServiceTests: XCTestCase {
     
     func test_init_doesNotInitiateTransfer() {
-        let client = HTTPClientSpy()
+        let (_, client) = makeSUT()
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_transfer_sendsRequestToTransfer() {
         let url = URL(string: "https://any-url.com/transfer")!
-        let client = HTTPClientSpy()
-        let sut = MakeTransferService(url: url, client: client)
+        let (sut, client) = makeSUT(url)
         
         sut.transfer(jwtToken: "any token") { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
+    }
+    
+    //MARK: - Helpers
+    
+    private func makeSUT(_ url: URL = URL(string: "https://any-url.com")!) -> (sut: MakeTransferService, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = MakeTransferService(url: url, client: client)
+        return (sut, client)
     }
 }
