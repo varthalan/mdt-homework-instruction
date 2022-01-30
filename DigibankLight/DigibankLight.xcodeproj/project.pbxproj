@@ -45,6 +45,7 @@
 		E68B7CED27A649EF00CC8E43 /* BalanceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CEC27A649EF00CC8E43 /* BalanceServiceTests.swift */; };
 		E68B7CF027A6548000CC8E43 /* BalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CEF27A6548000CC8E43 /* BalanceService.swift */; };
 		E68B7CF227A654ED00CC8E43 /* BalanceServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CF127A654ED00CC8E43 /* BalanceServiceMapper.swift */; };
+		E68B7CF627A6554300CC8E43 /* BalanceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CF527A6554300CC8E43 /* BalanceResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		E68B7CEC27A649EF00CC8E43 /* BalanceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceServiceTests.swift; sourceTree = "<group>"; };
 		E68B7CEF27A6548000CC8E43 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
 		E68B7CF127A654ED00CC8E43 /* BalanceServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceServiceMapper.swift; sourceTree = "<group>"; };
+		E68B7CF527A6554300CC8E43 /* BalanceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,8 +177,8 @@
 		E64AEBA227A42878000C1884 /* DigibankLightTests */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7CE927A649D400CC8E43 /* Balance */,
 				E68B7CDE27A57DFC00CC8E43 /* SharedHelpers */,
+				E68B7CF827A6556100CC8E43 /* Dashboard */,
 				E68B7CDD27A57DF100CC8E43 /* Account */,
 			);
 			path = DigibankLightTests;
@@ -261,6 +263,7 @@
 		E68B7C9027A4E46600CC8E43 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E68B7CF327A6553600CC8E43 /* Model */,
 				E68B7CB727A531C700CC8E43 /* View */,
 				E68B7CB627A531C200CC8E43 /* ViewModel */,
 			);
@@ -411,7 +414,7 @@
 		E68B7CCF27A569E500CC8E43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7CEE27A6546F00CC8E43 /* Balance */,
+				E68B7CF727A6555200CC8E43 /* Dashboard */,
 				E68B7CD027A569F200CC8E43 /* Account */,
 			);
 			path = Modules;
@@ -508,6 +511,38 @@
 				E68B7CF127A654ED00CC8E43 /* BalanceServiceMapper.swift */,
 			);
 			path = Balance;
+			sourceTree = "<group>";
+		};
+		E68B7CF327A6553600CC8E43 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CF427A6553A00CC8E43 /* Balance */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E68B7CF427A6553A00CC8E43 /* Balance */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CF527A6554300CC8E43 /* BalanceResponse.swift */,
+			);
+			path = Balance;
+			sourceTree = "<group>";
+		};
+		E68B7CF727A6555200CC8E43 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CEE27A6546F00CC8E43 /* Balance */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		E68B7CF827A6556100CC8E43 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CE927A649D400CC8E43 /* Balance */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -667,6 +702,7 @@
 				E68B7CD527A56A3000CC8E43 /* LoginServiceMapper.swift in Sources */,
 				E68B7CF027A6548000CC8E43 /* BalanceService.swift in Sources */,
 				E68B7CD327A56A0600CC8E43 /* LoginService.swift in Sources */,
+				E68B7CF627A6554300CC8E43 /* BalanceResponse.swift in Sources */,
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
 				E68B7C9227A4E47700CC8E43 /* DashboardViewController.swift in Sources */,
 				E68B7C9527A4E69D00CC8E43 /* MakeTransferViewController.swift in Sources */,
