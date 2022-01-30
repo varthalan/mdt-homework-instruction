@@ -46,6 +46,7 @@
 		E68B7CF027A6548000CC8E43 /* BalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CEF27A6548000CC8E43 /* BalanceService.swift */; };
 		E68B7CF227A654ED00CC8E43 /* BalanceServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CF127A654ED00CC8E43 /* BalanceServiceMapper.swift */; };
 		E68B7CF627A6554300CC8E43 /* BalanceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CF527A6554300CC8E43 /* BalanceResponse.swift */; };
+		E68B7CFB27A655EA00CC8E43 /* MakeTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CFA27A655EA00CC8E43 /* MakeTransferServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		E68B7CEF27A6548000CC8E43 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
 		E68B7CF127A654ED00CC8E43 /* BalanceServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceServiceMapper.swift; sourceTree = "<group>"; };
 		E68B7CF527A6554300CC8E43 /* BalanceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceResponse.swift; sourceTree = "<group>"; };
+		E68B7CFA27A655EA00CC8E43 /* MakeTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 		E64AEBA227A42878000C1884 /* DigibankLightTests */ = {
 			isa = PBXGroup;
 			children = (
+				E68B7CF927A655CB00CC8E43 /* MakeTransfer */,
 				E68B7CDE27A57DFC00CC8E43 /* SharedHelpers */,
 				E68B7CF827A6556100CC8E43 /* Dashboard */,
 				E68B7CDD27A57DF100CC8E43 /* Account */,
@@ -545,6 +548,14 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
+		E68B7CF927A655CB00CC8E43 /* MakeTransfer */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CFA27A655EA00CC8E43 /* MakeTransferServiceTests.swift */,
+			);
+			path = MakeTransfer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -718,6 +729,7 @@
 				E68B7CCE27A55C7600CC8E43 /* LoginServiceTests.swift in Sources */,
 				E68B7CED27A649EF00CC8E43 /* BalanceServiceTests.swift in Sources */,
 				E68B7CE027A57E1100CC8E43 /* SharedTestHelpers.swift in Sources */,
+				E68B7CFB27A655EA00CC8E43 /* MakeTransferServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
