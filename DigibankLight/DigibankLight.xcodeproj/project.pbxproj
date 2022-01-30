@@ -40,6 +40,7 @@
 		E68B7CDA27A57D0F00CC8E43 /* RegistrationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CD927A57D0F00CC8E43 /* RegistrationServiceTests.swift */; };
 		E68B7CE027A57E1100CC8E43 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CDF27A57E1100CC8E43 /* SharedTestHelpers.swift */; };
 		E68B7CE327A6356C00CC8E43 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CE227A6356C00CC8E43 /* RegistrationService.swift */; };
+		E68B7CE527A635BA00CC8E43 /* RegistrationServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CE427A635BA00CC8E43 /* RegistrationServiceMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		E68B7CD927A57D0F00CC8E43 /* RegistrationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationServiceTests.swift; sourceTree = "<group>"; };
 		E68B7CDF27A57E1100CC8E43 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		E68B7CE227A6356C00CC8E43 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		E68B7CE427A635BA00CC8E43 /* RegistrationServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationServiceMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				E68B7CE227A6356C00CC8E43 /* RegistrationService.swift */,
+				E68B7CE427A635BA00CC8E43 /* RegistrationServiceMapper.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				E68B7CC627A5585100CC8E43 /* URLSessionHTTPClient.swift in Sources */,
 				E68B7CB327A52E0C00CC8E43 /* RegistrationViewModel.swift in Sources */,
 				E64AEB8D27A42876000C1884 /* AppDelegate.swift in Sources */,
+				E68B7CE527A635BA00CC8E43 /* RegistrationServiceMapper.swift in Sources */,
 				E68B7CD527A56A3000CC8E43 /* LoginServiceMapper.swift in Sources */,
 				E68B7CD327A56A0600CC8E43 /* LoginService.swift in Sources */,
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
