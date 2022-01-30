@@ -20,6 +20,7 @@
 		E67B416C27A673E5003D3B87 /* PayeesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416B27A673E5003D3B87 /* PayeesResponse.swift */; };
 		E67B416E27A673FC003D3B87 /* PayeerServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416D27A673FC003D3B87 /* PayeerServiceMapper.swift */; };
 		E67B417027A67429003D3B87 /* PayeesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416F27A67429003D3B87 /* PayeesService.swift */; };
+		E67B417327A6748A003D3B87 /* TransactionsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B417227A6748A003D3B87 /* TransactionsServiceTests.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextField.swift */; };
@@ -91,6 +92,7 @@
 		E67B416B27A673E5003D3B87 /* PayeesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeesResponse.swift; sourceTree = "<group>"; };
 		E67B416D27A673FC003D3B87 /* PayeerServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeerServiceMapper.swift; sourceTree = "<group>"; };
 		E67B416F27A67429003D3B87 /* PayeesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeesService.swift; sourceTree = "<group>"; };
+		E67B417227A6748A003D3B87 /* TransactionsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsServiceTests.swift; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextField.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				E68B7CDE27A57DFC00CC8E43 /* SharedHelpers */,
+				E67B417127A67479003D3B87 /* Transactions */,
 				E67B416627A66A0C003D3B87 /* Payees */,
 				E68B7CF927A655CB00CC8E43 /* MakeTransfer */,
 				E68B7CF827A6556100CC8E43 /* Dashboard */,
@@ -251,6 +254,14 @@
 				E67B416B27A673E5003D3B87 /* PayeesResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E67B417127A67479003D3B87 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				E67B417227A6748A003D3B87 /* TransactionsServiceTests.swift */,
+			);
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
@@ -793,6 +804,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68B7CDA27A57D0F00CC8E43 /* RegistrationServiceTests.swift in Sources */,
+				E67B417327A6748A003D3B87 /* TransactionsServiceTests.swift in Sources */,
 				E68B7CCE27A55C7600CC8E43 /* LoginServiceTests.swift in Sources */,
 				E67B416827A66A22003D3B87 /* PayeesServiceTests.swift in Sources */,
 				E68B7CED27A649EF00CC8E43 /* BalanceServiceTests.swift in Sources */,
