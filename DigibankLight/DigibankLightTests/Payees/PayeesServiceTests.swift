@@ -9,14 +9,22 @@ import XCTest
 @testable import DigibankLight
 
 struct PayeesResponse: Equatable {
+
+    struct Payee: Equatable {
+        let id: String?
+        let name: String?
+        let accountNumber: String?
+    }
+
     struct Error: Equatable {
-        let name: String
-        let message: String
-        let tokenExpiredDate: String
+        let name: String?
+        let message: String?
+        let tokenExpiredDate: String?
     }
     
     let status: String
-    let error: Error
+    let payees: [Payee]?
+    let error: Error?
 }
 
 final class PayeesServiceMapper {
@@ -24,22 +32,37 @@ final class PayeesServiceMapper {
     private struct Result: Decodable {
         
         private struct Error: Decodable {
-            let name: String
-            let message: String
-            let expiredAt: String
+            let name: String?
+            let message: String?
+            let expiredAt: String?
+        }
+        
+        private struct AccountPayee: Decodable {
+            let id: String?
+            let name: String?
+            let accountNo: String?
         }
         
         private let status: String
-        private let error: Error
+        private let data: [AccountPayee]?
+        private let error: Error?
 
         var payeesResponse: PayeesResponse {
-            PayeesResponse(
-                status: status,
-                error: .init(
-                    name: error.name,
-                    message: error.message,
-                    tokenExpiredDate: error.expiredAt
+            
+            let payees = data?.map {
+                PayeesResponse.Payee(id: $0.id,
+                      name: $0.name,
+                      accountNumber: $0.accountNo
                 )
+            }
+            
+            return PayeesResponse(
+                status: status,
+                payees: payees,
+                error: .init(
+                    name: error?.name,
+                    message: error?.message,
+                    tokenExpiredDate: error?.expiredAt)
             )
         }
     }
@@ -133,6 +156,37 @@ class PayeesServiceTests: XCTestCase {
 
     }
     
+    func test_load_completesLoadingPayeesSuccesfully() {
+        let url = URL(string: "https:any-url.com/payees")!
+        let (sut, client) = makeSUT(url)
+        let (successResponse, json) = makePayeesResponse(
+            status: "failed",
+            error: .init(
+                name: "any name",
+                message: "any message",
+                tokenExpiredDate: "any date"
+            )
+        )
+        let expectedResult = PayeesService.Result.success(successResponse)
+        
+        let exp = expectation(description: "Wait for loading payees")
+        sut.load(jwtToken: "any token") { receivedResult in
+            
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedResponse), .success(expectedResponse)):
+                XCTAssertEqual(receivedResponse, expectedResponse)
+                
+            default:
+                XCTFail("Expected \(expectedResult), got \(receivedResult)")
+            }
+            
+            exp.fulfill()
+        }
+        client.complete(with: makeJSON(with: json))
+        wait(for: [exp], timeout: 1.0)
+
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(_ url: URL = URL(string: "https://any-url.com")!) -> (sut: PayeesService, client: HTTPClientSpy) {
@@ -143,21 +197,30 @@ class PayeesServiceTests: XCTestCase {
 
     private func makePayeesResponse(
         status: String,
-        error: PayeesResponse.Error
+        payees: [PayeesResponse.Payee]? = nil,
+        error: PayeesResponse.Error? = nil
     ) -> (response: PayeesResponse, json: [String: Any]) {
         let response = PayeesResponse(
             status: status,
+            payees: payees,
             error: error
         )
         
+        let jsonPayees = payees?.map { [
+            "id": $0.id,
+            "name": $0.name,
+            "accountNo": $0.accountNumber
+        ]}
+        
         let json: [String: Any] = [
             "status": status,
+            "data": jsonPayees,
             "error": [
-                "name": error.name,
-                "message": error.message,
-                "expiredAt": error.tokenExpiredDate
+                "name": error?.name,
+                "message": error?.message,
+                "expiredAt": error?.tokenExpiredDate
             ]
-        ]
+        ].compactMapValues { $0 }
         
         return (response, json)
     }
