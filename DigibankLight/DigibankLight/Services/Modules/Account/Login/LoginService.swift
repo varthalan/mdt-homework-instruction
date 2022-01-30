@@ -11,6 +11,11 @@ final class LoginService {
     private let url: URL
     private let client: HTTPClient
     
+    private struct LoginParams: Codable {
+        let username: String
+        let password: String
+    }
+
     typealias Result = Swift.Result<LoginResponse, Error>
 
     init(url: URL, client: HTTPClient) {
@@ -19,7 +24,8 @@ final class LoginService {
     }
     
     func login(username: String, password: String, completion: @escaping (Result) -> Void) {
-        client.load(request: request()) { result in
+        let params = LoginParams(username: username, password: password)
+        client.load(request: request(with: params)) { result in
             switch result {
             case let .success(value):
                 do {
@@ -34,7 +40,15 @@ final class LoginService {
         }
     }
     
-    private func request() -> URLRequest {
-        URLRequest(url: url)
-    }
-}
+    private func request(with bodyParams: LoginParams) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if let body = try? JSONEncoder().encode(bodyParams) {
+            request.httpBody = body
+        }
+        
+        return request
+    }}

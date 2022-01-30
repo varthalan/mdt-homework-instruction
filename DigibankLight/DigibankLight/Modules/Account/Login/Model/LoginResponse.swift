@@ -10,7 +10,7 @@ import Foundation
 struct LoginResponse: Equatable {
     let status: String
     let jwtToken: String?
-    let userName: String?
+    let username: String?
     let accountNumber: String?
     let error: String?
 }

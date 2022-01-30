@@ -28,7 +28,7 @@ final class LoginViewController: BaseViewController {
     private let viewModel: LoginViewModel
     
     var onRegister: (() -> Void)?
-    var onLogin: (() -> Void)?
+    var onLogin: ((String, String) -> Void)?
         
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -43,6 +43,7 @@ final class LoginViewController: BaseViewController {
         super.viewDidLoad()
         
         setupUI()
+        bindViewModelEvents()
     }
 
     
@@ -124,6 +125,32 @@ extension LoginViewController {
     
 }
 
+//MARK: - ViewModel Events
+
+extension LoginViewController {
+    
+    private func bindViewModelEvents() {
+        viewModel.onLoadingStateChange = { [weak self] isLoading in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                isLoading ? self.startLoading() : self.stopLoading()
+            }
+        }
+        
+        viewModel.onLoginSuccess = { [weak self] response in
+            guard let self = self,
+                  let jwtToken = response.jwtToken,
+                  let username = response.username else { return }
+                        
+            self.onLogin?(username, jwtToken)
+        }
+        
+        viewModel.onLoginError = { error in
+            debugPrint("do something with - \(error).")
+        }
+    }
+}
+
 //MARK: - Actions
 
 extension LoginViewController {
@@ -133,7 +160,21 @@ extension LoginViewController {
     }
     
     @objc func login(_ sender: AnyObject) {
-        //Call API
-        onLogin?()
+            
+        guard let username = usernameField.text,
+              let password = passwordField.text else {
+                  return
+              }
+        
+        let isUsernameEmpty = username.isEmpty
+        let isPasswordEmpty = password.isEmpty
+        
+        if isUsernameEmpty || isPasswordEmpty {
+            usernameField.setFeedback(isUsernameEmpty ? localize("username_required") : "")
+            passwordField.setFeedback(isPasswordEmpty ? localize("password_required") : "")
+            return
+        }
+        
+        viewModel.login(username: username, password: password)
     }
 }

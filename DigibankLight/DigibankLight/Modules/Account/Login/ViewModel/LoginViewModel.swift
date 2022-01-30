@@ -9,7 +9,36 @@ import Foundation
 
 final class LoginViewModel {
     
-    init() {}
+    private let service: LoginService
+    
+    typealias Observer<T> = (T) -> Void
+    
+    var onLoadingStateChange: Observer<Bool>?
+    var onLoginSuccess: Observer<LoginResponse>?
+    var onLoginError: Observer<Error>?
+
+    init(service: LoginService) {
+        self.service = service
+    }
+    
+    func login(username: String, password: String) {
+        onLoadingStateChange?(true)
+        service.login(username: username, password: password) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.onLoadingStateChange?(false)
+            
+            switch result {
+            case let .success(response):
+                self.onLoginSuccess?(response)
+                break
+                
+            case let .failure(error):
+                self.onLoginError?(error)
+                break
+            }
+        }
+    }
 }
 
 //MARK: - Strings

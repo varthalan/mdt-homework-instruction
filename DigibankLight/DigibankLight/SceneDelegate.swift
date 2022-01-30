@@ -7,7 +7,16 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    private lazy var loginViewController = ModuleComposer.composeLogin()
+    
+    var jwtToken: String?
+    var username: String?
+
+    let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+    
+    let loginURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com/login")!
+    
+    private lazy var loginViewController = ModuleComposer.composeLoginWith(url: loginURL , client: client)
+    
     private lazy var navigationController = UINavigationController(
         rootViewController: loginViewController)
 
@@ -164,10 +173,14 @@ extension SceneDelegate {
             self.showRegistration()
         }
         
-        loginViewController.onLogin = { [weak self] in
+        loginViewController.onLogin = { [weak self] username, jwtToken in
             guard let self = self else { return }
             
-            self.showDashboard()
+            self.username = username
+            self.jwtToken = jwtToken            
+            DispatchQueue.main.async {
+                self.showDashboard()
+            }
         }
     }
 }

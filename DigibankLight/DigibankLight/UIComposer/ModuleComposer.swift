@@ -7,8 +7,9 @@ import Foundation
 
 final class ModuleComposer {
     
-    static func composeLogin() -> LoginViewController {
-        let viewModel = LoginViewModel()
+    static func composeLoginWith(url: URL, client: HTTPClient) -> LoginViewController {
+        let loginService = LoginService(url: url, client: client)
+        let viewModel = LoginViewModel(service: loginService)
         return LoginViewController(viewModel: viewModel)
     }
     

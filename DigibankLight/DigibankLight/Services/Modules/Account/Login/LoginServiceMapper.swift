@@ -20,7 +20,7 @@ final class LoginServiceMapper {
             LoginResponse(
                 status: status,
                 jwtToken: token,
-                userName: username,
+                username: username,
                 accountNumber: accountNo,
                 error: error)
         }
