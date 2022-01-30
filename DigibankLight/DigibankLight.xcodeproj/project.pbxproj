@@ -25,6 +25,7 @@
 		E67B417927A684DA003D3B87 /* TransactionsServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B417827A684DA003D3B87 /* TransactionsServiceMapper.swift */; };
 		E67B417B27A684F3003D3B87 /* TransactionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B417A27A684F3003D3B87 /* TransactionsService.swift */; };
 		E67B417D27A6850E003D3B87 /* String+DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B417C27A6850E003D3B87 /* String+DateExtension.swift */; };
+		E67B417F27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextField.swift */; };
@@ -101,6 +102,7 @@
 		E67B417827A684DA003D3B87 /* TransactionsServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsServiceMapper.swift; sourceTree = "<group>"; };
 		E67B417A27A684F3003D3B87 /* TransactionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsService.swift; sourceTree = "<group>"; };
 		E67B417C27A6850E003D3B87 /* String+DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateExtension.swift"; sourceTree = "<group>"; };
+		E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicatorExtension.swift"; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextField.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				E68B7C8B27A4D86700CC8E43 /* UIButton+Styling.swift */,
 				E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */,
 				E67B417C27A6850E003D3B87 /* String+DateExtension.swift */,
+				E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
 				E68B7C9227A4E47700CC8E43 /* DashboardViewController.swift in Sources */,
 				E68B7C9527A4E69D00CC8E43 /* MakeTransferViewController.swift in Sources */,
+				E67B417F27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift in Sources */,
 				E68B7CC127A5358700CC8E43 /* PayeesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
