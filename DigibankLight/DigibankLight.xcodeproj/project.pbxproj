@@ -39,6 +39,7 @@
 		E68B7CD827A56A5800CC8E43 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CD727A56A5800CC8E43 /* LoginResponse.swift */; };
 		E68B7CDA27A57D0F00CC8E43 /* RegistrationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CD927A57D0F00CC8E43 /* RegistrationServiceTests.swift */; };
 		E68B7CE027A57E1100CC8E43 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CDF27A57E1100CC8E43 /* SharedTestHelpers.swift */; };
+		E68B7CE327A6356C00CC8E43 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CE227A6356C00CC8E43 /* RegistrationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		E68B7CD727A56A5800CC8E43 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		E68B7CD927A57D0F00CC8E43 /* RegistrationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationServiceTests.swift; sourceTree = "<group>"; };
 		E68B7CDF27A57E1100CC8E43 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		E68B7CE227A6356C00CC8E43 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +407,7 @@
 		E68B7CD027A569F200CC8E43 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				E68B7CE127A6355C00CC8E43 /* Registration */,
 				E68B7CD127A569F900CC8E43 /* Login */,
 			);
 			path = Account;
@@ -458,6 +461,14 @@
 				E68B7CDF27A57E1100CC8E43 /* SharedTestHelpers.swift */,
 			);
 			path = SharedHelpers;
+			sourceTree = "<group>";
+		};
+		E68B7CE127A6355C00CC8E43 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CE227A6356C00CC8E43 /* RegistrationService.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -603,6 +614,7 @@
 				E68B7CBD27A5333A00CC8E43 /* MakeTransferViewModel.swift in Sources */,
 				E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */,
 				E68B7CB927A531E200CC8E43 /* DashboardViewModel.swift in Sources */,
+				E68B7CE327A6356C00CC8E43 /* RegistrationService.swift in Sources */,
 				E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */,
 				E68B7CB527A5301400CC8E43 /* NSLocalizedString+Extension.swift in Sources */,
 				E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */,
