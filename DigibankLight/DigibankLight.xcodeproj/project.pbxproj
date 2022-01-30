@@ -44,6 +44,7 @@
 		E68B7CE827A6361300CC8E43 /* RegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CE727A6361300CC8E43 /* RegistrationResponse.swift */; };
 		E68B7CED27A649EF00CC8E43 /* BalanceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CEC27A649EF00CC8E43 /* BalanceServiceTests.swift */; };
 		E68B7CF027A6548000CC8E43 /* BalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CEF27A6548000CC8E43 /* BalanceService.swift */; };
+		E68B7CF227A654ED00CC8E43 /* BalanceServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7CF127A654ED00CC8E43 /* BalanceServiceMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		E68B7CE727A6361300CC8E43 /* RegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResponse.swift; sourceTree = "<group>"; };
 		E68B7CEC27A649EF00CC8E43 /* BalanceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceServiceTests.swift; sourceTree = "<group>"; };
 		E68B7CEF27A6548000CC8E43 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
+		E68B7CF127A654ED00CC8E43 /* BalanceServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceServiceMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				E68B7CEF27A6548000CC8E43 /* BalanceService.swift */,
+				E68B7CF127A654ED00CC8E43 /* BalanceServiceMapper.swift */,
 			);
 			path = Balance;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
 				E68B7CC427A5579A00CC8E43 /* HTTPClient.swift in Sources */,
 				E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */,
+				E68B7CF227A654ED00CC8E43 /* BalanceServiceMapper.swift in Sources */,
 				E68B7CBD27A5333A00CC8E43 /* MakeTransferViewModel.swift in Sources */,
 				E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */,
 				E68B7CB927A531E200CC8E43 /* DashboardViewModel.swift in Sources */,
