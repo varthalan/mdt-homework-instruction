@@ -29,18 +29,25 @@ final class PayeesService {
 class PayeesServiceTests: XCTestCase {
     
     func test_init_doesNotSendRequestToLoadPayees() {
-        let client = HTTPClientSpy()
+        let (_, client) = makeSUT()
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_sendsRequestToLoadPayees() {
         let url = URL(string: "https:any-url.com/payees")!
-        let client = HTTPClientSpy()
-        let sut = PayeesService(url: url, client: client)
+        let (sut, client) = makeSUT(url)
         
         sut.load(jwtToken: "any token") { }
         
         XCTAssertEqual(client.requestedURLs, [url])
+    }
+    
+    //MARK: - Helpers
+    
+    private func makeSUT(_ url: URL = URL(string: "https://any-url.com")!) -> (sut: PayeesService, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = PayeesService(url: url, client: client)
+        return (sut, client)
     }
 }
