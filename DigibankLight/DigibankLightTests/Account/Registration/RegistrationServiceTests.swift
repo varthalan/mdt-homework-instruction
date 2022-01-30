@@ -36,12 +36,14 @@ final class RegistrationService {
     private let url: URL
     private let client: HTTPClient
     
+    typealias Result = Swift.Result<RegistrationResponse, Error>
+    
     init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
     
-    func createAccount(for username: String, password: String, completion: @escaping (Swift.Result<RegistrationResponse, Error>) -> Void) {
+    func createAccount(for username: String, password: String, completion: @escaping (Result) -> Void) {
         client.load(request: request()) { result in
             switch result {
             case let  .success(value):
@@ -85,13 +87,13 @@ class RegistrationServiceTests: XCTestCase {
         let (failedResponse, json) = makeRegistrationResponse(
             status: "failed",
             error: "any error")
-        let expectedResponse = failedResponse
         
+        let expectedResponse = RegistrationService.Result.success(failedResponse)        
         let exp = expectation(description: "Wait for registration")
         sut.createAccount(for: "an existing username", password: "a password") { actualResponse in
-            switch actualResponse {
-            case let .success(returnedResponse):
-                XCTAssertEqual(returnedResponse, expectedResponse)
+            switch (actualResponse, expectedResponse) {
+            case let (.success(returnedResult), .success(expectedResult)):
+                XCTAssertEqual(returnedResult, expectedResult)
                 
             default:
                 XCTFail("Expected \(expectedResponse), got \(actualResponse)")
