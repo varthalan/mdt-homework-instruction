@@ -154,6 +154,10 @@ extension LFTextFieldView {
 }
 
 extension LFTextFieldView: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        feedbackLabel.text = ""
+    }
         
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
