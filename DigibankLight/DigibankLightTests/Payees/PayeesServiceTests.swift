@@ -8,17 +8,76 @@
 import XCTest
 @testable import DigibankLight
 
+struct PayeesResponse: Equatable {
+    struct Error: Equatable {
+        let name: String
+        let message: String
+        let tokenExpiredDate: String
+    }
+    
+    let status: String
+    let error: Error
+}
+
+final class PayeesServiceMapper {
+    
+    private struct Result: Decodable {
+        
+        private struct Error: Decodable {
+            let name: String
+            let message: String
+            let expiredAt: String
+        }
+        
+        private let status: String
+        private let error: Error
+
+        var payeesResponse: PayeesResponse {
+            PayeesResponse(
+                status: status,
+                error: .init(
+                    name: error.name,
+                    message: error.message,
+                    tokenExpiredDate: error.expiredAt
+                )
+            )
+        }
+    }
+    
+    static func map(_ data: Data, from response: HTTPURLResponse) throws -> PayeesResponse {
+        guard let response = try? JSONDecoder().decode(Result.self, from: data) else {
+            throw NSError(domain: "Parsing error from PayeesService", code: 0)
+        }
+        
+        return response.payeesResponse
+    }
+}
+
 final class PayeesService {
     private let url: URL
     private let client: HTTPClient
+    
+    typealias Result = Swift.Result<PayeesResponse, Error>
     
     init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
     
-    func load(jwtToken: String, completion: @escaping () -> Void) {
-        client.load(request: request()) { _ in }
+    func load(jwtToken: String, completion: @escaping (Result) -> Void) {
+        client.load(request: request()) { result in
+            switch result {
+            case let .success(value):
+                do {
+                    completion(.success(try PayeesServiceMapper.map(value.0, from: value.1)))
+                } catch {
+                    completion(.failure(error))
+                }
+                
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
     }
     
     private func request() -> URLRequest {
@@ -38,9 +97,40 @@ class PayeesServiceTests: XCTestCase {
         let url = URL(string: "https:any-url.com/payees")!
         let (sut, client) = makeSUT(url)
         
-        sut.load(jwtToken: "any token") { }
+        sut.load(jwtToken: "any token") { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
+    }
+    
+    func test_load_deliversErrorWithExpiredToken() {
+        let url = URL(string: "https:any-url.com/payees")!
+        let (sut, client) = makeSUT(url)
+        let (failedResponse, json) = makePayeesResponse(
+            status: "failed",
+            error: .init(
+                name: "any name",
+                message: "any message",
+                tokenExpiredDate: "any date"
+            )
+        )
+        let expectedResult = PayeesService.Result.success(failedResponse)
+        
+        let exp = expectation(description: "Wait for loading payees")
+        sut.load(jwtToken: "any token") { receivedResult in
+            
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedResponse), .success(expectedResponse)):
+                XCTAssertEqual(receivedResponse, expectedResponse)
+                
+            default:
+                XCTFail("Expected \(expectedResult), got \(receivedResult)")
+            }
+            
+            exp.fulfill()
+        }
+        client.complete(with: makeJSON(with: json))
+        wait(for: [exp], timeout: 1.0)
+
     }
     
     //MARK: - Helpers
@@ -49,5 +139,26 @@ class PayeesServiceTests: XCTestCase {
         let client = HTTPClientSpy()
         let sut = PayeesService(url: url, client: client)
         return (sut, client)
+    }
+
+    private func makePayeesResponse(
+        status: String,
+        error: PayeesResponse.Error
+    ) -> (response: PayeesResponse, json: [String: Any]) {
+        let response = PayeesResponse(
+            status: status,
+            error: error
+        )
+        
+        let json: [String: Any] = [
+            "status": status,
+            "error": [
+                "name": error.name,
+                "message": error.message,
+                "expiredAt": error.tokenExpiredDate
+            ]
+        ]
+        
+        return (response, json)
     }
 }
