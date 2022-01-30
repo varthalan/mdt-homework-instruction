@@ -27,3 +27,7 @@ final class HTTPClientSpy: HTTPClient {
     }
 
 }
+
+func makeJSON(with json: [String: Any]) -> Data {
+    try! JSONSerialization.data(withJSONObject: json)
+}

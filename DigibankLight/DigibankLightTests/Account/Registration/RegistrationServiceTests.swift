@@ -125,9 +125,4 @@ class RegistrationServiceTests: XCTestCase {
         
         return (response, json)
     }
-    
-    private func makeJSON(with json: [String: Any]) -> Data {
-        try! JSONSerialization.data(withJSONObject: json)
-    }
-
 }
