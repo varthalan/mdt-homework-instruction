@@ -30,9 +30,20 @@ final class RegistrationViewController: BaseViewController {
         return button
     }()
 
+    private let viewModel: RegistrationViewModel
+    
     var onBack: (() -> Void)?
-    var onRegister: (() -> Void)?
-
+    var onRegister: ((String, String) -> Void)?
+    
+    init(viewModel: RegistrationViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,7 +114,34 @@ extension RegistrationViewController {
     }
 }
 
-//Actions
+//MARK: - ViewModel Events
+
+extension RegistrationViewController {
+    
+    private func bindViewModelEvents() {
+        viewModel.onLoadingStateChange = { [weak self] isLoading in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                isLoading ? self.startLoading() : self.stopLoading()
+            }
+        }
+        
+        viewModel.onRegistrationSuccess = { [weak self] response in
+            guard let self = self,
+                  let jwtToken = response.jwtToken,
+                  let username = response.username else { return }
+                        
+            self.onRegister?(username, jwtToken)
+        }
+        
+        viewModel.onError = { error in
+            debugPrint("do something with - \(error).")
+        }
+    }
+}
+
+
+//MARK: - Actions
 extension RegistrationViewController {
     
     @objc func back(_ sender: AnyObject) {
@@ -111,7 +149,31 @@ extension RegistrationViewController {
     }
     
     @objc func register(_ sender: AnyObject) {
-        //Validate equality for Password,Confirm password & Call API
-        onRegister?()
+        guard let username = usernameField.text,
+              let password = passwordField.text,
+              let confirmPassword = confirmPasswordField.text else {
+                  return
+              }
+        
+        let isUsernameEmpty = username.isEmpty
+        let isPasswordEmpty = password.isEmpty
+        let isConfirmPasswordEmpty = confirmPassword.isEmpty
+        
+        if isUsernameEmpty || isPasswordEmpty ||  isConfirmPasswordEmpty {
+            usernameField.setFeedback(isUsernameEmpty ? RegistrationViewModel.usernameRequired : "")
+            passwordField.setFeedback(isPasswordEmpty ? RegistrationViewModel.passwordRequired : "")
+            
+            if isConfirmPasswordEmpty && !isPasswordEmpty {
+                confirmPasswordField.setFeedback(RegistrationViewModel.passwordNotMatching)
+            }
+            
+            if isConfirmPasswordEmpty && isPasswordEmpty {
+                confirmPasswordField.setFeedback(RegistrationViewModel.confirmPasswordRequired)
+            }
+            
+            return
+        }
+        
+        viewModel.registerWith(username: username, password: password)
     }
 }

@@ -170,8 +170,8 @@ extension LoginViewController {
         let isPasswordEmpty = password.isEmpty
         
         if isUsernameEmpty || isPasswordEmpty {
-            usernameField.setFeedback(isUsernameEmpty ? localize("username_required") : "")
-            passwordField.setFeedback(isPasswordEmpty ? localize("password_required") : "")
+            usernameField.setFeedback(isUsernameEmpty ? LoginViewModel.usernameRequired : "")
+            passwordField.setFeedback(isPasswordEmpty ? LoginViewModel.passwordRequired : "")
             return
         }
         

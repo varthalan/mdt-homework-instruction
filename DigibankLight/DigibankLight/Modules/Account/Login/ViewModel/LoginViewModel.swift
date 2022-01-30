@@ -15,7 +15,7 @@ final class LoginViewModel {
     
     var onLoadingStateChange: Observer<Bool>?
     var onLoginSuccess: Observer<LoginResponse>?
-    var onLoginError: Observer<Error>?
+    var onLoginError: Observer<String>?
 
     init(service: LoginService) {
         self.service = service
@@ -30,11 +30,15 @@ final class LoginViewModel {
             
             switch result {
             case let .success(response):
-                self.onLoginSuccess?(response)
+                if let error = response.error {
+                    self.onLoginError?(error)
+                } else {
+                    self.onLoginSuccess?(response)
+                }
                 break
                 
             case let .failure(error):
-                self.onLoginError?(error)
+                self.onLoginError?(error.localizedDescription)
                 break
             }
         }
@@ -61,6 +65,14 @@ extension LoginViewModel {
     
     static var loginButtonTitle: String {
         localize("login_button_title")
+    }
+    
+    static var usernameRequired: String {
+        localize("username_required")
+    }
+    
+    static var passwordRequired: String {
+        localize("password_required")
     }
 }
 

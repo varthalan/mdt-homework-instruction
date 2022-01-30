@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     
     let loginURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com/login")!
+    let registrationURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com/register")!
     
     private lazy var loginViewController = ModuleComposer.composeLoginWith(url: loginURL , client: client)
     
@@ -98,15 +99,18 @@ extension SceneDelegate {
 extension SceneDelegate {
     
     private func showRegistration() {
-        let registrationViewController = ModuleComposer.composeRegistration()
+        let registrationViewController = ModuleComposer.composeRegistrationWith(registrationURL: registrationURL, loginURL: loginURL, client: client)
         
         registrationViewController.onBack = { [weak self] in
             guard let self = self else { return }
             self.pop()
         }
         
-        registrationViewController.onRegister = { [weak self] in
+        registrationViewController.onRegister = { [weak self] username, jwtToken in
             guard let self = self else { return }
+            
+            self.username = username
+            self.jwtToken = jwtToken
             
             self.showDashboard()
         }

@@ -29,4 +29,9 @@
 "username_field_title" = "Username";
 "password_field_title" = "Password";
 "register_button_title" = "REGISTER";
+"username_required" = "Username is required";
+"password_required" = "Password is required";
+"confirm_password_required" = "Confirm password is required";
+"password_not_matching" = "Confirm password not matching";
+
 
