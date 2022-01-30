@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct RegistrationResponse: Equatable {
-    let status: String
-    let jwtToken: String?
-    let error: String?
-}
-
 final class RegistrationService {
     private let url: URL
     private let client: HTTPClient
