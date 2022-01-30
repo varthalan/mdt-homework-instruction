@@ -29,18 +29,25 @@ final class TransactionsService {
 class TransactionsServiceTests: XCTestCase {
 
     func test_init_doesNotSendRequestToLoadTransactions() {
-        let client = HTTPClientSpy()
+        let (_, client) = makeSUT()
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_sendsRequestToLoadTransactions() {
         let url = URL(string: "https://any-url.com/transactions")!
-        let client = HTTPClientSpy()
-        let sut = TransactionsService(url: url, client: client)
+        let (sut, client) = makeSUT(url)
         
         sut.load(token: "any token") { }
         
         XCTAssertEqual(client.requestedURLs, [url])
+    }
+    
+    //MARK: - Helpers
+    
+    private func makeSUT(_ url: URL = URL(string: "https://any-url.com")!) -> (sut: TransactionsService, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = TransactionsService(url: url, client: client)
+        return (sut, client)
     }
 }
