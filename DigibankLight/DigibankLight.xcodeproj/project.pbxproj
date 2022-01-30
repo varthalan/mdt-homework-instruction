@@ -16,6 +16,7 @@
 		E67B416027A66950003D3B87 /* MakeTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B415F27A66950003D3B87 /* MakeTransferService.swift */; };
 		E67B416227A6696D003D3B87 /* MakeTransferServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416127A6696D003D3B87 /* MakeTransferServiceMapper.swift */; };
 		E67B416527A66990003D3B87 /* MakeTransferResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416427A66990003D3B87 /* MakeTransferResponse.swift */; };
+		E67B416827A66A22003D3B87 /* PayeesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416727A66A22003D3B87 /* PayeesServiceTests.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextField.swift */; };
@@ -83,6 +84,7 @@
 		E67B415F27A66950003D3B87 /* MakeTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferService.swift; sourceTree = "<group>"; };
 		E67B416127A6696D003D3B87 /* MakeTransferServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferServiceMapper.swift; sourceTree = "<group>"; };
 		E67B416427A66990003D3B87 /* MakeTransferResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferResponse.swift; sourceTree = "<group>"; };
+		E67B416727A66A22003D3B87 /* PayeesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeesServiceTests.swift; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextField.swift; sourceTree = "<group>"; };
@@ -185,8 +187,9 @@
 		E64AEBA227A42878000C1884 /* DigibankLightTests */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7CF927A655CB00CC8E43 /* MakeTransfer */,
 				E68B7CDE27A57DFC00CC8E43 /* SharedHelpers */,
+				E67B416627A66A0C003D3B87 /* Payees */,
+				E68B7CF927A655CB00CC8E43 /* MakeTransfer */,
 				E68B7CF827A6556100CC8E43 /* Dashboard */,
 				E68B7CDD27A57DF100CC8E43 /* Account */,
 			);
@@ -217,6 +220,14 @@
 				E67B416427A66990003D3B87 /* MakeTransferResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E67B416627A66A0C003D3B87 /* Payees */ = {
+			isa = PBXGroup;
+			children = (
+				E67B416727A66A22003D3B87 /* PayeesServiceTests.swift */,
+			);
+			path = Payees;
 			sourceTree = "<group>";
 		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
@@ -755,6 +766,7 @@
 			files = (
 				E68B7CDA27A57D0F00CC8E43 /* RegistrationServiceTests.swift in Sources */,
 				E68B7CCE27A55C7600CC8E43 /* LoginServiceTests.swift in Sources */,
+				E67B416827A66A22003D3B87 /* PayeesServiceTests.swift in Sources */,
 				E68B7CED27A649EF00CC8E43 /* BalanceServiceTests.swift in Sources */,
 				E68B7CE027A57E1100CC8E43 /* SharedTestHelpers.swift in Sources */,
 				E68B7CFB27A655EA00CC8E43 /* MakeTransferServiceTests.swift in Sources */,
