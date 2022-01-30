@@ -10,13 +10,15 @@ import XCTest
 
 struct BalanceResponse: Equatable {
     struct Error: Equatable {
-        let name: String
-        let message: String
-        let tokenExpiryDate: String
+        let name: String?
+        let message: String?
+        let tokenExpiryDate: String?
     }
     
     let status: String
-    let error: Error
+    let accountNumber: String?
+    let balance: Int?
+    let error: Error?
 }
 
 final class BalanceServiceMapper {
@@ -24,21 +26,25 @@ final class BalanceServiceMapper {
     private struct Result: Decodable {
         
         private struct Error: Decodable {
-            let name: String
-            let message: String
-            let expiredAt: String
+            let name: String?
+            let message: String?
+            let expiredAt: String?
         }
         
         private let status: String
-        private let error: Error
+        private let accountNo: String?
+        private let balance: Int?
+        private let error: Error?
         
         var balanceResponse: BalanceResponse {
             BalanceResponse(
                 status: status,
+                accountNumber: accountNo,
+                balance: balance,
                 error: .init(
-                    name: error.name,
-                    message: error.message,
-                    tokenExpiryDate: error.expiredAt
+                    name: error?.name,
+                    message: error?.message,
+                    tokenExpiryDate: error?.expiredAt
                 )
             )
         }
@@ -132,6 +138,32 @@ class BalanceServiceTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_loadBalance_deliversBalanceWithValidJWTToken() {
+        let url = URL(string: "https://any-url.com/balance")!
+        let (sut, client) = makeSUT(url)
+        let (successResponse, json) = makeBalanceResponse(
+            status: "success",
+            accountNumber: "an account number",
+            balance: 10000
+        )
+        
+        let expectedResponse = BalanceService.Result.success(successResponse)
+        let exp = expectation(description: "Wait for loading balance")
+        sut.loadBalance(jwtToken: "any expired token") { actualResponse in
+            switch (actualResponse, expectedResponse) {
+            case let (.success(actualResult), .success(expectedResult)):
+                XCTAssertEqual(actualResult, expectedResult)
+                
+            default:
+                XCTFail("Expected \(expectedResponse), got \(actualResponse)")
+            }
+            
+            exp.fulfill()
+        }
+        client.complete(with: makeJSON(with: json))
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(_ url: URL = URL(string: "https://any-url.com")!) -> (sut: BalanceService, client: HTTPClientSpy) {
@@ -142,25 +174,31 @@ class BalanceServiceTests: XCTestCase {
     
     private func makeBalanceResponse(
         status: String,
-        error: BalanceResponse.Error
+        accountNumber: String? = nil,
+        balance: Int? = nil,
+        error: BalanceResponse.Error? = nil
     ) -> (response: BalanceResponse, json: [String: Any]) {
         let response = BalanceResponse(
             status: status,
+            accountNumber: accountNumber,
+            balance: balance,
             error: .init(
-                name: error.name,
-                message: error.message,
-                tokenExpiryDate: error.tokenExpiryDate
+                name: error?.name,
+                message: error?.message,
+                tokenExpiryDate: error?.tokenExpiryDate
             )
         )
         
         let json: [String: Any] = [
             "status": status,
+            "accountNo": accountNumber,
+            "balance": balance,
             "error": [
-                "name": error.name,
-                "message": error.message,
-                "expiredAt": error.tokenExpiryDate
+                "name": error?.name,
+                "message": error?.message,
+                "expiredAt": error?.tokenExpiryDate
             ]
-        ]
+        ].compactMapValues { $0 }
         
         return (response, json)
     }
