@@ -17,6 +17,9 @@
 		E67B416227A6696D003D3B87 /* MakeTransferServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416127A6696D003D3B87 /* MakeTransferServiceMapper.swift */; };
 		E67B416527A66990003D3B87 /* MakeTransferResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416427A66990003D3B87 /* MakeTransferResponse.swift */; };
 		E67B416827A66A22003D3B87 /* PayeesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416727A66A22003D3B87 /* PayeesServiceTests.swift */; };
+		E67B416C27A673E5003D3B87 /* PayeesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416B27A673E5003D3B87 /* PayeesResponse.swift */; };
+		E67B416E27A673FC003D3B87 /* PayeerServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416D27A673FC003D3B87 /* PayeerServiceMapper.swift */; };
+		E67B417027A67429003D3B87 /* PayeesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B416F27A67429003D3B87 /* PayeesService.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextField.swift */; };
@@ -85,6 +88,9 @@
 		E67B416127A6696D003D3B87 /* MakeTransferServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferServiceMapper.swift; sourceTree = "<group>"; };
 		E67B416427A66990003D3B87 /* MakeTransferResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransferResponse.swift; sourceTree = "<group>"; };
 		E67B416727A66A22003D3B87 /* PayeesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeesServiceTests.swift; sourceTree = "<group>"; };
+		E67B416B27A673E5003D3B87 /* PayeesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeesResponse.swift; sourceTree = "<group>"; };
+		E67B416D27A673FC003D3B87 /* PayeerServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeerServiceMapper.swift; sourceTree = "<group>"; };
+		E67B416F27A67429003D3B87 /* PayeesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeesService.swift; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextField.swift; sourceTree = "<group>"; };
@@ -230,11 +236,28 @@
 			path = Payees;
 			sourceTree = "<group>";
 		};
+		E67B416927A673AD003D3B87 /* Payees */ = {
+			isa = PBXGroup;
+			children = (
+				E67B416F27A67429003D3B87 /* PayeesService.swift */,
+				E67B416D27A673FC003D3B87 /* PayeerServiceMapper.swift */,
+			);
+			path = Payees;
+			sourceTree = "<group>";
+		};
+		E67B416A27A673C9003D3B87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E67B416B27A673E5003D3B87 /* PayeesResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				E68B7C9627A4FEFC00CC8E43 /* Shared */,
-				E68B7CA727A5278E00CC8E43 /* Payee */,
+				E68B7CA727A5278E00CC8E43 /* Payees */,
 				E68B7C9327A4E68D00CC8E43 /* MakeTransfer */,
 				E68B7C9027A4E46600CC8E43 /* Dashboard */,
 				E68B7C7C27A42BCE00CC8E43 /* Account */,
@@ -342,13 +365,14 @@
 			path = TextView;
 			sourceTree = "<group>";
 		};
-		E68B7CA727A5278E00CC8E43 /* Payee */ = {
+		E68B7CA727A5278E00CC8E43 /* Payees */ = {
 			isa = PBXGroup;
 			children = (
+				E67B416A27A673C9003D3B87 /* Model */,
 				E68B7CBF27A5356E00CC8E43 /* View */,
 				E68B7CBE27A5356A00CC8E43 /* ViewModel */,
 			);
-			path = Payee;
+			path = Payees;
 			sourceTree = "<group>";
 		};
 		E68B7CAA27A5297A00CC8E43 /* ViewModel */ = {
@@ -452,6 +476,7 @@
 		E68B7CCF27A569E500CC8E43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E67B416927A673AD003D3B87 /* Payees */,
 				E67B415E27A66929003D3B87 /* MakeTransfer */,
 				E68B7CF727A6555200CC8E43 /* Dashboard */,
 				E68B7CD027A569F200CC8E43 /* Account */,
@@ -729,6 +754,8 @@
 				E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */,
 				E68B7C8C27A4D86700CC8E43 /* UIButton+Styling.swift in Sources */,
 				E68B7CE827A6361300CC8E43 /* RegistrationResponse.swift in Sources */,
+				E67B416E27A673FC003D3B87 /* PayeerServiceMapper.swift in Sources */,
+				E67B417027A67429003D3B87 /* PayeesService.swift in Sources */,
 				E68B7CA927A527A100CC8E43 /* PayeesViewController.swift in Sources */,
 				E68B7C8927A42D1300CC8E43 /* LFTextField.swift in Sources */,
 				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
@@ -751,6 +778,7 @@
 				E68B7CE527A635BA00CC8E43 /* RegistrationServiceMapper.swift in Sources */,
 				E68B7CD527A56A3000CC8E43 /* LoginServiceMapper.swift in Sources */,
 				E68B7CF027A6548000CC8E43 /* BalanceService.swift in Sources */,
+				E67B416C27A673E5003D3B87 /* PayeesResponse.swift in Sources */,
 				E68B7CD327A56A0600CC8E43 /* LoginService.swift in Sources */,
 				E68B7CF627A6554300CC8E43 /* BalanceResponse.swift in Sources */,
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
