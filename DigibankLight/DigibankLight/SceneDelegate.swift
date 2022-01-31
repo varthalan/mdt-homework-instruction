@@ -121,7 +121,13 @@ extension SceneDelegate {
     }
     
     private func showDashboard() {
-        let dashboardViewController = ModuleComposer.composeDashboard()
+        guard let jwtToken = self.jwtToken else { return }
+        
+        let dashboardViewController = ModuleComposer.composeDashboard(
+            url: URL(string: "https://green-thumb-64168.uc.r.appspot.com/transactions")!,
+            client: client,
+            jwtToken: jwtToken
+        )
         
         dashboardViewController.onLogout = { [weak self] in
             guard let self = self else { return }

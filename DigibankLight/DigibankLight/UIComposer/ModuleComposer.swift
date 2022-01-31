@@ -25,8 +25,17 @@ final class ModuleComposer {
         return RegistrationViewController(viewModel: registrationViewModel)
     }
     
-    static func composeDashboard() -> DashboardViewController {
-        DashboardViewController()
+    static func composeDashboard(
+        url: URL,
+        client: HTTPClient,
+        jwtToken: String
+    ) -> DashboardViewController {
+        let service = TransactionsService(
+            url: url,
+            client: client
+        )
+        let viewModel = DashboardViewModel(service: service, jwtToken: jwtToken)
+        return DashboardViewController(viewModel: viewModel)
     }
     
     static func composeMakeTransferWith(
