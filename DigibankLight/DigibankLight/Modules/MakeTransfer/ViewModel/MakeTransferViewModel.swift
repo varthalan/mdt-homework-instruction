@@ -32,4 +32,11 @@ extension MakeTransferViewModel {
         localize("transfer_now_button_title")
     }
     
+    static var payeeFieldFeedback: String {
+        localize("payee_required")
+    }
+        
+    static var amountFieldFeedback: String {
+        localize("amount_required")
+    }
 }

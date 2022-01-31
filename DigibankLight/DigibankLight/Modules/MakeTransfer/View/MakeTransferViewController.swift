@@ -127,7 +127,21 @@ extension MakeTransferViewController {
     }
     
     @objc func transfer(_ sender: AnyObject) {
-        //API call
+        guard let payeeName = payeeField.text,
+              let payeeAmount = amountField.text else {
+                  return
+              }
+        
+        let isPayeeEmpty = payeeName.isEmpty && payeeAccountNumber.isEmpty
+        let isAmountEmpty = payeeAmount.isEmpty
+        
+        if isPayeeEmpty || isAmountEmpty {
+            payeeField.setFeedback(isPayeeEmpty ? MakeTransferViewModel.payeeFieldFeedback : "")
+            amountField.setFeedback(isAmountEmpty ? MakeTransferViewModel.amountFieldFeedback : "")
+            return
+        }
+
+        //viewModel.
     }
     
     @objc func stopEditing() {
