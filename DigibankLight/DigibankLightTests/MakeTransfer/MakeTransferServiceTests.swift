@@ -18,7 +18,9 @@ class MakeTransferServiceTests: XCTestCase {
         let url = URL(string: "https://any-url.com/transfer")!
         let (sut, client) = makeSUT(url)
         
-        sut.transfer(jwtToken: "any token") { _ in }
+        sut.transfer(accountNumber: "any account number",
+                     amount: 100,
+                     jwtToken: "any token") { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -36,7 +38,9 @@ class MakeTransferServiceTests: XCTestCase {
         )
         
         let expectedResult = MakeTransferService.Result.success(failureResponse)
-        sut.transfer(jwtToken: "an expired token") { actualResult in
+        sut.transfer(accountNumber: "any account number",
+                     amount: 100,
+                     jwtToken: "an expired token") { actualResult in
             switch (actualResult, expectedResult) {
             case let (.success(actualResponse), .success(expectedResponse)):
                 XCTAssertEqual(actualResponse, expectedResponse)
@@ -60,7 +64,9 @@ class MakeTransferServiceTests: XCTestCase {
         )
         
         let expectedResult = MakeTransferService.Result.success(successResponse)
-        sut.transfer(jwtToken: "an expired token") { actualResult in
+        sut.transfer(accountNumber: "any account number",
+                     amount: 100,
+                     jwtToken: "any token") { actualResult in
             switch (actualResult, expectedResult) {
             case let (.success(actualResponse), .success(expectedResponse)):
                 XCTAssertEqual(actualResponse, expectedResponse)
