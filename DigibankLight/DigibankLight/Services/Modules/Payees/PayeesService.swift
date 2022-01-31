@@ -39,7 +39,6 @@ final class PayeesService {
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
         request.setValue(jwtToken, forHTTPHeaderField: "Authorization")
                 
         return request
