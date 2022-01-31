@@ -21,6 +21,8 @@
 "amount_field_title" = "Amount";
 "description_field_title" = "Description";
 "transfer_now_button_title" = "Transfer Now";
+"payee_required" = "Please select payee to transfer";
+"amount_required" = "Please enter amount to transfer";
 
 //Payees
 "payees_title" = "Payees";
