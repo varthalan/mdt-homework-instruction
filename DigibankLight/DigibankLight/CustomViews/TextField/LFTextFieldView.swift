@@ -80,7 +80,7 @@ extension LFTextFieldView {
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             containerView.topAnchor.constraint(equalTo: topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20.0)
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24.0)
         ])
         setBorderColor()
     }
@@ -90,8 +90,8 @@ extension LFTextFieldView {
         NSLayoutConstraint.activate([
             feedbackLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             feedbackLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            feedbackLabel.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 6.0),
-            feedbackLabel.heightAnchor.constraint(equalToConstant: 14.0)
+            feedbackLabel.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 4.0),
+            feedbackLabel.heightAnchor.constraint(equalToConstant: 20.0)
         ])
     }
     

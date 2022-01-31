@@ -41,6 +41,7 @@ final class LFNonEditableTextFieldView: LFTextFieldView {
 extension LFNonEditableTextFieldView {
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        feedbackLabel.text = ""
         delegate?.onFieldBeginEditing()
         return false
     }
