@@ -55,6 +55,7 @@ class DashboardViewController: BaseViewController {
         setupRefreshControl()
         bindViewModelEvents()
         tableView.register(TransactionTableViewCell.self, forCellReuseIdentifier: "TransactionTableViewCell")
+        tableView.register(TransacationsGroupTableViewCell.self, forCellReuseIdentifier: "TransacationsGroupTableViewCell")
     }
 }
 
@@ -83,6 +84,7 @@ extension DashboardViewController {
             tableView.bottomAnchor.constraint(equalTo: bottomActionButton.topAnchor, constant: -20.0)
         ])
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     private func setupRefreshControl() {
@@ -160,6 +162,7 @@ extension DashboardViewController {
 
 //MARK: - UITableViewDataSource Protocol Implementation
 extension DashboardViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.transactions.count
     }
@@ -171,21 +174,40 @@ extension DashboardViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell") as? TransactionTableViewCell else {
-            return UITableViewCell()
-        }
-        
-        cell.layer.cornerRadius = 30
-        cell.clipsToBounds = true
-        
         let (groupName, transactions) = viewModel.groupTransactions(at: indexPath.section)
         if indexPath.row == 0 {
-            cell.textLabel?.text = groupName
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransacationsGroupTableViewCell") as? TransacationsGroupTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.groupNameLabel.text = groupName
+            
+            return cell
         } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell") as? TransactionTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.layer.cornerRadius = 30
+            cell.clipsToBounds = true
+                        
             let transaction = transactions[indexPath.row - 1]
-            cell.textLabel?.text = transaction.accountName
+            cell.accountNameLabel.text = transaction.accountName
+            cell.accountNumberLabel.text = transaction.accountNumber
+            cell.amountLabel.text = "\(String(describing: transaction.amount))"
+            return cell
         }
-        return cell
     }
     
+}
+
+
+//MARK: - UITableViewDelegate protocol implementations
+
+extension DashboardViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = indexPath.row == 0 ? 30.0 : 64.0
+        return height
+    }
 }
