@@ -6,7 +6,37 @@
 import Foundation
 
 final class MakeTransferViewModel {
-    init() {}
+    private let service: MakeTransferService
+    private let jwtToken: String
+    
+    typealias Observer<T> = (T) -> Void
+    
+    var onLoadingStateChange: Observer<Bool>?
+    var onTransfer: Observer<MakeTransferResponse>?
+    var onError: Observer<String>?
+    
+    init(service: MakeTransferService, jwtToken: String) {
+        self.service = service
+        self.jwtToken = jwtToken
+    }
+    
+    func makeTransfer() {
+        onLoadingStateChange?(true)
+        service.transfer(jwtToken: jwtToken) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.onLoadingStateChange?(false)
+            
+            switch result {
+            case let .success(response):
+                self.onTransfer?(response)
+                
+            case let .failure(error):
+                self.onError?(error.localizedDescription)
+            }
+        }
+    }
+
 }
 
 //MARK: - Strings
