@@ -37,7 +37,9 @@ final class LFTextView: UIView {
     }()
         
     var text: String? {
-        textView.text
+        get {
+            textView.text
+        }
     }
 
     override init(frame: CGRect) {
@@ -59,6 +61,13 @@ final class LFTextView: UIView {
     
     func dismissEditing() {
         textView.resignFirstResponder()
+    }
+    
+    func setText(_ text: String) {
+        textView.text = text
+        if text.isEmpty {
+            dismissEditing()
+        }
     }
 }
 
