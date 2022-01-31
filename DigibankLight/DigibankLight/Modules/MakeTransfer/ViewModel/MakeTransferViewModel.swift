@@ -82,4 +82,20 @@ extension MakeTransferViewModel {
     static var amountFieldFeedback: String {
         localize("amount_required")
     }
+    
+    static var successfulTransferAlertTitle: String {
+        localize("successful_transfer_alert_title")
+    }
+    
+    static var successfulTransferAlertMessage: String {
+        localize("successful_transfer_alert_message")
+    }
+    
+    static var makeTransferActionTitle: String {
+        localize("make_transfer_action_title")
+    }
+    
+    static var gotoDashboardActionTitle: String {
+        localize("goto_dashboard_action_title")
+    }
 }

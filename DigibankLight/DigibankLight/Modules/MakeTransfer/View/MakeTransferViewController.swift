@@ -149,11 +149,52 @@ extension MakeTransferViewController {
         }
         
         viewModel.onTransfer = { [weak self] response in
+            guard let self = self,
+                  let amount = response.amount else { return }
+            
+            DispatchQueue.main.async {
+                self.showAlert(amount: amount)
+            }
+        }
+    }
+    
+    private func showAlert(amount: Int) {
+        let title = String(format: MakeTransferViewModel.successfulTransferAlertTitle, "$\(amount)", payeeName)
+        let alert = UIAlertController(
+            title: title,
+            message: MakeTransferViewModel.successfulTransferAlertMessage,
+            preferredStyle: .alert)
+
+        let dashBoardAction = UIAlertAction(
+            title: MakeTransferViewModel.gotoDashboardActionTitle,
+            style: .cancel
+        ) { [weak self] action in
             guard let self = self else { return }
             
-            //Check response object & show alert on successful transaction and to make one more transfer
-            debugPrint("response - \(response)")
+            self.onBack?()
         }
+        alert.addAction(dashBoardAction)
+
+        let makeTransferAction = UIAlertAction(
+            title: MakeTransferViewModel.makeTransferActionTitle,
+            style: .default
+        ) { [weak self] action in
+            guard let self = self else { return }
+            
+            self.clearAllData()
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(makeTransferAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func clearAllData() {
+        self.payeeField.setText("")
+        self.amountField.setText("")
+        self.descriptionField.setText("")
+        self.payeeName = ""
+        self.payeeAccountNumber = ""
     }
 }
 
