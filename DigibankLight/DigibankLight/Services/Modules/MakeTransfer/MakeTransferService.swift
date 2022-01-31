@@ -63,7 +63,16 @@ final class MakeTransferService {
         }
     
     private func request(with params: MakeTransferParams, jwtToken: String) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(jwtToken, forHTTPHeaderField: "Authorization")
         
-        URLRequest(url: url)
+        if let body = try? JSONEncoder().encode(params) {
+            request.httpBody = body
+        }
+
+        return request
     }
 }
