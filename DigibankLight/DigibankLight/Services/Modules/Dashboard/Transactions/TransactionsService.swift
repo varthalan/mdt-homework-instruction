@@ -19,7 +19,7 @@ final class TransactionsService {
     }
     
     func load(token: String, completion: @escaping (Result) -> Void) {
-        client.load(request: request()) { result in
+        client.load(request: request(with: token)) { result in
             switch result {
             case let .success(value):
                 do {
@@ -34,7 +34,13 @@ final class TransactionsService {
         }
     }
     
-    private func request() -> URLRequest {
-        URLRequest(url: url)
+    private func request(with jwtToken: String) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(jwtToken, forHTTPHeaderField: "Authorization")
+                
+        return request
     }
 }
