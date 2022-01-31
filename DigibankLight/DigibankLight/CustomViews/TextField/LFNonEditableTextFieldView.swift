@@ -26,11 +26,6 @@ final class LFNonEditableTextFieldView: LFTextFieldView {
         setupArrowImage()
     }
     
-    func setText(_ text: String) {
-        textField.text = text
-    }
-    
-    
     private func setupArrowImage() {
         textField.addSubview(arrowImageView)
         

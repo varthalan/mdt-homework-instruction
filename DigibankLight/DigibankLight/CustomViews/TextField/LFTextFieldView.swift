@@ -64,6 +64,10 @@ class LFTextFieldView: UIView {
         setupTitleLabel()
         setupTextField()
     }
+    
+    func setText(_ text: String) {
+        textField.text = text
+    }
 }
 
 
