@@ -95,7 +95,7 @@ class LoginServiceTests: XCTestCase {
         let response = LoginResponse(
             status: status,
             jwtToken: jwtToken,
-            userName: username,
+            username: username,
             accountNumber: accountNumber,
             error: error)
         
