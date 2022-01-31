@@ -44,6 +44,8 @@ class LFTextFieldView: UIView {
         return label
     }()
     
+    private var type: LFTextFieldViewType = .normal
+    
     var text: String? {
         textField.text
     }
@@ -67,6 +69,9 @@ class LFTextFieldView: UIView {
     
     func setText(_ text: String) {
         textField.text = text
+        if text.isEmpty {
+            textField.resignFirstResponder()
+        }
     }
 }
 
@@ -144,6 +149,7 @@ extension LFTextFieldView {
     }
     
     func setFieldType(_ type: LFTextFieldViewType) {
+        self.type = type
         switch type {
         case .normal:
             textField.keyboardType = .default
@@ -165,6 +171,17 @@ extension LFTextFieldView: UITextFieldDelegate {
         
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if type == .number {
+            if Int(string) != nil || string == "" {
+                return true
+            } else {
+                return false
+            }
+        }
         return true
     }
     
