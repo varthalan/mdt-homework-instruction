@@ -187,16 +187,29 @@ extension DashboardViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell") as? TransactionTableViewCell else {
                 return UITableViewCell()
             }
+            let transaction = transactions[indexPath.row - 1]
+            guard let amount = viewModel.convertAmount(transaction.amount),
+                  let type = transaction.transactionType else {
+                      return UITableViewCell()
+                  }
                        
             cell.selectionStyle = .none
-            let transaction = transactions[indexPath.row - 1]
             cell.accountNameLabel.text = transaction.accountName
             cell.accountNumberLabel.text = transaction.accountNumber
-            cell.amountLabel.text = "\(String(describing: transaction.amount))"
+            let transactionMode = transactionType(amount, transactionType: type)
+            cell.amountLabel.text = transactionMode.amount
+            cell.amountLabel.textColor = transactionMode.color
             return cell
         }
     }
     
+    private func transactionType(_ amount: String, transactionType: String) -> (amount: String, color: UIColor) {
+        if transactionType == "received" {
+            return (amount, .systemGreen)
+        }
+        
+        return ("-" + amount, .systemGray)
+    }
 }
 
 

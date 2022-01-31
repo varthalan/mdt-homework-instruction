@@ -55,7 +55,7 @@ final class DashboardViewModel {
     
     func groupTransactions(at section: Int) -> (String, [TransactionsResponse.Transaction]) {
         guard let sectionTransactions = transactions[section] as? [Int: [String: Any]],
-              let transactionGroup = sectionTransactions[section] as? [String: Any],
+              let transactionGroup = sectionTransactions[section],
               let groupName = transactionGroup["Date"] as? String,
               let transactions = transactionGroup["Transactions"] as? [TransactionsResponse.Transaction] else {
                 return ("", [TransactionsResponse.Transaction]())
@@ -63,6 +63,16 @@ final class DashboardViewModel {
         return (groupName, transactions)
     }
 
+    func convertAmount(_ amount: Int?, prefixCurrency: Bool = false) -> String? {
+        guard let value = amount else { return nil }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = prefixCurrency ? "SGD" : ""
+        formatter.maximumFractionDigits = 2        
+        let number = NSNumber(value: value)
+        guard let formattedNumber = formatter.string(from: number) else { return nil }
+        return formattedNumber
+    }
     
     private func sortedTransactions(_ transactions: [TransactionsResponse.Transaction]) -> [[Int: [String: Any]]]? {
         let groupedOptTransactions = Dictionary(grouping: transactions) { $0.transactionDate }
