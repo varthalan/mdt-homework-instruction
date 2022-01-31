@@ -45,7 +45,18 @@ class MakeTransferViewController: BaseViewController {
     
     var onBack: (() -> Void)?
     var onPayee: ((PayeeSelected?) -> Void)?
-        
+    
+    private let viewModel: MakeTransferViewModel
+    
+    init(viewModel: MakeTransferViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,6 +72,7 @@ class MakeTransferViewController: BaseViewController {
         setupPayeeField()
         setupAmountField()
         setupDescriptionField()
+        bindViewModelEvents()
     }
     
 }
@@ -119,6 +131,33 @@ extension MakeTransferViewController {
     }    
 }
 
+//MARK: - ViewModel Events
+
+extension MakeTransferViewController {
+    
+    private func bindViewModelEvents() {
+        viewModel.onLoadingStateChange = { [weak self] isLoading in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                isLoading ? self.startLoading() : self.stopLoading()
+            }
+        }
+        
+        viewModel.onError = {  _ in
+            //Display error message
+        }
+        
+        viewModel.onTransfer = { [weak self] response in
+            guard let self = self else { return }
+            
+            //Check response object & show alert on successful transaction and to make one more transfer
+            debugPrint("response - \(response)")
+        }
+    }
+}
+
+
 //MARK: - Actions
 extension MakeTransferViewController {
     
@@ -140,8 +179,12 @@ extension MakeTransferViewController {
             amountField.setFeedback(isAmountEmpty ? MakeTransferViewModel.amountFieldFeedback : "")
             return
         }
-
-        //viewModel.
+        
+        viewModel.makeTransfer(
+            accountNumber: payeeAccountNumber,
+            amount: payeeAmount,
+            description: descriptionField.text
+        )
     }
     
     @objc func stopEditing() {
@@ -150,6 +193,7 @@ extension MakeTransferViewController {
     
 }
 
+//MARK: - LFNonEditableTextFieldViewDelegate protocol implementation
 extension MakeTransferViewController: LFNonEditableTextFieldViewDelegate {
     
     func onFieldBeginEditing() {

@@ -139,8 +139,13 @@ extension SceneDelegate {
     }
     
     private func showMakeTransfer() {
+        guard let jwtToken = self.jwtToken else { return }
         
-        let makeTransferViewController = ModuleComposer.composeMakeTransfer()
+        let makeTransferViewController = ModuleComposer.composeMakeTransferWith(
+            url: URL(string: "https://green-thumb-64168.uc.r.appspot.com/transfer")!,
+            jwtToken: jwtToken,
+            client: client
+        )
         
         makeTransferViewController.onBack = { [weak self] in
             guard let self = self else { return }

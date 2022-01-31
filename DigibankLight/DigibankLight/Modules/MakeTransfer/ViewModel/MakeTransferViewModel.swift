@@ -20,23 +20,36 @@ final class MakeTransferViewModel {
         self.jwtToken = jwtToken
     }
     
-    func makeTransfer() {
-        onLoadingStateChange?(true)
-        service.transfer(jwtToken: jwtToken) { [weak self] result in
-            guard let self = self else { return }
+    func makeTransfer(
+        accountNumber: String,
+        amount: String,
+        description: String? = nil) {
+            guard let amountAsInt = Int(amount) else {
+                self.onError?("Amount must be an integer")
+                return
+            }
             
-            self.onLoadingStateChange?(false)
-            
-            switch result {
-            case let .success(response):
-                self.onTransfer?(response)
+            onLoadingStateChange?(true)
+            service.transfer(
+            accountNumber: accountNumber,
+            amount: amountAsInt,
+            description: description,
+            jwtToken: jwtToken) { [weak self] result in
                 
-            case let .failure(error):
-                self.onError?(error.localizedDescription)
+                guard let self = self else { return }
+                                
+                self.onLoadingStateChange?(false)
+                
+                switch result {
+                case let .success(response):
+                    self.onTransfer?(response)
+                    
+                case let .failure(error):
+                    self.onError?(error.localizedDescription)
+                }
+                
             }
         }
-    }
-
 }
 
 //MARK: - Strings

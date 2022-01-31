@@ -29,8 +29,13 @@ final class ModuleComposer {
         DashboardViewController()
     }
     
-    static func composeMakeTransfer() -> MakeTransferViewController {
-        MakeTransferViewController()
+    static func composeMakeTransferWith(
+        url: URL,
+        jwtToken: String,
+        client: HTTPClient) -> MakeTransferViewController {
+        let service = MakeTransferService(url: url, client: client)
+        let viewModel = MakeTransferViewModel(service: service, jwtToken: jwtToken)
+        return MakeTransferViewController(viewModel: viewModel)
     }
     
     static func composePayeesWith(
