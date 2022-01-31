@@ -28,6 +28,11 @@
 "make_transfer_action_title" = "Make Transfer";
 "goto_dashboard_action_title" = "Cancel";
 
+//Balance
+"you_have" = "You have";
+"account_no" = "Account No";
+"account_holder" = "Account Holder";
+
 //Payees
 "payees_title" = "Payees";
 

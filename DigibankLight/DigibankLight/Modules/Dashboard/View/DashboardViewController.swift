@@ -23,6 +23,8 @@ class DashboardViewController: BaseViewController {
         return tableView
     }()
 
+    private lazy var balanceView = BalanceView(frame: .init(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 240.0))
+
 
     private let viewModel: DashboardViewModel
     
@@ -45,7 +47,7 @@ class DashboardViewController: BaseViewController {
         setupUI()
         viewModel.loadDashboard()
     }
-    
+        
     override func setupUI() {
         super.setupUI()
        
@@ -54,8 +56,8 @@ class DashboardViewController: BaseViewController {
         setupTableView()
         setupRefreshControl()
         bindViewModelEvents()
-        tableView.register(TransactionTableViewCell.self, forCellReuseIdentifier: "TransactionTableViewCell")
-        tableView.register(TransacationsGroupTableViewCell.self, forCellReuseIdentifier: "TransacationsGroupTableViewCell")
+        registerTableViewCells()
+        setupTableViewHeader()
     }
 }
 
@@ -94,6 +96,24 @@ extension DashboardViewController {
             action: #selector(refresh),
             for: .valueChanged)
         tableView.refreshControl = refreshControler
+    }
+    
+    private func registerTableViewCells() {
+        tableView.register(
+            TransactionTableViewCell.self,
+            forCellReuseIdentifier: "TransactionTableViewCell"
+        )
+        tableView.register(
+            TransacationsGroupTableViewCell.self,
+            forCellReuseIdentifier: "TransacationsGroupTableViewCell"
+        )
+    }
+
+    private func setupTableViewHeader() {
+        tableView.tableHeaderView = balanceView
+        balanceView.balanceLabel.text = "SGD 21,421.43"
+        balanceView.accountNumberValueLabel.text = "3213-321-9923"
+        balanceView.accountHolderValueLabel.text = "Donal Trump"
     }
 }
 

@@ -28,6 +28,7 @@
 		E67B417F27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */; };
 		E67B418227A7DD10003D3B87 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418127A7DD10003D3B87 /* TransactionTableViewCell.swift */; };
 		E67B418427A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418327A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift */; };
+		E67B418627A7FDB2003D3B87 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418527A7FDB2003D3B87 /* BalanceView.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */; };
@@ -107,6 +108,7 @@
 		E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicatorExtension.swift"; sourceTree = "<group>"; };
 		E67B418127A7DD10003D3B87 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		E67B418327A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransacationsGroupTableViewCell.swift; sourceTree = "<group>"; };
+		E67B418527A7FDB2003D3B87 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextFieldView.swift; sourceTree = "<group>"; };
@@ -298,10 +300,19 @@
 		E67B418027A7DD02003D3B87 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				E67B418727A7FDB5003D3B87 /* TableViewCell */,
+				E67B418527A7FDB2003D3B87 /* BalanceView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		E67B418727A7FDB5003D3B87 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
 				E67B418127A7DD10003D3B87 /* TransactionTableViewCell.swift */,
 				E67B418327A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift */,
 			);
-			path = CustomViews;
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
@@ -818,6 +829,7 @@
 				E68B7C8927A42D1300CC8E43 /* LFTextFieldView.swift in Sources */,
 				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
 				E68B7CC427A5579A00CC8E43 /* HTTPClient.swift in Sources */,
+				E67B418627A7FDB2003D3B87 /* BalanceView.swift in Sources */,
 				E67B416027A66950003D3B87 /* MakeTransferService.swift in Sources */,
 				E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */,
 				E68B7CF227A654ED00CC8E43 /* BalanceServiceMapper.swift in Sources */,
