@@ -26,6 +26,7 @@
 		E67B417B27A684F3003D3B87 /* TransactionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B417A27A684F3003D3B87 /* TransactionsService.swift */; };
 		E67B417D27A6850E003D3B87 /* String+DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B417C27A6850E003D3B87 /* String+DateExtension.swift */; };
 		E67B417F27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */; };
+		E67B418227A7DD10003D3B87 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418127A7DD10003D3B87 /* TransactionTableViewCell.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */; };
@@ -103,6 +104,7 @@
 		E67B417A27A684F3003D3B87 /* TransactionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsService.swift; sourceTree = "<group>"; };
 		E67B417C27A6850E003D3B87 /* String+DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateExtension.swift"; sourceTree = "<group>"; };
 		E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicatorExtension.swift"; sourceTree = "<group>"; };
+		E67B418127A7DD10003D3B87 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextFieldView.swift; sourceTree = "<group>"; };
@@ -291,6 +293,14 @@
 			path = Transactions;
 			sourceTree = "<group>";
 		};
+		E67B418027A7DD02003D3B87 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E67B418127A7DD10003D3B87 /* TransactionTableViewCell.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +468,7 @@
 		E68B7CB727A531C700CC8E43 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E67B418027A7DD02003D3B87 /* CustomViews */,
 				E68B7C9127A4E47700CC8E43 /* DashboardViewController.swift */,
 			);
 			path = View;
@@ -813,6 +824,7 @@
 				E68B7CE327A6356C00CC8E43 /* RegistrationService.swift in Sources */,
 				E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */,
 				E68B7CB527A5301400CC8E43 /* NSLocalizedString+Extension.swift in Sources */,
+				E67B418227A7DD10003D3B87 /* TransactionTableViewCell.swift in Sources */,
 				E67B417B27A684F3003D3B87 /* TransactionsService.swift in Sources */,
 				E68B7C9D27A511E600CC8E43 /* LFNonEditableTextFieldView.swift in Sources */,
 				E68B7CD827A56A5800CC8E43 /* LoginResponse.swift in Sources */,
