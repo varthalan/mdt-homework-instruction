@@ -11,6 +11,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var jwtToken: String?
     var username: String?
 
+    var payeeSelectedAction: ((String, String) -> Void)?
+    
     let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     
     let loginURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com/login")!
@@ -20,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private lazy var navigationController = UINavigationController(
         rootViewController: loginViewController)
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         
@@ -137,6 +139,7 @@ extension SceneDelegate {
     }
     
     private func showMakeTransfer() {
+        
         let makeTransferViewController = ModuleComposer.composeMakeTransfer()
         
         makeTransferViewController.onBack = { [weak self] in
@@ -144,10 +147,11 @@ extension SceneDelegate {
             
             self.pop()
         }
-        
-        makeTransferViewController.onPayee = { [weak self] in
+            
+        makeTransferViewController.onPayee = { [weak self] action in
             guard let self = self else { return }
             
+            self.payeeSelectedAction = action
             self.showPayees()
         }
         
@@ -155,14 +159,29 @@ extension SceneDelegate {
     }
     
     private func showPayees() {
-        let payeesViewController = ModuleComposer.composePayees()
-        payeesViewController.modalPresentationStyle = .fullScreen
-        payeesViewController.onBack = { [weak self] in
+        guard let jwtToken = self.jwtToken else { return }
+        
+        let payeesViewController = ModuleComposer.composePayeesWith(
+            url: URL(string: "https://green-thumb-64168.uc.r.appspot.com/payees")!,
+            jwtToken: jwtToken,
+            client: client)
+        
+        payeesViewController.onCancel = { [weak self] in
             guard let self = self else { return }
+            
             self.dismiss(payeesViewController)
         }
         
-        present(payeesViewController)
+        payeesViewController.onDone = { [weak self] payeeName, payeeAccountNumber in
+            guard let self = self else { return }
+                        
+            self.payeeSelectedAction?(payeeName, payeeAccountNumber)
+            self.dismiss(payeesViewController)
+        }
+        
+        let navigationController = UINavigationController(rootViewController: payeesViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController)
     }
 }
 

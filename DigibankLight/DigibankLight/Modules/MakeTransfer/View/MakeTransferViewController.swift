@@ -32,11 +32,20 @@ class MakeTransferViewController: BaseViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    var payeeName: String = "" {
+        willSet {
+            payeeField.setText(newValue)
+        }
+    }
+    
+    var payeeAccountNumber: String = ""
 
+    typealias PayeeSelected = ((String, String) -> Void)
     
     var onBack: (() -> Void)?
-    var onPayee: (() -> Void)?
-
+    var onPayee: ((PayeeSelected?) -> Void)?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,6 +62,7 @@ class MakeTransferViewController: BaseViewController {
         setupAmountField()
         setupDescriptionField()
     }
+    
 }
 
 //MARK: - Setup
@@ -129,6 +139,9 @@ extension MakeTransferViewController {
 extension MakeTransferViewController: LFNonEditableTextFieldViewDelegate {
     
     func onFieldBeginEditing() {
-        onPayee?()
+        onPayee?() { payeeName, payeeAccountNumber in
+            self.payeeName = payeeName
+            self.payeeAccountNumber = payeeAccountNumber
+        }
     }
 }

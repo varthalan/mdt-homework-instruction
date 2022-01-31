@@ -33,7 +33,15 @@ final class ModuleComposer {
         MakeTransferViewController()
     }
     
-    static func composePayees() -> PayeesViewController {
-        PayeesViewController()
+    static func composePayeesWith(
+        url: URL,
+        jwtToken: String,
+        client: HTTPClient) -> PayeesViewController {
+            let service = PayeesService(
+                url: url,
+                client: client)
+        let viewModel = PayeesViewModel(service: service, jwtToken: jwtToken)
+            
+        return PayeesViewController(viewModel: viewModel)
     }
 }
