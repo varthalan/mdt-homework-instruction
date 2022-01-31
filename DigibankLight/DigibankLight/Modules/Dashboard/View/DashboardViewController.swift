@@ -169,7 +169,6 @@ extension DashboardViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let (_, transactions) = viewModel.groupTransactions(at:section)
-        debugPrint("transactions.count + 1 - \(transactions.count + 1)")
         return transactions.count + 1
     }
     
@@ -180,6 +179,7 @@ extension DashboardViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
+            cell.selectionStyle = .none
             cell.groupNameLabel.text = groupName
             
             return cell
@@ -187,10 +187,8 @@ extension DashboardViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell") as? TransactionTableViewCell else {
                 return UITableViewCell()
             }
-            
-            cell.layer.cornerRadius = 30
-            cell.clipsToBounds = true
-                        
+                       
+            cell.selectionStyle = .none
             let transaction = transactions[indexPath.row - 1]
             cell.accountNameLabel.text = transaction.accountName
             cell.accountNumberLabel.text = transaction.accountNumber
@@ -207,7 +205,6 @@ extension DashboardViewController: UITableViewDataSource {
 extension DashboardViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = indexPath.row == 0 ? 30.0 : 64.0
-        return height
+        64.0
     }
 }

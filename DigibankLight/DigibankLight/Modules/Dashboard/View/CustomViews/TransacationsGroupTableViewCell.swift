@@ -43,8 +43,8 @@ extension TransacationsGroupTableViewCell {
         NSLayoutConstraint.activate([
             groupNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32.0),
             groupNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32.0),
-            groupNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4.0),
-            groupNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 4.0)
+            groupNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16.0),
+            groupNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12.0)
         ])
     }
 }

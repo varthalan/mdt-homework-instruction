@@ -9,8 +9,9 @@ class TransactionTableViewCell: UITableViewCell {
     
     private(set) var accountNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .black
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -19,6 +20,7 @@ class TransactionTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = .gray
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -62,7 +64,7 @@ extension TransactionTableViewCell {
             accountNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32.0),
             accountNameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5, constant: -64.0),
             accountNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4.0),
-            accountNameLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.5)
+            accountNameLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6, constant: -8.0)
         ])
     }
 
@@ -72,7 +74,7 @@ extension TransactionTableViewCell {
             accountNumberLabel.leadingAnchor.constraint(equalTo: accountNameLabel.leadingAnchor),
             accountNumberLabel.widthAnchor.constraint(equalToConstant: 120.0),
             accountNumberLabel.topAnchor.constraint(equalTo: accountNameLabel.bottomAnchor),
-            accountNumberLabel.heightAnchor.constraint(equalTo: accountNameLabel.heightAnchor)
+            accountNumberLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.4, constant: -8.0)
         ])
     }
 
@@ -81,8 +83,8 @@ extension TransactionTableViewCell {
         NSLayoutConstraint.activate([
             amountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32.0),
             amountLabel.leadingAnchor.constraint(equalTo: accountNameLabel.trailingAnchor),
-            amountLabel.topAnchor.constraint(equalTo: accountNameLabel.topAnchor),
-            amountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0)
+            amountLabel.centerYAnchor.constraint(equalTo: accountNameLabel.centerYAnchor),
+            amountLabel.heightAnchor.constraint(equalTo: accountNameLabel.heightAnchor)
         ])
     }
 }
