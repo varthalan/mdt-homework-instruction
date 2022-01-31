@@ -203,6 +203,13 @@ extension DashboardViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Your transaction history"
+        }
+        return nil
+    }
+    
     private func transactionType(_ amount: String, transactionType: String) -> (amount: String, color: UIColor) {
         if transactionType == "received" {
             return (amount, .systemGreen)
@@ -210,6 +217,7 @@ extension DashboardViewController: UITableViewDataSource {
         
         return ("-" + amount, .systemGray)
     }
+    
 }
 
 
@@ -219,5 +227,9 @@ extension DashboardViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         64.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        section == 0 ? 84 : 0.0
     }
 }
