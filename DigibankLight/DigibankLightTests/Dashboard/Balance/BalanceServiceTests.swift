@@ -89,7 +89,7 @@ class BalanceServiceTests: XCTestCase {
     private func makeBalanceResponse(
         status: String,
         accountNumber: String? = nil,
-        balance: Int? = nil,
+        balance: Double? = nil,
         error: BalanceResponse.Error? = nil
     ) -> (response: BalanceResponse, json: [String: Any]) {
         let response = BalanceResponse(

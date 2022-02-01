@@ -17,7 +17,7 @@ final class BalanceServiceMapper {
         
         private let status: String
         private let accountNo: String?
-        private let balance: Int?
+        private let balance: Double?
         private let error: Error?
         
         var response: BalanceResponse {

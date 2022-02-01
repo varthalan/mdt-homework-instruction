@@ -24,7 +24,7 @@ final class DashboardViewModel {
     var balance: Balance? {
         guard let balanceResponse = balanceResponse,
               let balance = balanceResponse.balance,
-              let accountBalance = convertAmount(balance, prefixCurrency: true),
+              let accountBalance = convertAmount(Int(balance), prefixCurrency: true),
               let accountNumber = balanceResponse.accountNumber else {
             return nil
         }

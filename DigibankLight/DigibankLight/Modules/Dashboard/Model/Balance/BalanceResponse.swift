@@ -14,6 +14,6 @@ struct BalanceResponse: Equatable {
     
     let status: String
     let accountNumber: String?
-    let balance: Int?
+    let balance: Double?
     let error: Error?
 }
