@@ -15,9 +15,11 @@ final class DashboardViewModel {
     private var balanceResponse: BalanceResponse?
     private var anyError: Error?
     
-    var onLoadingStateChange: ((Bool) -> Void)?
+    typealias Observer<T> = (T) -> Void
+    
+    var onLoadingStateChange: Observer<Bool>?
     var onDashboardLoad: (()-> Void)?
-    var onError: ((String) -> Void)?
+    var onError: Observer<String>?
     
     typealias Balance = (accountBalance: String, accountNumber: String, accountHolder: String)
     
