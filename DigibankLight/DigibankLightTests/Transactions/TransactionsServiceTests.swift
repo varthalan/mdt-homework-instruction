@@ -105,7 +105,7 @@ class TransactionsServiceTests: XCTestCase {
     
     private func makeTransaction(
         transactionId: String,
-        amount: Int,
+        amount: Double,
         transactionDate: String,
         description: String,
         transactionType: String,

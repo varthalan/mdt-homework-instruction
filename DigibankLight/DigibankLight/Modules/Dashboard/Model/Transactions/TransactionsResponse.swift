@@ -9,7 +9,7 @@ struct TransactionsResponse: Equatable {
     
     struct Transaction: Equatable {
         let transactionId: String?
-        let amount: Int?
+        let amount: Double?
         let transactionDate: Date?
         let description: String?
         let transactionType: String?

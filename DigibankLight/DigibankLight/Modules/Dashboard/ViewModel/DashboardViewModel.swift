@@ -24,7 +24,7 @@ final class DashboardViewModel {
     var balance: Balance? {
         guard let balanceResponse = balanceResponse,
               let balance = balanceResponse.balance,
-              let accountBalance = convertAmount(Int(balance), prefixCurrency: true),
+              let accountBalance = convertAmount(Double(balance), prefixCurrency: true),
               let accountNumber = balanceResponse.accountNumber else {
             return nil
         }
@@ -61,7 +61,7 @@ final class DashboardViewModel {
         return (groupName, transactions)
     }
 
-    func convertAmount(_ amount: Int?, prefixCurrency: Bool = false) -> String? {
+    func convertAmount(_ amount: Double?, prefixCurrency: Bool = false) -> String? {
         guard let value = amount else { return nil }
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency

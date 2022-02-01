@@ -22,7 +22,7 @@ final class TransactionsServiceMapper {
             }
             
             let transactionId: String?
-            let amount: Int?
+            let amount: Double?
             let transactionDate: String?
             let description: String?
             let transactionType: String?
