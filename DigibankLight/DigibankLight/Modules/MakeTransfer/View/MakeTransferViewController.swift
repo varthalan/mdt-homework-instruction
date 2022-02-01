@@ -142,8 +142,12 @@ extension MakeTransferViewController {
             }
         }
         
-        viewModel.onError = {  _ in
-            //Display error message
+        viewModel.onError = {  [weak self] error in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.showError(message: error)
+            }
         }
         
         viewModel.onTransfer = { [weak self] response in

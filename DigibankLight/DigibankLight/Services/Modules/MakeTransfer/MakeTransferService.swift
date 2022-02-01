@@ -27,13 +27,11 @@ final class MakeTransferService {
         amount: Double,
         description: String? = nil,
         jwtToken: String,
-        completion: @escaping (Result) -> Void) {
-            
+        completion: @escaping (Result) -> Void) {            
             let params = createTransferParams(
                 accountNumber: accountNumber,
                 amount: amount,
                 description: description)
-            
             client.load(request: request(with: params, jwtToken: jwtToken)) { result in
                 switch result {
                 case let .success(value):

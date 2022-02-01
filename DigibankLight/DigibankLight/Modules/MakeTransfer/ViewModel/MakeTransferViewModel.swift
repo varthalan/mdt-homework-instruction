@@ -42,7 +42,13 @@ final class MakeTransferViewModel {
                 
                 switch result {
                 case let .success(response):
-                    self.onTransfer?(response)
+                    if let errorMessage = response.errorMessage {
+                        self.onError?(errorMessage)
+                    } else if let errorMessage = response.error?.message {
+                        self.onError?(errorMessage)
+                    } else {
+                        self.onTransfer?(response)
+                    }
                     
                 case let .failure(error):
                     self.onError?(error.localizedDescription)

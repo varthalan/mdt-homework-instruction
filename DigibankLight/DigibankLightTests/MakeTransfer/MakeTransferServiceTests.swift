@@ -92,6 +92,7 @@ class MakeTransferServiceTests: XCTestCase {
         amount: Double? = nil,
         description: String? = nil,
         accountNumber: String? = nil,
+        errorMessage: String? = nil,
         error: MakeTransferResponse.Error? = nil
     ) -> (response: MakeTransferResponse, json: [String: Any]) {
         let response = MakeTransferResponse(
@@ -100,6 +101,7 @@ class MakeTransferServiceTests: XCTestCase {
             amount: amount,
             description: description,
             accountNumber: accountNumber,
+            errorMessage: errorMessage,
             error: .init(
                 name: error?.name,
                 message: error?.message,
