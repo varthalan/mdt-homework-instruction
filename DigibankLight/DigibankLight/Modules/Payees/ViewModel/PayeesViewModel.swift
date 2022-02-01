@@ -14,7 +14,6 @@ final class PayeesViewModel {
     var onLoadingStateChange: Observer<Bool>?
     var onPayees: Observer<[PayeesResponse.Payee]>?
     var onError: Observer<String>?
-
     
     init(service: PayeesService, jwtToken: String) {
         self.service = service
