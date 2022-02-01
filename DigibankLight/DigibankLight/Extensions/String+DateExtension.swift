@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     
-    func toUniqueDate() -> Date? {
+    func shortDate() -> Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         formatter.locale = Locale(identifier: "en_GB")

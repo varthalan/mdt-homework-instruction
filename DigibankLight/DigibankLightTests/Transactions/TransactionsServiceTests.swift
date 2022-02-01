@@ -115,7 +115,7 @@ class TransactionsServiceTests: XCTestCase {
         TransactionsResponse.Transaction(
             transactionId: transactionId,
             amount: amount,
-            transactionDate: transactionDate.toDate(),
+            transactionDate: transactionDate.shortDate(),
             description: description,
             transactionType: transactionType,
             accountNumber: accountNumber,

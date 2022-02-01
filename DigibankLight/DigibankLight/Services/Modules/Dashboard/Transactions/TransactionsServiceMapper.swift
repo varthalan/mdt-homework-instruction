@@ -58,8 +58,7 @@ final class TransactionsServiceMapper {
                 return TransactionsResponse.Transaction(
                     transactionId: transaction.transactionId,
                     amount: transaction.amount,
-                    //transactionDate: transaction.transactionDate?.toDate(),
-                    transactionDate: transaction.transactionDate?.toUniqueDate(),
+                    transactionDate: transaction.transactionDate?.shortDate(),
                     description: transaction.description,
                     transactionType: transaction.transactionType,
                     accountNumber: accountNumber,
