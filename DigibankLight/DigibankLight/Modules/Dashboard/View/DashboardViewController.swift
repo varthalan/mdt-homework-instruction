@@ -23,7 +23,15 @@ class DashboardViewController: BaseViewController {
         return tableView
     }()
 
-    private lazy var balanceView = BalanceView(frame: .init(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 240.0))
+    private lazy var tableViewSectionHeader: UILabel = {
+        let label = UILabel(frame: .init(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44))
+        label.textColor = .black
+        label.text = DashboardViewModel.yourTransactionHistory
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        return label
+    }()
+    
+    private lazy var balanceView = BalanceView(frame: .init(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 255.0))
 
 
     private let viewModel: DashboardViewModel
@@ -239,13 +247,13 @@ extension DashboardViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            return "Your transaction history"
+            return tableViewSectionHeader
         }
         return nil
     }
-    
+        
     private func transactionType(_ amount: String, transactionType: String) -> (amount: String, color: UIColor) {
         if transactionType == "received" {
             return (amount, .systemGreen)
@@ -266,6 +274,6 @@ extension DashboardViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        section == 0 ? 84 : 0.0
+        section == 0 ? 64 : 0.0
     }
 }

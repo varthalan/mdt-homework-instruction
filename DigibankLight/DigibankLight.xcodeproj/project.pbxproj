@@ -303,8 +303,8 @@
 		E67B418027A7DD02003D3B87 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				E67B418F27A8ED9C003D3B87 /* BalanceCard */,
 				E67B418727A7FDB5003D3B87 /* TableViewCell */,
-				E67B418527A7FDB2003D3B87 /* BalanceView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -340,6 +340,14 @@
 				E67B418D27A8DC35003D3B87 /* Mapper.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		E67B418F27A8ED9C003D3B87 /* BalanceCard */ = {
+			isa = PBXGroup;
+			children = (
+				E67B418527A7FDB2003D3B87 /* BalanceView.swift */,
+			);
+			path = BalanceCard;
 			sourceTree = "<group>";
 		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {

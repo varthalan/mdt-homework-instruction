@@ -14,6 +14,7 @@
 //Dashboard
 "logout_button_title" = "Logout";
 "make_transfer_button_title" = "Make Transfer";
+"your_transaction_history" = "Your transaction history";
 
 //Transfer
 "transfer_title" = "Transfer";

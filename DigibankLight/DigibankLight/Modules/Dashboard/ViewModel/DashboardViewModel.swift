@@ -165,6 +165,10 @@ extension DashboardViewModel {
     static var makeTransferButtonTitle: String {
         localize("make_transfer_button_title")
     }
+    
+    static var yourTransactionHistory: String {
+        localize("your_transaction_history")
+    }
 }
 
 extension Date {

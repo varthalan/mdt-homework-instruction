@@ -131,7 +131,7 @@ class BalanceView: UIView {
         NSLayoutConstraint.activate([
             accountNumberLabel.leadingAnchor.constraint(equalTo: balanceLabel.leadingAnchor),
             accountNumberLabel.widthAnchor.constraint(equalToConstant: 100),
-            accountNumberLabel.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 10.0),
+            accountNumberLabel.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 15.0),
             accountNumberLabel.heightAnchor.constraint(equalToConstant: 20.0)
         ])
     }
@@ -151,7 +151,7 @@ class BalanceView: UIView {
         NSLayoutConstraint.activate([
             accountHolderLabel.leadingAnchor.constraint(equalTo: accountNumberValueLabel.leadingAnchor),
             accountHolderLabel.widthAnchor.constraint(equalToConstant: 120.0),
-            accountHolderLabel.topAnchor.constraint(equalTo: accountNumberValueLabel.bottomAnchor, constant: 10.0),
+            accountHolderLabel.topAnchor.constraint(equalTo: accountNumberValueLabel.bottomAnchor, constant: 15.0),
             accountHolderLabel.heightAnchor.constraint(equalToConstant: 20.0)
         ])
     }
@@ -168,7 +168,7 @@ class BalanceView: UIView {
     
     private func setupRoundedCorners() {
         let maskLayer = CAShapeLayer()
-        let frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width * 0.75, height: 240)
+        let frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width * 0.75, height: 255.0)
         maskLayer.frame = frame
         maskLayer.path = UIBezierPath(
             roundedRect: frame,
