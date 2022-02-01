@@ -15,14 +15,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCBC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tx3-m0-cf8">
-                                <rect key="frame" x="138.5" y="384" width="137" height="58"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCBC Bank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tx3-m0-cf8">
+                                <rect key="frame" x="79.5" y="384" width="255" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="250" constant="132" id="Uzn-k8-vBX"/>
                                     <constraint firstAttribute="height" constant="58" id="ofo-yo-Aw7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.80392156859999997" green="0.16862745100000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Digibank Light" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zss-iY-Tz1">
@@ -32,16 +32,42 @@
                                     <constraint firstAttribute="height" constant="40" id="vkj-xm-Pa9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.80392156859999997" green="0.16862745100000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCBC Bank. All Rights Reserved." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7L-XF-LC5">
+                                <rect key="frame" x="32" y="841" width="281.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="XSG-2o-crq"/>
+                                    <constraint firstAttribute="width" priority="250" constant="42" id="idv-lC-i6H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crq-Wd-wz7">
+                                <rect key="frame" x="347" y="839.5" width="35" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="250" constant="30" id="joe-Ch-YHG"/>
+                                    <constraint firstAttribute="height" constant="24" id="ksA-VC-dQ7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.80392156862745101" green="0.16862745098039217" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tx3-m0-cf8" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-40" id="4Hy-bM-fl3"/>
                             <constraint firstItem="tx3-m0-cf8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="5Sv-cl-Kmb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="s7L-XF-LC5" secondAttribute="trailing" symbolic="YES" id="7Kk-Qt-3Yf"/>
+                            <constraint firstItem="crq-Wd-wz7" firstAttribute="centerY" secondItem="s7L-XF-LC5" secondAttribute="centerY" id="8lQ-lA-sZr"/>
+                            <constraint firstItem="crq-Wd-wz7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s7L-XF-LC5" secondAttribute="trailing" constant="8" symbolic="YES" id="HUS-Hb-uKk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s7L-XF-LC5" secondAttribute="bottom" id="Rr7-r7-6n9"/>
                             <constraint firstItem="Zss-iY-Tz1" firstAttribute="top" secondItem="tx3-m0-cf8" secondAttribute="bottom" id="TLy-vQ-sPi"/>
+                            <constraint firstItem="s7L-XF-LC5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="blz-kg-sVT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="crq-Wd-wz7" secondAttribute="trailing" constant="32" id="fMe-SI-uWf"/>
                             <constraint firstItem="Zss-iY-Tz1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="yXe-Pv-vxf"/>
                         </constraints>
                     </view>
