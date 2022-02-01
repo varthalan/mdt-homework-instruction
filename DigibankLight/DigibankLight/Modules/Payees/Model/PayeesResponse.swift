@@ -2,8 +2,6 @@
 //  PayeesResponse.swift
 //  DigibankLight
 //
-//  Created by Nagaraju on 30/1/22.
-//
 
 import Foundation
 
