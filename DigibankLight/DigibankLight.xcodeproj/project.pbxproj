@@ -354,6 +354,33 @@
 			path = BalanceCard;
 			sourceTree = "<group>";
 		};
+		E67B419527A95244003D3B87 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C8B27A4D86700CC8E43 /* UIButton+Styling.swift */,
+				E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */,
+				E67B419327A91EE4003D3B87 /* UIViewController+ErrorMessageExtensions.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E67B419627A95251003D3B87 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E67B417C27A6850E003D3B87 /* String+DateExtension.swift */,
+				E67B419127A91E80003D3B87 /* Date+StringExtension.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E67B419727A95264003D3B87 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,12 +432,9 @@
 		E68B7C8A27A4D85500CC8E43 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E68B7C8B27A4D86700CC8E43 /* UIButton+Styling.swift */,
-				E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */,
-				E67B417C27A6850E003D3B87 /* String+DateExtension.swift */,
-				E67B419127A91E80003D3B87 /* Date+StringExtension.swift */,
-				E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */,
-				E67B419327A91EE4003D3B87 /* UIViewController+ErrorMessageExtensions.swift */,
+				E67B419727A95264003D3B87 /* Resources */,
+				E67B419627A95251003D3B87 /* Utilities */,
+				E67B419527A95244003D3B87 /* UI */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
