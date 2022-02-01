@@ -16,10 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     
-    let loginURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com/login")!
-    let registrationURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com/register")!
-    
-    private lazy var loginViewController = ModuleComposer.composeLoginWith(url: loginURL , client: client)
+    private lazy var baseURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com")!
+        
+    private lazy var loginViewController = ModuleComposer.composeLoginWith(
+        url: DigibankEndPoints.login.url(baseURL: baseURL),
+        client: client
+    )
     
     private lazy var navigationController = UINavigationController(
         rootViewController: loginViewController)
@@ -102,7 +104,11 @@ extension SceneDelegate {
 extension SceneDelegate {
     
     private func showRegistration() {
-        let registrationViewController = ModuleComposer.composeRegistrationWith(registrationURL: registrationURL, loginURL: loginURL, client: client)
+        let registrationViewController = ModuleComposer.composeRegistrationWith(
+            registrationURL: DigibankEndPoints.register.url(baseURL: baseURL),
+            loginURL: DigibankEndPoints.login.url(baseURL: baseURL),
+            client: client
+        )
         
         registrationViewController.onBack = { [weak self] in
             guard let self = self else { return }
@@ -126,8 +132,8 @@ extension SceneDelegate {
               let accountHolderName = username else { return }
         
         let dashboardViewController = ModuleComposer.composeDashboardWith(
-            balanceURL: URL(string: "https://green-thumb-64168.uc.r.appspot.com/balance")!,
-            transactionsURL: URL(string: "https://green-thumb-64168.uc.r.appspot.com/transactions")!,
+            balanceURL: DigibankEndPoints.balance.url(baseURL: baseURL),
+            transactionsURL: DigibankEndPoints.transactions.url(baseURL: baseURL),
             client: client,
             accountHolderName: accountHolderName,
             jwtToken: jwtToken
@@ -153,7 +159,7 @@ extension SceneDelegate {
         guard let jwtToken = self.jwtToken else { return }
         
         let makeTransferViewController = ModuleComposer.composeMakeTransferWith(
-            url: URL(string: "https://green-thumb-64168.uc.r.appspot.com/transfer")!,
+            url: DigibankEndPoints.transfer.url(baseURL: baseURL),
             jwtToken: jwtToken,
             client: client
         )
@@ -179,7 +185,7 @@ extension SceneDelegate {
         guard let jwtToken = self.jwtToken else { return }
         
         let payeesViewController = ModuleComposer.composePayeesWith(
-            url: URL(string: "https://green-thumb-64168.uc.r.appspot.com/payees")!,
+            url: DigibankEndPoints.payees.url(baseURL: baseURL),
             jwtToken: jwtToken,
             client: client)
         

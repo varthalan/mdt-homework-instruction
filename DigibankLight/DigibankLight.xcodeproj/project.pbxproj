@@ -29,6 +29,7 @@
 		E67B418227A7DD10003D3B87 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418127A7DD10003D3B87 /* TransactionTableViewCell.swift */; };
 		E67B418427A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418327A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift */; };
 		E67B418627A7FDB2003D3B87 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418527A7FDB2003D3B87 /* BalanceView.swift */; };
+		E67B418A27A8CC55003D3B87 /* DigibankEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418927A8CC55003D3B87 /* DigibankEndPoints.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */; };
@@ -109,6 +110,7 @@
 		E67B418127A7DD10003D3B87 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		E67B418327A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransacationsGroupTableViewCell.swift; sourceTree = "<group>"; };
 		E67B418527A7FDB2003D3B87 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
+		E67B418927A8CC55003D3B87 /* DigibankEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigibankEndPoints.swift; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextFieldView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		E64AEB8B27A42876000C1884 /* DigibankLight */ = {
 			isa = PBXGroup;
 			children = (
+				E67B418827A8CC2F003D3B87 /* EndPoints */,
 				E68B7CC227A5576E00CC8E43 /* Services */,
 				E68B7C8727A42CEF00CC8E43 /* CustomViews */,
 				E68B7C8427A42C1A00CC8E43 /* UIComposer */,
@@ -313,6 +316,14 @@
 				E67B418327A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		E67B418827A8CC2F003D3B87 /* EndPoints */ = {
+			isa = PBXGroup;
+			children = (
+				E67B418927A8CC55003D3B87 /* DigibankEndPoints.swift */,
+			);
+			path = EndPoints;
 			sourceTree = "<group>";
 		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
@@ -837,6 +848,7 @@
 				E67B418427A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift in Sources */,
 				E68B7CA127A5168A00CC8E43 /* LFTextView.swift in Sources */,
 				E68B7CB927A531E200CC8E43 /* DashboardViewModel.swift in Sources */,
+				E67B418A27A8CC55003D3B87 /* DigibankEndPoints.swift in Sources */,
 				E68B7CE327A6356C00CC8E43 /* RegistrationService.swift in Sources */,
 				E68B7C9827A4FF0B00CC8E43 /* BaseViewController.swift in Sources */,
 				E68B7CB527A5301400CC8E43 /* NSLocalizedString+Extension.swift in Sources */,
