@@ -35,8 +35,7 @@ extension UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: container.centerYAnchor),
             activityIndicator.heightAnchor.constraint(equalToConstant: 30.0),
             activityIndicator.widthAnchor.constraint(equalToConstant: 30.0)
-        ])
-        
+        ])        
     }
     
     func stopLoading() {
