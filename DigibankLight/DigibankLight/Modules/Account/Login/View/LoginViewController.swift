@@ -150,8 +150,12 @@ extension LoginViewController {
             }
         }
         
-        viewModel.onLoginError = { error in
-            debugPrint("do something with - \(error).")
+        viewModel.onLoginError = { [weak self] error in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.showError(message: error)
+            }
         }
     }
 }
