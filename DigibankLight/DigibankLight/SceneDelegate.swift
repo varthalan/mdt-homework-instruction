@@ -166,6 +166,7 @@ extension SceneDelegate {
             guard let self = self else { return }
             
             self.loginRefreshAction?()
+            self.resetSession()
             self.popToRoot()
         }
                 
@@ -229,5 +230,13 @@ extension SceneDelegate {
         let navigationController = UINavigationController(rootViewController: payeesViewController)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController)
+    }
+    
+    private func resetSession() {
+        username = nil
+        jwtToken = nil
+        payeeSelectedAction = nil
+        dashboardRefreshAction = nil
+        loginRefreshAction = nil
     }
 }
