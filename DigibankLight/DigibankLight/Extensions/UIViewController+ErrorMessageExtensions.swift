@@ -22,7 +22,7 @@ extension UIViewController {
         NSLayoutConstraint.activate([
             container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
             container.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
-            container.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100.0),
+            container.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150.0),
             container.heightAnchor.constraint(equalToConstant: 60.0)
         ])
         
@@ -31,15 +31,18 @@ extension UIViewController {
         errorLabel.textColor = .systemRed
         errorLabel.textAlignment = .left
         errorLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        errorLabel.adjustsFontSizeToFitWidth = true
         container.addSubview(errorLabel)
+        errorLabel.numberOfLines = 0
+        errorLabel.lineBreakMode = .byWordWrapping
         errorLabel.text = message
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
             
         NSLayoutConstraint.activate([
             errorLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16.0),
             errorLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16.0),
-            errorLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 16.0),
-            errorLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -16.0)
+            errorLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 8.0),
+            errorLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -8.0)
         ])
 
         
