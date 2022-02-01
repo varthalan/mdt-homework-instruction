@@ -36,22 +36,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCBC Bank. All Rights Reserved." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7L-XF-LC5">
-                                <rect key="frame" x="32" y="841" width="281.5" height="21"/>
+                                <rect key="frame" x="32" y="841" width="234" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="XSG-2o-crq"/>
                                     <constraint firstAttribute="width" priority="250" constant="42" id="idv-lC-i6H"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crq-Wd-wz7">
-                                <rect key="frame" x="347" y="839.5" width="35" height="24"/>
+                                <rect key="frame" x="356" y="839.5" width="26" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="250" constant="30" id="joe-Ch-YHG"/>
                                     <constraint firstAttribute="height" constant="24" id="ksA-VC-dQ7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
