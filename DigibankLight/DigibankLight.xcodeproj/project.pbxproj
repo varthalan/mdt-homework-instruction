@@ -32,6 +32,7 @@
 		E67B418A27A8CC55003D3B87 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418927A8CC55003D3B87 /* APIEndPoint.swift */; };
 		E67B418E27A8DC35003D3B87 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418D27A8DC35003D3B87 /* Mapper.swift */; };
 		E67B419227A91E80003D3B87 /* Date+StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B419127A91E80003D3B87 /* Date+StringExtension.swift */; };
+		E67B419427A91EE4003D3B87 /* UIViewController+ErrorMessageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B419327A91EE4003D3B87 /* UIViewController+ErrorMessageExtensions.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */; };
@@ -115,6 +116,7 @@
 		E67B418927A8CC55003D3B87 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
 		E67B418D27A8DC35003D3B87 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		E67B419127A91E80003D3B87 /* Date+StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StringExtension.swift"; sourceTree = "<group>"; };
+		E67B419327A91EE4003D3B87 /* UIViewController+ErrorMessageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorMessageExtensions.swift"; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextFieldView.swift; sourceTree = "<group>"; };
@@ -406,8 +408,9 @@
 				E68B7C8B27A4D86700CC8E43 /* UIButton+Styling.swift */,
 				E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */,
 				E67B417C27A6850E003D3B87 /* String+DateExtension.swift */,
-				E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */,
 				E67B419127A91E80003D3B87 /* Date+StringExtension.swift */,
+				E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */,
+				E67B419327A91EE4003D3B87 /* UIViewController+ErrorMessageExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				E68B7C9527A4E69D00CC8E43 /* MakeTransferViewController.swift in Sources */,
 				E67B417F27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift in Sources */,
 				E68B7CC127A5358700CC8E43 /* PayeesViewModel.swift in Sources */,
+				E67B419427A91EE4003D3B87 /* UIViewController+ErrorMessageExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
