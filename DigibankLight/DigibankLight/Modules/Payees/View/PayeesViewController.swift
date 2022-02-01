@@ -5,7 +5,6 @@
 
 import UIKit
 
-//class PayeesViewController: BaseViewController {
 class PayeesViewController: UIViewController {
     
     private let tableView: UITableView = {
