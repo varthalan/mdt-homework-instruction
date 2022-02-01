@@ -70,7 +70,7 @@ extension RegistrationViewController {
             usernameField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
             usernameField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
             usernameField.topAnchor.constraint(equalTo: view.topAnchor, constant: 170.0),
-            usernameField.heightAnchor.constraint(equalToConstant: 80.0)
+            usernameField.heightAnchor.constraint(equalToConstant: 84.0)
         ])
         usernameField.setHeader(RegistrationViewModel.usernameFieldTitle)
     }

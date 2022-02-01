@@ -87,7 +87,7 @@ extension MakeTransferViewController {
             payeeField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
             payeeField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
             payeeField.topAnchor.constraint(equalTo: view.topAnchor, constant: 170.0),
-            payeeField.heightAnchor.constraint(equalToConstant: 80.0)
+            payeeField.heightAnchor.constraint(equalToConstant: 84.0)
         ])
         payeeField.setHeader(MakeTransferViewModel.payeeFieldTitle)
     }
