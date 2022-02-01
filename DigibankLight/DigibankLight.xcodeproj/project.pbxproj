@@ -31,6 +31,7 @@
 		E67B418627A7FDB2003D3B87 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418527A7FDB2003D3B87 /* BalanceView.swift */; };
 		E67B418A27A8CC55003D3B87 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418927A8CC55003D3B87 /* APIEndPoint.swift */; };
 		E67B418E27A8DC35003D3B87 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418D27A8DC35003D3B87 /* Mapper.swift */; };
+		E67B419227A91E80003D3B87 /* Date+StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B419127A91E80003D3B87 /* Date+StringExtension.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */; };
@@ -113,6 +114,7 @@
 		E67B418527A7FDB2003D3B87 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		E67B418927A8CC55003D3B87 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
 		E67B418D27A8DC35003D3B87 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		E67B419127A91E80003D3B87 /* Date+StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StringExtension.swift"; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextFieldView.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				E68B7CB427A5301400CC8E43 /* NSLocalizedString+Extension.swift */,
 				E67B417C27A6850E003D3B87 /* String+DateExtension.swift */,
 				E67B417E27A68EE2003D3B87 /* UIViewController+ActivityIndicatorExtension.swift */,
+				E67B419127A91E80003D3B87 /* Date+StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -868,6 +871,7 @@
 				E68B7C8F27A4DD6D00CC8E43 /* RegistrationViewController.swift in Sources */,
 				E68B7CC427A5579A00CC8E43 /* HTTPClient.swift in Sources */,
 				E67B418627A7FDB2003D3B87 /* BalanceView.swift in Sources */,
+				E67B419227A91E80003D3B87 /* Date+StringExtension.swift in Sources */,
 				E67B416027A66950003D3B87 /* MakeTransferService.swift in Sources */,
 				E68B7CAD27A5298B00CC8E43 /* LoginViewModel.swift in Sources */,
 				E68B7CF227A654ED00CC8E43 /* BalanceServiceMapper.swift in Sources */,
