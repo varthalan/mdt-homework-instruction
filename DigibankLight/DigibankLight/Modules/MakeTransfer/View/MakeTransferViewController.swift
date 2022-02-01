@@ -156,7 +156,7 @@ extension MakeTransferViewController {
         }
     }
     
-    private func showAlert(amount: Int) {
+    private func showAlert(amount: Double) {
         let title = String(format: MakeTransferViewModel.successfulTransferAlertTitle, "$\(amount)", payeeName)
         let alert = UIAlertController(
             title: title,

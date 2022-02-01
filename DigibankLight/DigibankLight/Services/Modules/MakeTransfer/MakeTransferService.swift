@@ -13,7 +13,7 @@ final class MakeTransferService {
     
     private struct MakeTransferParams: Codable {
         let receipientAccountNo: String
-        let amount: Int
+        let amount: Double
         let description: String?
     }
     
@@ -24,7 +24,7 @@ final class MakeTransferService {
     
     func transfer(
         accountNumber: String,
-        amount: Int,
+        amount: Double,
         description: String? = nil,
         jwtToken: String,
         completion: @escaping (Result) -> Void) {
@@ -52,7 +52,7 @@ final class MakeTransferService {
     
     private func createTransferParams(
         accountNumber: String,
-        amount: Int,
+        amount: Double,
         description: String? = nil) -> MakeTransferParams {
             
             return MakeTransferParams(

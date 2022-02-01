@@ -15,7 +15,7 @@ struct MakeTransferResponse: Equatable {
     
     let status: String
     let transactionId: String?
-    let amount: Int?
+    let amount: Double?
     let description: String?
     let accountNumber: String?
     let error: Error?

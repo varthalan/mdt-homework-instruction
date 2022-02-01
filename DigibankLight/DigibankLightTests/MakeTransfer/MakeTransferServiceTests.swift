@@ -89,7 +89,7 @@ class MakeTransferServiceTests: XCTestCase {
     private func makeMakeTransferResponse(
         status: String,
         transactionId: String? = nil,
-        amount: Int? = nil,
+        amount: Double? = nil,
         description: String? = nil,
         accountNumber: String? = nil,
         error: MakeTransferResponse.Error? = nil

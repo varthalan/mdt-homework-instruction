@@ -24,7 +24,7 @@ final class MakeTransferViewModel {
         accountNumber: String,
         amount: String,
         description: String? = nil) {
-            guard let amountAsInt = Int(amount) else {
+            guard let amountAsDouble = Double(amount) else {
                 self.onError?("Amount must be an integer")
                 return
             }
@@ -32,7 +32,7 @@ final class MakeTransferViewModel {
             onLoadingStateChange?(true)
             service.transfer(
             accountNumber: accountNumber,
-            amount: amountAsInt,
+            amount: amountAsDouble,
             description: description,
             jwtToken: jwtToken) { [weak self] result in
                 

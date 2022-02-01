@@ -17,7 +17,7 @@ final class MakeTransferServiceMapper {
         
         private let status: String
         private let transactionId: String?
-        private let amount: Int?
+        private let amount: Double?
         private let description: String?
         private let recipientAccount: String?
         private let error: Error?
