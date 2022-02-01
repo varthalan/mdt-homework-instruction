@@ -27,6 +27,7 @@ final class RegistrationViewModel {
             switch result {
             case let .success(response):
                 if let error = response.error {
+                    self.onLoadingStateChange?(false)
                     self.onError?(error)
                 } else {
                     self.login(username: username, password: password)

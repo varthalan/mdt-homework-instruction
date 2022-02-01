@@ -57,6 +57,7 @@ final class RegistrationViewController: BaseViewController {
         setupUsernameField()
         setupPasswordField()
         setupConfirmPasswordField()
+        bindViewModelEvents()
     }
 }
 
@@ -130,12 +131,18 @@ extension RegistrationViewController {
             guard let self = self,
                   let jwtToken = response.jwtToken,
                   let username = response.username else { return }
-                        
-            self.onRegister?(username, jwtToken)
+
+            DispatchQueue.main.async {
+                self.onRegister?(username, jwtToken)
+            }
         }
         
-        viewModel.onError = { error in
-            debugPrint("do something with - \(error).")
+        viewModel.onError = { [weak self] error in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.showError(message: error)
+            }
         }
     }
 }
