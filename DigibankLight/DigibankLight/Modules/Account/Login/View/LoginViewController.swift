@@ -27,8 +27,10 @@ final class LoginViewController: BaseViewController {
     
     private let viewModel: LoginViewModel
     
+    typealias Refresh = () -> Void
+    
     var onRegister: (() -> Void)?
-    var onLogin: ((String, String) -> Void)?
+    var onLogin: ((String, String, Refresh?) -> Void)?
         
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -142,7 +144,10 @@ extension LoginViewController {
                   let jwtToken = response.jwtToken,
                   let username = response.username else { return }
                         
-            self.onLogin?(username, jwtToken)
+            self.onLogin?(username, jwtToken) { 
+                self.usernameField.setText("")
+                self.passwordField.setText("")
+            }
         }
         
         viewModel.onLoginError = { error in

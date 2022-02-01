@@ -12,7 +12,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var username: String?
 
     var payeeSelectedAction: ((String, String) -> Void)?
-    var refreshAction: ((Bool) -> Void)?
+    var dashboardRefreshAction: ((Bool) -> Void)?
+    var loginRefreshAction: (() -> Void)?
     
     let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     
@@ -109,11 +110,13 @@ extension SceneDelegate {
             self.showRegistration()
         }
         
-        loginViewController.onLogin = { [weak self] username, jwtToken in
+        loginViewController.onLogin = { [weak self] username, jwtToken, action in
             guard let self = self else { return }
             
             self.username = username
             self.jwtToken = jwtToken
+            self.loginRefreshAction = action
+            
             DispatchQueue.main.async {
                 self.showDashboard()
             }
@@ -162,13 +165,14 @@ extension SceneDelegate {
         dashboardViewController.onLogout = { [weak self] in
             guard let self = self else { return }
             
+            self.loginRefreshAction?()
             self.popToRoot()
         }
                 
         dashboardViewController.onMakeTransfer = { [weak self] action in
             guard let self = self else { return }
             
-            self.refreshAction = action
+            self.dashboardRefreshAction = action
             self.showMakeTransfer()
         }
         
@@ -187,7 +191,7 @@ extension SceneDelegate {
         makeTransferViewController.onBack = { [weak self] isRefreshNeeded in
             guard let self = self else { return }
             
-            self.refreshAction?(isRefreshNeeded)
+            self.dashboardRefreshAction?(isRefreshNeeded)
             self.pop()
         }
             
