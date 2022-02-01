@@ -141,7 +141,9 @@ extension DashboardViewController {
             guard let self = self else { return }
             
             DispatchQueue.main.async {
-                isLoading ? self.startLoading() : self.stopLoading()
+                if !(self.tableView.refreshControl?.isRefreshing ?? false) {
+                    isLoading ? self.startLoading() : self.stopLoading()
+                }
             }
         }
         
@@ -154,9 +156,14 @@ extension DashboardViewController {
         }
         
         viewModel.onDashboardLoad = { [weak self] in
-            guard let self = self else { return }
+            guard let self = self,
+                  let balance = self.viewModel.balance else { return }
                         
             DispatchQueue.main.async {
+                self.balanceView.balanceLabel.text = balance.accountBalance
+                self.balanceView.accountNumberValueLabel.text = balance.accountNumber
+                self.balanceView.accountHolderValueLabel.text = balance.accountHolder
+                
                 self.tableView.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
             }

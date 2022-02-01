@@ -11,11 +11,25 @@ final class DashboardViewModel {
     private let jwtToken: String
     
     private var transactionsResponse: TransactionsResponse?
+    private var balanceResponse: BalanceResponse?
     private var anyError: Error?
     
     var onLoadingStateChange: ((Bool) -> Void)?
     var onDashboardLoad: (()-> Void)?
     var onError: ((String) -> Void)?
+    
+    typealias Balance = (accountBalance: String, accountNumber: String, accountHolder: String)
+    
+    var balance: Balance? {
+        guard let balanceResponse = balanceResponse,
+              let balance = balanceResponse.balance,
+              let accountBalance = convertAmount(balance, prefixCurrency: true),
+              let accountNumber = balanceResponse.accountNumber else {
+            return nil
+        }
+
+        return (accountBalance, accountNumber, "Username")
+    }
     
     var transactions: [[Int: [String: Any]]] {
         guard let allTransactions = self.transactionsResponse?.transactions,
@@ -33,33 +47,6 @@ final class DashboardViewModel {
         self.transactionsService = transactionsService
         self.jwtToken = jwtToken
     }
-
-    func loadDashboard() {
-        onLoadingStateChange?(true)
-        loadTransactions()
-    }
-    
-    private func loadTransactions() {
-        transactionsService.load(token: jwtToken) { [weak self] result in
-            guard let self = self else { return }
-            
-            self.onLoadingStateChange?(false)
-            switch result {
-            case let .success(response):
-                if let error = response.error,
-                   let message = error.message {
-                    self.onError?(message)
-                } else {
-                    self.transactionsResponse = response
-                    self.onDashboardLoad?()
-                }
-                
-            case let  .failure(error):
-                self.onError?(error.localizedDescription)
-                
-            }
-        }
-    }
     
     func groupTransactions(at section: Int) -> (String, [TransactionsResponse.Transaction]) {
         guard let sectionTransactions = transactions[section] as? [Int: [String: Any]],
@@ -76,12 +63,70 @@ final class DashboardViewModel {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencySymbol = prefixCurrency ? "SGD" : ""
-        formatter.maximumFractionDigits = 2        
+        formatter.maximumFractionDigits = 2
         let number = NSNumber(value: value)
         guard let formattedNumber = formatter.string(from: number) else { return nil }
         return formattedNumber
     }
+
+    func loadDashboard() {
+        onLoadingStateChange?(true)
+        let dispatchGroup = DispatchGroup()
+        loadBalance(in: dispatchGroup)
+        loadTransactions(in: dispatchGroup)
+        notifyDispatchGroup(dispatchGroup)
+    }
     
+    private func loadBalance(in dispatchGroup: DispatchGroup) {
+        dispatchGroup.enter()
+        
+        balanceService.loadBalance(jwtToken: jwtToken) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case let .success(response):
+                self.balanceResponse = response
+                
+            case let .failure(error):
+                self.anyError = error
+            }
+            
+            dispatchGroup.leave()
+        }
+    }
+    
+    private func loadTransactions(in dispatchGroup: DispatchGroup) {
+        dispatchGroup.enter()
+        
+        transactionsService.load(token: jwtToken) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.onLoadingStateChange?(false)
+            switch result {
+            case let .success(response):
+                self.transactionsResponse = response
+                
+            case let  .failure(error):
+                self.anyError = error
+            }
+            
+            dispatchGroup.leave()
+        }
+    }
+    
+    private func notifyDispatchGroup(_ dispatchGroup: DispatchGroup) {
+        dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
+            guard let self = self else { return }
+            self.onLoadingStateChange?(false)
+            
+            if let error = self.anyError {
+                self.onError?(error.localizedDescription)
+            } else {
+                self.onDashboardLoad?()
+            }
+        }
+    }
+        
     private func sortedTransactions(_ transactions: [TransactionsResponse.Transaction]) -> [[Int: [String: Any]]]? {
         let groupedOptTransactions = Dictionary(grouping: transactions) { $0.transactionDate }
         
