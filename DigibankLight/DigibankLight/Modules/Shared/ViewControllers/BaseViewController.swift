@@ -28,6 +28,10 @@ class BaseViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    typealias Empty = () -> Void
+    
+    typealias Observer<T> = (T) -> Void
 
     override func viewDidLoad() {
         super.viewDidLoad()

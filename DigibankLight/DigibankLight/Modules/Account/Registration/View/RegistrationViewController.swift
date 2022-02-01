@@ -32,7 +32,7 @@ final class RegistrationViewController: BaseViewController {
 
     private let viewModel: RegistrationViewModel
     
-    var onBack: (() -> Void)?
+    var onBack: (Empty)?
     var onRegister: ((String, String) -> Void)?
     
     init(viewModel: RegistrationViewModel) {

@@ -41,8 +41,8 @@ class MakeTransferViewController: BaseViewController {
 
     typealias PayeeSelected = ((String, String) -> Void)
     
-    var onBack: ((Bool) -> Void)?
-    var onPayee: ((PayeeSelected?) -> Void)?
+    var onBack: (Observer<Bool>)?
+    var onPayee: (Observer<PayeeSelected?>)?
     
     private let viewModel: MakeTransferViewModel
     

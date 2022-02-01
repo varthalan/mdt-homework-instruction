@@ -38,8 +38,8 @@ class DashboardViewController: BaseViewController {
     
     typealias Refresh = ((Bool) -> Void)
     
-    var onLogout: (() -> Void)?
-    var onMakeTransfer: ((Refresh?) -> Void)?
+    var onLogout: (Empty)?
+    var onMakeTransfer: (Observer<Refresh?>)?
 
     init(viewModel: DashboardViewModel) {
         self.viewModel = viewModel

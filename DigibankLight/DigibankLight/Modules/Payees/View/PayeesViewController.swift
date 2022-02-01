@@ -19,9 +19,10 @@ class PayeesViewController: UIViewController {
     private var payees: [PayeesResponse.Payee]?
     private var selectedPayee: PayeesResponse.Payee?
     
-    var onCancel: (() -> Void)?
+    typealias Empty = () -> Void
+    
+    var onCancel: (Empty)?
     var onDone: ((String, String) -> Void)?
-
     
     init(viewModel: PayeesViewModel) {
         self.viewModel = viewModel

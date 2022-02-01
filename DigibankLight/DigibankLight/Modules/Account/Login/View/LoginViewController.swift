@@ -31,7 +31,7 @@ final class LoginViewController: BaseViewController {
     
     var onRegister: (() -> Void)?
     var onLogin: ((String, String, Refresh?) -> Void)?
-        
+    
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
