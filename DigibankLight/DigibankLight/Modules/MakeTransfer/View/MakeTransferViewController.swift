@@ -43,7 +43,7 @@ class MakeTransferViewController: BaseViewController {
 
     typealias PayeeSelected = ((String, String) -> Void)
     
-    var onBack: (() -> Void)?
+    var onBack: ((Bool) -> Void)?
     var onPayee: ((PayeeSelected?) -> Void)?
     
     private let viewModel: MakeTransferViewModel
@@ -171,7 +171,7 @@ extension MakeTransferViewController {
         ) { [weak self] action in
             guard let self = self else { return }
             
-            self.onBack?()
+            self.onBack?(true)
         }
         alert.addAction(dashBoardAction)
 
@@ -203,7 +203,7 @@ extension MakeTransferViewController {
 extension MakeTransferViewController {
     
     @objc func back(_ sender: AnyObject) {
-        onBack?()
+        onBack?(false)
     }
     
     @objc func transfer(_ sender: AnyObject) {

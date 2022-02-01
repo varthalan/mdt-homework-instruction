@@ -28,8 +28,10 @@ class DashboardViewController: BaseViewController {
 
     private let viewModel: DashboardViewModel
     
+    typealias Refresh = ((Bool) -> Void)
+    
     var onLogout: (() -> Void)?
-    var onMakeTransfer: (() -> Void)?
+    var onMakeTransfer: ((Refresh?) -> Void)?
 
     init(viewModel: DashboardViewModel) {
         self.viewModel = viewModel
@@ -57,7 +59,6 @@ class DashboardViewController: BaseViewController {
         setupRefreshControl()
         bindViewModelEvents()
         registerTableViewCells()
-        setupTableViewHeader()
     }
 }
 
@@ -110,7 +111,9 @@ extension DashboardViewController {
     }
 
     private func setupTableViewHeader() {
-        tableView.tableHeaderView = balanceView
+        if tableView.tableHeaderView == nil {
+            tableView.tableHeaderView = balanceView
+        }
     }
 }
 
@@ -139,7 +142,6 @@ extension DashboardViewController {
             
             DispatchQueue.main.async {
                 if !(self.tableView.refreshControl?.isRefreshing ?? false) {
-                    self.tableView.tableHeaderView?.isHidden = isLoading
                     isLoading ? self.startLoading() : self.stopLoading()
                 }
             }
@@ -158,6 +160,8 @@ extension DashboardViewController {
                   let balance = self.viewModel.balance else { return }
                         
             DispatchQueue.main.async {
+                self.setupTableViewHeader()
+                
                 self.balanceView.balanceLabel.text = balance.accountBalance
                 self.balanceView.accountNumberValueLabel.text = balance.accountNumber
                 self.balanceView.accountHolderValueLabel.text = balance.accountHolder
@@ -177,7 +181,14 @@ extension DashboardViewController {
     }
     
     @objc func makeTransfer(_ sender: AnyObject) {
-        onMakeTransfer?()
+        onMakeTransfer?() { [weak self] isRefreshNeeded in
+            guard let self = self,
+                  let refreshControl = self.tableView.refreshControl else { return }
+            
+            if isRefreshNeeded {
+                self.refresh(refreshControl)
+            }
+        }
     }
     
     @objc func refresh(_ sender: AnyObject) {

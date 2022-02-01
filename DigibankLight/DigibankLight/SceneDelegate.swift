@@ -12,6 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var username: String?
 
     var payeeSelectedAction: ((String, String) -> Void)?
+    var refreshAction: ((Bool) -> Void)?
     
     let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     
@@ -137,10 +138,11 @@ extension SceneDelegate {
             
             self.popToRoot()
         }
-        
-        dashboardViewController.onMakeTransfer = { [weak self] in
+                
+        dashboardViewController.onMakeTransfer = { [weak self] action in
             guard let self = self else { return }
-
+            
+            self.refreshAction = action
             self.showMakeTransfer()
         }
         
@@ -156,9 +158,10 @@ extension SceneDelegate {
             client: client
         )
         
-        makeTransferViewController.onBack = { [weak self] in
+        makeTransferViewController.onBack = { [weak self] isRefreshNeeded in
             guard let self = self else { return }
             
+            self.refreshAction?(isRefreshNeeded)
             self.pop()
         }
             
