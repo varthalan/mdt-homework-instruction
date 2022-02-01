@@ -14,6 +14,18 @@ class PayeesViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+    private let noPayeesLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 16, weight: .black)
+        label.text = "You haven't added any payees yet."
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
          
     private let viewModel: PayeesViewModel
     private var payees: [PayeesResponse.Payee]?
@@ -51,6 +63,7 @@ extension PayeesViewController {
         customizeNavigationItem()
         
         setupTableView()
+        setupNoPayeesLabel()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PayeeTableCell")
         tableView.dataSource = self
@@ -75,6 +88,17 @@ extension PayeesViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    private func setupNoPayeesLabel() {
+        view.addSubview(noPayeesLabel)
+
+        NSLayoutConstraint.activate([
+            noPayeesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            noPayeesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0),
+            noPayeesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noPayeesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 }
@@ -102,7 +126,12 @@ extension PayeesViewController {
             self.payees = payees
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.tableView.isHidden = payees.isEmpty
+                self.noPayeesLabel.isHidden = !payees.isEmpty
+                
+                if !payees.isEmpty {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
