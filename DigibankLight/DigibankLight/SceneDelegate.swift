@@ -17,14 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     
     private lazy var baseURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com")!
-        
-    private lazy var loginViewController = ModuleComposer.composeLoginWith(
-        url: APIEndPoint.login.url(baseURL: baseURL),
-        client: client
-    )
-    
-    private lazy var navigationController = UINavigationController(
-        rootViewController: loginViewController)
+            
+    private lazy var navigationController = UINavigationController()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -32,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         configureWindow()
         configureNavigationController()
-        bindEventsFromLogin()
+        showLogin()
     }
     
     private func configureWindow() {
@@ -76,7 +70,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
-//Navigations creation
+//MARK: Navigations creation
 extension SceneDelegate {
 
     private func push(_ viewController: UIViewController, animated: Bool = true) {
@@ -100,8 +94,34 @@ extension SceneDelegate {
     }
 }
 
-//Modules creation
+//MARK: Modules creation
 extension SceneDelegate {
+    
+    private func showLogin() {
+        let loginViewController = ModuleComposer.composeLoginWith(
+            url: APIEndPoint.login.url(baseURL: baseURL),
+            client: client
+        )
+        
+        loginViewController.onRegister = { [weak self] in
+            guard let self = self else { return }
+            
+            self.showRegistration()
+        }
+        
+        loginViewController.onLogin = { [weak self] username, jwtToken in
+            guard let self = self else { return }
+            
+            self.username = username
+            self.jwtToken = jwtToken
+            DispatchQueue.main.async {
+                self.showDashboard()
+            }
+        }
+        
+        navigationController.viewControllers = [loginViewController]
+        window?.rootViewController = navigationController
+    }
     
     private func showRegistration() {
         let registrationViewController = ModuleComposer.composeRegistrationWith(
@@ -207,27 +227,3 @@ extension SceneDelegate {
         present(navigationController)
     }
 }
-
-
-//Events listener
-extension SceneDelegate {
-    func bindEventsFromLogin() {
-        
-        loginViewController.onRegister = { [weak self] in
-            guard let self = self else { return }
-            
-            self.showRegistration()
-        }
-        
-        loginViewController.onLogin = { [weak self] username, jwtToken in
-            guard let self = self else { return }
-            
-            self.username = username
-            self.jwtToken = jwtToken            
-            DispatchQueue.main.async {
-                self.showDashboard()
-            }
-        }
-    }
-}
-
