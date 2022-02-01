@@ -83,7 +83,7 @@ extension LFTextView {
             containerView.topAnchor.constraint(equalTo: topAnchor),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20.0)
         ])
-        setBorderColor()
+        containerView.makeRoundedCorners()
     }
     
     private func setupFeedbackLabel() {
@@ -119,10 +119,6 @@ extension LFTextView {
 
 //MARK: - Customization
 extension LFTextView {
-    func setBorderColor(_ color: UIColor = .black, width: CGFloat = 1.0) {
-        containerView.layer.borderColor = color.cgColor
-        containerView.layer.borderWidth = width
-    }
     
     func setHeader(
         _ title: String,

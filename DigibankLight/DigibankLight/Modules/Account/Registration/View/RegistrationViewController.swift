@@ -74,6 +74,7 @@ extension RegistrationViewController {
             usernameField.heightAnchor.constraint(equalToConstant: 84.0)
         ])
         usernameField.setHeader(RegistrationViewModel.usernameFieldTitle)
+        //usernameField.setBorder()
     }
     
     private func setupPasswordField() {
@@ -86,6 +87,7 @@ extension RegistrationViewController {
         ])
         passwordField.setHeader(RegistrationViewModel.passwordFieldTitle)
         passwordField.setFieldType(.secured)
+        //passwordField.setBorder()
     }
     
     private func setupConfirmPasswordField() {
@@ -98,6 +100,7 @@ extension RegistrationViewController {
         ])
         confirmPasswordField.setHeader(RegistrationViewModel.confirmPasswordFieldTitle)
         confirmPasswordField.setFieldType(.secured)
+        //confirmPasswordField.setBorder()
     }
 }
 

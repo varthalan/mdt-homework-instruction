@@ -114,7 +114,7 @@ extension BaseViewController {
         font: UIFont = .systemFont(ofSize: 20, weight: .black),
         borderColor: UIColor = .black,
         cornerRadius: CGFloat = 35.0,
-        borderWidth: CGFloat = 2.0
+        borderWidth: CGFloat = 1.0
     ) {
         bottomActionButton.setTitle(title, for: .normal)
         bottomActionButton.decorate(

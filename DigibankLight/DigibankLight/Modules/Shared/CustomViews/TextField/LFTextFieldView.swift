@@ -87,7 +87,7 @@ extension LFTextFieldView {
             containerView.topAnchor.constraint(equalTo: topAnchor),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24.0)
         ])
-        setBorderColor()
+        containerView.makeRoundedCorners()
     }
     
     private func setupFeedbackLabel() {
@@ -125,10 +125,6 @@ extension LFTextFieldView {
 
 //MARK: - Customization
 extension LFTextFieldView {
-    func setBorderColor(_ color: UIColor = .black, width: CGFloat = 1.0) {
-        containerView.layer.borderColor = color.cgColor
-        containerView.layer.borderWidth = width
-    }
     
     func setHeader(
         _ title: String,
