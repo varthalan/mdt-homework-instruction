@@ -176,13 +176,24 @@ extension LFTextFieldView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if type == .number {
-            if Int(string) != nil || string == "" {
-                return true
-            } else {
-                return false
-            }
+            guard let text = textField.text,
+                  let range = Range(range, in: text) else {
+                    return true
+                }
+
+                let incomingText = text.replacingCharacters(in: range, with: string)
+                let isNumeric = incomingText.isEmpty || (Double(incomingText) != nil)
+                let numberOfDots = incomingText.components(separatedBy: ".").count - 1
+
+                let numberOfDecimalDigits: Int
+                if let dotIndex = incomingText.firstIndex(of: ".") {
+                    numberOfDecimalDigits = incomingText.distance(from: dotIndex, to: incomingText.endIndex) - 1
+                } else {
+                    numberOfDecimalDigits = 0
+                }
+
+                return isNumeric && numberOfDots <= 1 && numberOfDecimalDigits <= 2
         }
         return true
     }
-    
 }
