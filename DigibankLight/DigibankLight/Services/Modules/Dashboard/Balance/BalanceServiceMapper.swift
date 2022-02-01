@@ -20,7 +20,7 @@ final class BalanceServiceMapper {
         private let balance: Int?
         private let error: Error?
         
-        var balanceResponse: BalanceResponse {
+        var response: BalanceResponse {
             BalanceResponse(
                 status: status,
                 accountNumber: accountNo,
@@ -35,11 +35,10 @@ final class BalanceServiceMapper {
     }
     
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> BalanceResponse {
-        
-        guard let response = try? JSONDecoder().decode(Result.self, from: data) else {
-            throw NSError(domain: "Parsing error in Registration response", code: 0)
+        guard let result = try? Mapper<Result>.map(data, from: response) else {
+            throw NSError(domain: "Parsing error in Balance response", code: 0)
         }
         
-        return response.balanceResponse
+        return result.response
     }
 }

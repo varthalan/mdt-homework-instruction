@@ -7,14 +7,14 @@ import Foundation
 
 final class LoginServiceMapper {
     
-    private struct Response: Decodable {
+    private struct Result: Decodable {
         let status: String
         let token: String?
         let username: String?
         let accountNo: String?
         let error: String?
         
-        var loginResponse: LoginResponse {
+        var response: LoginResponse {
             LoginResponse(
                 status: status,
                 jwtToken: token,
@@ -25,10 +25,10 @@ final class LoginServiceMapper {
     }
     
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> LoginResponse {
-        guard let response = try? JSONDecoder().decode(Response.self, from: data) else {
-            throw NSError(domain: "Parsing error in LoginService", code: 0)
+        guard let result = try? Mapper<Result>.map(data, from: response) else {
+            throw NSError(domain: "Parsing error in LoginService response", code: 0)
         }
-        
-        return response.loginResponse
+
+        return result.response
     }
 }

@@ -25,7 +25,7 @@ final class PayeesServiceMapper {
         private let data: [AccountPayee]?
         private let error: Error?
 
-        var payeesResponse: PayeesResponse {
+        var response: PayeesResponse {
             
             let payees = data?.map {
                 PayeesResponse.Payee(id: $0.id,
@@ -46,10 +46,10 @@ final class PayeesServiceMapper {
     }
     
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> PayeesResponse {
-        guard let response = try? JSONDecoder().decode(Result.self, from: data) else {
+        guard let result = try? Mapper<Result>.map(data, from: response) else {
             throw NSError(domain: "Parsing error from PayeesService", code: 0)
         }
         
-        return response.payeesResponse
+        return result.response
     }
 }

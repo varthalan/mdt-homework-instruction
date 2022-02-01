@@ -40,7 +40,7 @@ final class TransactionsServiceMapper {
         private let data: [Transaction]?
         private let error: Error?
         
-        var transactionsResponse: TransactionsResponse {
+        var response: TransactionsResponse {
             let transactions = data?.map({ transaction -> TransactionsResponse.Transaction in
                 let transactionType = transaction.transactionType
                 var accountNumber: String?
@@ -71,10 +71,10 @@ final class TransactionsServiceMapper {
     }
     
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> TransactionsResponse {
-        guard let response = try? JSONDecoder().decode(Result.self, from: data) else {
+        guard let result = try? Mapper<Result>.map(data, from: response) else {
             throw NSError(domain: "Parsing error from TransactionsService", code: 0)
         }
         
-        return response.transactionsResponse
+        return result.response
     }
 }

@@ -30,6 +30,7 @@
 		E67B418427A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418327A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift */; };
 		E67B418627A7FDB2003D3B87 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418527A7FDB2003D3B87 /* BalanceView.swift */; };
 		E67B418A27A8CC55003D3B87 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418927A8CC55003D3B87 /* APIEndPoint.swift */; };
+		E67B418E27A8DC35003D3B87 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B418D27A8DC35003D3B87 /* Mapper.swift */; };
 		E68B7C8327A42C0600CC8E43 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */; };
 		E68B7C8627A42C3200CC8E43 /* ModuleComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */; };
 		E68B7C8927A42D1300CC8E43 /* LFTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */; };
@@ -111,6 +112,7 @@
 		E67B418327A7E8E3003D3B87 /* TransacationsGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransacationsGroupTableViewCell.swift; sourceTree = "<group>"; };
 		E67B418527A7FDB2003D3B87 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		E67B418927A8CC55003D3B87 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
+		E67B418D27A8DC35003D3B87 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		E68B7C8227A42C0600CC8E43 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E68B7C8527A42C3200CC8E43 /* ModuleComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleComposer.swift; sourceTree = "<group>"; };
 		E68B7C8827A42D1300CC8E43 /* LFTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFTextFieldView.swift; sourceTree = "<group>"; };
@@ -330,6 +332,14 @@
 				E68B7C9727A4FF0B00CC8E43 /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E67B418C27A8DC28003D3B87 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				E67B418D27A8DC35003D3B87 /* Mapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
@@ -560,6 +570,7 @@
 		E68B7CCF27A569E500CC8E43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E67B418C27A8DC28003D3B87 /* Mapper */,
 				E67B416927A673AD003D3B87 /* Payees */,
 				E67B415E27A66929003D3B87 /* MakeTransfer */,
 				E68B7CF727A6555200CC8E43 /* Dashboard */,
@@ -875,6 +886,7 @@
 				E68B7CD327A56A0600CC8E43 /* LoginService.swift in Sources */,
 				E67B417D27A6850E003D3B87 /* String+DateExtension.swift in Sources */,
 				E68B7CF627A6554300CC8E43 /* BalanceResponse.swift in Sources */,
+				E67B418E27A8DC35003D3B87 /* Mapper.swift in Sources */,
 				E64AEB8F27A42876000C1884 /* SceneDelegate.swift in Sources */,
 				E68B7C9227A4E47700CC8E43 /* DashboardViewController.swift in Sources */,
 				E68B7C9527A4E69D00CC8E43 /* MakeTransferViewController.swift in Sources */,

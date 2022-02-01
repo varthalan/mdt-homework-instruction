@@ -22,7 +22,7 @@ final class MakeTransferServiceMapper {
         private let recipientAccount: String?
         private let error: Error?
         
-        var transferResponse: MakeTransferResponse {
+        var response: MakeTransferResponse {
             MakeTransferResponse(
                 status: status,
                 transactionId: transactionId,
@@ -37,12 +37,12 @@ final class MakeTransferServiceMapper {
             )
         }
     }
-    
+        
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> MakeTransferResponse {
-        guard let response = try? JSONDecoder().decode(Result.self, from: data) else {
+        guard let result = try? Mapper<Result>.map(data, from: response) else {
             throw NSError(domain: "Parsing error makeTransfer response", code: 0)
         }
-        
-        return response.transferResponse
+
+        return result.response
     }
 }

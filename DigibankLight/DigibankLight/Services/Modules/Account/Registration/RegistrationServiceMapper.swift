@@ -22,9 +22,10 @@ final class RegistrationServiceMapper {
     }
     
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> RegistrationResponse {
-        guard let registrationResponse = try? JSONDecoder().decode(Result.self, from: data) else {
+        guard let result = try? Mapper<Result>.map(data, from: response) else {
             throw NSError(domain: "Parsing error in Registration response", code: 0)
         }
-        return registrationResponse.response
+
+        return result.response
     }
 }
