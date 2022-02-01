@@ -29,6 +29,7 @@ final class ModuleComposer {
         balanceURL: URL,
         transactionsURL: URL,
         client: HTTPClient,
+        accountHolderName: String,
         jwtToken: String
     ) -> DashboardViewController {
         let balanceService = BalanceService(
@@ -42,6 +43,7 @@ final class ModuleComposer {
         let viewModel = DashboardViewModel(
             balanceService: balanceService,
             transactionsService: transactionsService,
+            accountHolderName: accountHolderName,
             jwtToken: jwtToken
         )
         return DashboardViewController(viewModel: viewModel)

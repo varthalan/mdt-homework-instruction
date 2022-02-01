@@ -121,12 +121,14 @@ extension SceneDelegate {
     }
     
     private func showDashboard() {
-        guard let jwtToken = self.jwtToken else { return }
+        guard let jwtToken = jwtToken,
+              let accountHolderName = username else { return }
         
         let dashboardViewController = ModuleComposer.composeDashboardWith(
             balanceURL: URL(string: "https://green-thumb-64168.uc.r.appspot.com/balance")!,
             transactionsURL: URL(string: "https://green-thumb-64168.uc.r.appspot.com/transactions")!,
             client: client,
+            accountHolderName: accountHolderName,
             jwtToken: jwtToken
         )
         

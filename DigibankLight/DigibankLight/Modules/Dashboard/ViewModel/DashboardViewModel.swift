@@ -8,6 +8,7 @@ import Foundation
 final class DashboardViewModel {
     private let balanceService: BalanceService
     private let transactionsService: TransactionsService
+    private let accountHolderName: String
     private let jwtToken: String
     
     private var transactionsResponse: TransactionsResponse?
@@ -28,7 +29,7 @@ final class DashboardViewModel {
             return nil
         }
 
-        return (accountBalance, accountNumber, "Username")
+        return (accountBalance, accountNumber, accountHolderName)
     }
     
     var transactions: [[Int: [String: Any]]] {
@@ -42,9 +43,11 @@ final class DashboardViewModel {
 
     init(balanceService: BalanceService,
          transactionsService: TransactionsService,
+         accountHolderName: String,
          jwtToken: String) {
         self.balanceService = balanceService
         self.transactionsService = transactionsService
+        self.accountHolderName = accountHolderName
         self.jwtToken = jwtToken
     }
     

@@ -17,7 +17,7 @@ class BalanceView: UIView {
     private let youHaveLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "You have"
+        label.text = localize("you_have")
         label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false

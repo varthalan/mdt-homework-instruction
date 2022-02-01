@@ -111,9 +111,6 @@ extension DashboardViewController {
 
     private func setupTableViewHeader() {
         tableView.tableHeaderView = balanceView
-        balanceView.balanceLabel.text = "SGD 21,421.43"
-        balanceView.accountNumberValueLabel.text = "3213-321-9923"
-        balanceView.accountHolderValueLabel.text = "Donal Trump"
     }
 }
 
@@ -142,6 +139,7 @@ extension DashboardViewController {
             
             DispatchQueue.main.async {
                 if !(self.tableView.refreshControl?.isRefreshing ?? false) {
+                    self.tableView.tableHeaderView?.isHidden = isLoading
                     isLoading ? self.startLoading() : self.stopLoading()
                 }
             }
