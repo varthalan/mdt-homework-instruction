@@ -71,7 +71,6 @@ extension LoginViewController {
             usernameField.heightAnchor.constraint(equalToConstant: 84.0)
         ])
         usernameField.setHeader(LoginViewModel.usernameFieldTitle)
-        //usernameField.setBorder()
     }
     
     private func setupPasswordField() {
@@ -84,7 +83,6 @@ extension LoginViewController {
         ])
         passwordField.setHeader(LoginViewModel.passwordFieldTitle)
         passwordField.setFieldType(.secured)
-        //passwordField.setBorder()
     }
     
     private func setupLoginButtton() {
@@ -100,9 +98,9 @@ extension LoginViewController {
         loginButton.decorate(
             .black,
             textColor: .white,
-            font: .systemFont(ofSize: 20, weight: .black),
+            font: .systemFont(ofSize: 18, weight: .black),
             borderColor: .black,
-            cornerRadius: 35.0,
+            cornerRadius: 30.0,
             borderWidth: 1.0
         )
         

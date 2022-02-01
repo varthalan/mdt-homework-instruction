@@ -78,7 +78,7 @@ extension BaseViewController {
             bottomActionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
             bottomActionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
             bottomActionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
-            bottomActionButton.heightAnchor.constraint(equalToConstant: 70.0)
+            bottomActionButton.heightAnchor.constraint(equalToConstant: 60.0)
         ])
     }
 }
@@ -90,7 +90,7 @@ extension BaseViewController {
     func setTitle(
         _ title: String,
         color: UIColor = .black,
-        font: UIFont = .systemFont(ofSize: 30, weight: .bold)
+        font: UIFont = .systemFont(ofSize: 26, weight: .bold)
     ) {
         titleLabel.text = title
         titleLabel.textColor = color
@@ -111,9 +111,9 @@ extension BaseViewController {
         action: Selector,
         color: UIColor = .black,
         textColor: UIColor = .white,
-        font: UIFont = .systemFont(ofSize: 20, weight: .black),
+        font: UIFont = .systemFont(ofSize: 18, weight: .black),
         borderColor: UIColor = .black,
-        cornerRadius: CGFloat = 35.0,
+        cornerRadius: CGFloat = 30.0,
         borderWidth: CGFloat = 1.0
     ) {
         bottomActionButton.setTitle(title, for: .normal)
