@@ -6,7 +6,8 @@
 import Foundation
 
 final class DashboardViewModel {
-    private let service: TransactionsService
+    private let balanceService: BalanceService
+    private let transactionsService: TransactionsService
     private let jwtToken: String
     
     private var transactionsResponse: TransactionsResponse?
@@ -25,14 +26,21 @@ final class DashboardViewModel {
     }
 
 
-    init(service: TransactionsService, jwtToken: String) {
-        self.service = service
+    init(balanceService: BalanceService,
+         transactionsService: TransactionsService,
+         jwtToken: String) {
+        self.balanceService = balanceService
+        self.transactionsService = transactionsService
         self.jwtToken = jwtToken
     }
 
     func loadDashboard() {
         onLoadingStateChange?(true)
-        service.load(token: jwtToken) { [weak self] result in
+        loadTransactions()
+    }
+    
+    private func loadTransactions() {
+        transactionsService.load(token: jwtToken) { [weak self] result in
             guard let self = self else { return }
             
             self.onLoadingStateChange?(false)

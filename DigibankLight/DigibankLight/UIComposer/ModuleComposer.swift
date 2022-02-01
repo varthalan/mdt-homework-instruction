@@ -25,16 +25,25 @@ final class ModuleComposer {
         return RegistrationViewController(viewModel: registrationViewModel)
     }
     
-    static func composeDashboard(
-        url: URL,
+    static func composeDashboardWith(
+        balanceURL: URL,
+        transactionsURL: URL,
         client: HTTPClient,
         jwtToken: String
     ) -> DashboardViewController {
-        let service = TransactionsService(
-            url: url,
+        let balanceService = BalanceService(
+            url: balanceURL,
+            client: client)
+
+        let transactionsService = TransactionsService(
+            url: transactionsURL,
             client: client
         )
-        let viewModel = DashboardViewModel(service: service, jwtToken: jwtToken)
+        let viewModel = DashboardViewModel(
+            balanceService: balanceService,
+            transactionsService: transactionsService,
+            jwtToken: jwtToken
+        )
         return DashboardViewController(viewModel: viewModel)
     }
     
