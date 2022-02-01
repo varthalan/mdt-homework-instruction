@@ -1,11 +1,11 @@
 //
-//  DigibankEndPoints.swift
+//  APIEndPoint.swift
 //  DigibankLight
 //
 
 import Foundation
 
-enum DigibankEndPoints {
+enum APIEndPoint {
     case login
     case register
     case balance

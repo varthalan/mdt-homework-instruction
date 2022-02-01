@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var baseURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com")!
         
     private lazy var loginViewController = ModuleComposer.composeLoginWith(
-        url: DigibankEndPoints.login.url(baseURL: baseURL),
+        url: APIEndPoint.login.url(baseURL: baseURL),
         client: client
     )
     
@@ -105,8 +105,8 @@ extension SceneDelegate {
     
     private func showRegistration() {
         let registrationViewController = ModuleComposer.composeRegistrationWith(
-            registrationURL: DigibankEndPoints.register.url(baseURL: baseURL),
-            loginURL: DigibankEndPoints.login.url(baseURL: baseURL),
+            registrationURL: APIEndPoint.register.url(baseURL: baseURL),
+            loginURL: APIEndPoint.login.url(baseURL: baseURL),
             client: client
         )
         
@@ -132,8 +132,8 @@ extension SceneDelegate {
               let accountHolderName = username else { return }
         
         let dashboardViewController = ModuleComposer.composeDashboardWith(
-            balanceURL: DigibankEndPoints.balance.url(baseURL: baseURL),
-            transactionsURL: DigibankEndPoints.transactions.url(baseURL: baseURL),
+            balanceURL: APIEndPoint.balance.url(baseURL: baseURL),
+            transactionsURL: APIEndPoint.transactions.url(baseURL: baseURL),
             client: client,
             accountHolderName: accountHolderName,
             jwtToken: jwtToken
@@ -159,7 +159,7 @@ extension SceneDelegate {
         guard let jwtToken = self.jwtToken else { return }
         
         let makeTransferViewController = ModuleComposer.composeMakeTransferWith(
-            url: DigibankEndPoints.transfer.url(baseURL: baseURL),
+            url: APIEndPoint.transfer.url(baseURL: baseURL),
             jwtToken: jwtToken,
             client: client
         )
@@ -185,7 +185,7 @@ extension SceneDelegate {
         guard let jwtToken = self.jwtToken else { return }
         
         let payeesViewController = ModuleComposer.composePayeesWith(
-            url: DigibankEndPoints.payees.url(baseURL: baseURL),
+            url: APIEndPoint.payees.url(baseURL: baseURL),
             jwtToken: jwtToken,
             client: client)
         
