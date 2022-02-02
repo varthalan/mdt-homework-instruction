@@ -77,7 +77,6 @@ class LFTextFieldView: UIView {
 
 
 //MARK: - Setup
-
 extension LFTextFieldView {
     private func setupContainerView() {
         addSubview(containerView)
@@ -159,6 +158,7 @@ extension LFTextFieldView {
     }
 }
 
+//MARK: - UITextFieldDelegate implemention
 extension LFTextFieldView: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

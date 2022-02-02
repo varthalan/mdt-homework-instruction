@@ -73,7 +73,6 @@ final class LFTextView: UIView {
 
 
 //MARK: - Setup
-
 extension LFTextView {
     private func setupContainerView() {
         addSubview(containerView)
