@@ -90,7 +90,12 @@ final class DashboardViewModel {
             
             switch result {
             case let .success(response):
-                self.balanceResponse = response
+                if let errorMessage = response.error?.message,
+                   let errorName = response.error?.name {
+                    self.onError?(errorMessage, errorName == "TokenExpiredError")
+                } else {
+                    self.balanceResponse = response
+                }
                 
             case let .failure(error):
                 self.anyError = error
@@ -109,7 +114,12 @@ final class DashboardViewModel {
             self.onLoadingStateChange?(false)
             switch result {
             case let .success(response):
-                self.transactionsResponse = response
+                if let errorMessage = response.error?.message,
+                          let errorName = response.error?.name {
+                    self.onError?(errorMessage, errorName == "TokenExpiredError")
+                } else {
+                    self.transactionsResponse = response
+                }
                 
             case let  .failure(error):
                 self.anyError = error

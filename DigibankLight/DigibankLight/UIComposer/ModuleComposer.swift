@@ -28,9 +28,9 @@ final class ModuleComposer {
     static func composeDashboardWith(
         balanceURL: URL,
         transactionsURL: URL,
-        client: HTTPClient,
         accountHolderName: String,
-        jwtToken: String
+        jwtToken: String,
+        client: HTTPClient
     ) -> DashboardViewController {
         let balanceService = BalanceService(
             url: balanceURL,

@@ -159,11 +159,15 @@ extension DashboardViewController {
             guard let self = self else { return }
             
             DispatchQueue.main.async {
-                self.showError(message: message)
-            }
-                        
-            DispatchQueue.main.async {
                 self.tableView.refreshControl?.endRefreshing()
+                if isSessionExpired {
+                    self.showError(message: "session expired", showOnTop: true)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        self.onJWTExpiry?()
+                    }
+                } else {
+                    self.showError(message: message)
+                }
             }
         }
         

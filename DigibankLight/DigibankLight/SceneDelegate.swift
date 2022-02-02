@@ -7,6 +7,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private lazy var navigationController = UINavigationController()
     
     var jwtToken: String?
     var username: String?
@@ -18,8 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     
     private lazy var baseURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com")!
-            
-    private lazy var navigationController = UINavigationController()
+                
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -157,9 +157,9 @@ extension SceneDelegate {
         let dashboardViewController = ModuleComposer.composeDashboardWith(
             balanceURL: APIEndPoint.balance.url(baseURL: baseURL),
             transactionsURL: APIEndPoint.transactions.url(baseURL: baseURL),
-            client: client,
             accountHolderName: accountHolderName,
-            jwtToken: jwtToken
+            jwtToken: jwtToken,
+            client: client
         )
         
         dashboardViewController.onLogout = { [weak self] in

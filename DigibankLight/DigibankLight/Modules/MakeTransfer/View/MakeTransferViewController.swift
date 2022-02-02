@@ -147,7 +147,7 @@ extension MakeTransferViewController {
             
             DispatchQueue.main.async {
                 if isSessionExpired {
-                    self.showError(message: "session expired")
+                    self.showError(message: "session expired", showOnTop: true)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         self.onJWTExpiry?()
                     }

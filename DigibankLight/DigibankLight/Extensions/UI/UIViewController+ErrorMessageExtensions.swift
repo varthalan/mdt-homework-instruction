@@ -7,7 +7,9 @@ import UIKit
 
 extension UIViewController {
     
-    func showError(message: String, delay: TimeInterval = 2.0) {
+    func showError(message: String,
+                   delay: TimeInterval = 2.0,
+                   showOnTop: Bool = false) {
         let container = UIView()
         container.backgroundColor = UIColor(red: 250.0/255.0, green: 228.0/255, blue: 227.0/255.0, alpha: 1.0)
         container.tag = 2001
@@ -18,11 +20,18 @@ extension UIViewController {
         view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         container.alpha = 0.0
-        
+
+        var yCoordinate: NSLayoutConstraint
+        if showOnTop {
+            yCoordinate = container.topAnchor.constraint(equalTo: view.topAnchor, constant: 100.0)
+        } else {
+            yCoordinate = container.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150.0)
+        }
+
         NSLayoutConstraint.activate([
             container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
             container.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
-            container.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150.0),
+            yCoordinate,
             container.heightAnchor.constraint(equalToConstant: 60.0)
         ])
         
