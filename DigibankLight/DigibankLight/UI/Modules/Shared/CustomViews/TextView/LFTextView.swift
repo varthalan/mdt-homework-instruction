@@ -57,6 +57,9 @@ final class LFTextView: UIView {
         setupFeedbackLabel()
         setupTitleLabel()
         setupTextView()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapInView))
+        containerView.addGestureRecognizer(tapGesture)
     }
     
     func dismissEditing() {
@@ -113,6 +116,27 @@ extension LFTextView {
             textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: -4.0),
             textView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -4.0)
         ])
+        configureTextViewWithDone()
+    }
+    
+    private func configureTextViewWithDone() {
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0,
+                                              y: 0.0,
+                                              width: UIScreen.main.bounds.size.width,
+                                              height: 44.0))
+        let flexible = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil)
+        let barButton = UIBarButtonItem(
+            title: "Done",
+            style: .done,
+            target: self,
+            action: #selector(done))
+        barButton.tintColor = .black
+        toolBar.items = [flexible, barButton]
+        textView.inputAccessoryView = toolBar
+
     }
 }
 
@@ -135,5 +159,17 @@ extension LFTextView {
             feedbackLabel.text = message
             feedbackLabel.textColor = color
             feedbackLabel.font = font
+    }
+}
+
+//MARK: - Actions
+extension LFTextView {
+    
+    @objc func tapInView(_ sender: AnyObject) {
+        textView.becomeFirstResponder()
+    }
+    
+    @objc func done(_ sender: AnyObject) {
+        textView.resignFirstResponder()
     }
 }
