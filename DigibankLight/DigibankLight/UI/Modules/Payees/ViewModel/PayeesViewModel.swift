@@ -50,4 +50,8 @@ extension PayeesViewModel {
     static var payeesTitle: String {
         localize("payees_title")
     }
+    
+    static var zeroPayees: String {
+        localize("no_payees")
+    }
 }

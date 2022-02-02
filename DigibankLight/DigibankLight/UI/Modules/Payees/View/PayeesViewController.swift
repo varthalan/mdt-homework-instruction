@@ -20,7 +20,7 @@ class PayeesViewController: UIViewController {
         label.textColor = .black
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 16, weight: .black)
-        label.text = "You haven't added any payees yet."
+        label.text = PayeesViewModel.zeroPayees
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -105,7 +105,6 @@ extension PayeesViewController {
 }
 
 //MARK: - ViewModel Events
-
 extension PayeesViewController {
     
     private func bindViewModelEvents() {
@@ -167,14 +166,11 @@ extension PayeesViewController {
     }
 }
 
-
+//MARK: - UITableViewDataSource protocol implementation
 extension PayeesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = payees?.count {
-            return count
-        }
-        return 0
+        payees?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -199,6 +195,7 @@ extension PayeesViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - UITableViewDelegate protocol implementation
 extension PayeesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -37,6 +37,7 @@
 
 //Payees
 "payees_title" = "Payees";
+"no_payees" = "You haven't added any payees yet.";
 
 //Common
 "username_field_title" = "Username";
