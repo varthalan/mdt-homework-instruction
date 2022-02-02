@@ -7,11 +7,13 @@ import Foundation
 
 final class ModuleComposer {
     
-    static func composeLoginWith(url: URL, client: HTTPClient) -> LoginViewController {
-        let loginService = LoginService(url: url, client: client)
-        let viewModel = LoginViewModel(service: loginService)
+    static func composeLoginWith(
+        url: URL,
+        client: HTTPClient) -> LoginViewController {
+            let loginService = LoginService(url: url, client: client)
+            let viewModel = LoginViewModel(service: loginService)
         
-        return LoginViewController(viewModel: viewModel)
+            return LoginViewController(viewModel: viewModel)
     }
     
     static func composeRegistrationWith(
@@ -22,7 +24,7 @@ final class ModuleComposer {
             let loginService = LoginService(url: loginURL, client: client)
             let registrationViewModel = RegistrationViewModel(registrationService: registrationService, loginService: loginService)
             
-        return RegistrationViewController(viewModel: registrationViewModel)
+            return RegistrationViewController(viewModel: registrationViewModel)
     }
     
     static func composeDashboardWith(
@@ -46,6 +48,7 @@ final class ModuleComposer {
             accountHolderName: accountHolderName,
             jwtToken: jwtToken
         )
+        
         return DashboardViewController(viewModel: viewModel)
     }
     
@@ -55,6 +58,7 @@ final class ModuleComposer {
         client: HTTPClient) -> MakeTransferViewController {
         let service = MakeTransferService(url: url, client: client)
         let viewModel = MakeTransferViewModel(service: service, jwtToken: jwtToken)
+            
         return MakeTransferViewController(viewModel: viewModel)
     }
     
