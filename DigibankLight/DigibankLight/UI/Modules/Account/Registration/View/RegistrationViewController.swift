@@ -229,16 +229,19 @@ extension RegistrationViewController {
             usernameField.setFeedback(isUsernameEmpty ? RegistrationViewModel.usernameRequired : "")
             passwordField.setFeedback(isPasswordEmpty ? RegistrationViewModel.passwordRequired : "")
             
-            if isConfirmPasswordEmpty && !isPasswordEmpty {
+            if (isConfirmPasswordEmpty && !isPasswordEmpty) {
                 confirmPasswordField.setFeedback(RegistrationViewModel.passwordNotMatching)
             }
             
             if isConfirmPasswordEmpty && isPasswordEmpty {
                 confirmPasswordField.setFeedback(RegistrationViewModel.confirmPasswordRequired)
             }
-            
+            return
+        } else if password != confirmPassword {
+            confirmPasswordField.setFeedback(RegistrationViewModel.passwordNotMatching)
             return
         }
+
         
         viewModel.registerWith(username: username, password: password)
     }
