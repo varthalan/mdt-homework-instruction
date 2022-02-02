@@ -208,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				E68B7CC227A5576E00CC8E43 /* Services */,
-				E68B7C7B27A42BC000CC8E43 /* Modules */,
+				E67B41A027AA5C93003D3B87 /* UI */,
 				E68B7C8427A42C1A00CC8E43 /* UIComposer */,
 				E68B7C8A27A4D85500CC8E43 /* Extensions */,
 				E64AEB8C27A42876000C1884 /* AppDelegate.swift */,
@@ -402,6 +402,14 @@
 				E67B419E27AA4D66003D3B87 /* Utilities.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E67B41A027AA5C93003D3B87 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E68B7C7B27A42BC000CC8E43 /* Modules */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		E68B7C7B27A42BC000CC8E43 /* Modules */ = {
