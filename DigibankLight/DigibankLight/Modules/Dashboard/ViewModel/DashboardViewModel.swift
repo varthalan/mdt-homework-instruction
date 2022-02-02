@@ -92,7 +92,7 @@ final class DashboardViewModel {
             case let .success(response):
                 if let errorMessage = response.error?.message,
                    let errorName = response.error?.name {
-                    self.onError?(errorMessage, errorName == "TokenExpiredError")
+                    self.onError?(errorMessage, Utitlies.isSessionExpiredMessage(errorName))
                 } else {
                     self.balanceResponse = response
                 }
@@ -116,7 +116,7 @@ final class DashboardViewModel {
             case let .success(response):
                 if let errorMessage = response.error?.message,
                           let errorName = response.error?.name {
-                    self.onError?(errorMessage, errorName == "TokenExpiredError")
+                    self.onError?(errorMessage, Utitlies.isSessionExpiredMessage(errorName))
                 } else {
                     self.transactionsResponse = response
                 }

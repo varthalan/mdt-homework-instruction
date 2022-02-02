@@ -32,7 +32,7 @@ final class PayeesViewModel {
                 if let error = response.error,
                    let message = error.message,
                    let name = error.name {
-                    self.onError?(message, name == "TokenExpiredError")
+                    self.onError?(message, Utitlies.isSessionExpiredMessage(name))
                 } else {
                     self.onPayees?(response.payees ?? [])
                 }

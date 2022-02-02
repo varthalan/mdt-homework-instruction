@@ -46,7 +46,7 @@ final class MakeTransferViewModel {
                         self.onError?(errorMessage, false)
                     } else if let errorMessage = response.error?.message,
                               let errorName = response.error?.name {
-                        self.onError?(errorMessage, errorName == "TokenExpiredError")
+                        self.onError?(errorMessage, Utitlies.isSessionExpiredMessage(errorName))
                     } else {
                         self.onTransfer?(response)
                     }
