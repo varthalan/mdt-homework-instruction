@@ -5,7 +5,7 @@
 
 import UIKit
 
-class DashboardViewController: BaseViewController {
+final class DashboardViewController: BaseViewController {
     
     private let logoutButton: UIButton = {
         let button = UIButton(type: .roundedRect)

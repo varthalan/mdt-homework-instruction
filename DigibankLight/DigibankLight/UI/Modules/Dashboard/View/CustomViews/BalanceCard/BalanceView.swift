@@ -5,7 +5,7 @@
 
 import UIKit
 
-class BalanceView: UIView {
+final class BalanceView: UIView {
     
     private let containerView: UIView = {
         let view = UIView()

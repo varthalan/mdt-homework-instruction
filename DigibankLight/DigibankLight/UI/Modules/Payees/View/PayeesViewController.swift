@@ -5,7 +5,7 @@
 
 import UIKit
 
-class PayeesViewController: UIViewController {
+final class PayeesViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)

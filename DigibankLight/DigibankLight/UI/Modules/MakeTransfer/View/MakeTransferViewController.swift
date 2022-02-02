@@ -5,7 +5,7 @@
 
 import UIKit
 
-class MakeTransferViewController: BaseViewController {
+final class MakeTransferViewController: BaseViewController {
         
     private let transferNowButton: UIButton = {
         let button = UIButton(type: .system)
