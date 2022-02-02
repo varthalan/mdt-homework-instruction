@@ -12,7 +12,7 @@ No dependencies
 ### Installation & Run
 
 1. Clone the repository
-2. Open `DigibankLight.xcodeproj` file 
+2. Open `DigibankLight/DigibankLight.xcodeproj` file 
 3. Use `⌘+U` to run unit tests
 4. Use `⌘+R` to run app
 
