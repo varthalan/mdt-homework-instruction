@@ -37,16 +37,15 @@ final class RegistrationService {
         }
     }
     
-    private func request(with bodyParams: RegistrationParams) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
+    private func request(with bodyParams: RegistrationParams) -> URLRequest {        
+        var request = URLRequest.makeRequest(
+            with: url,
+            method: .post
+        )        
         if let body = try? JSONEncoder().encode(bodyParams) {
             request.httpBody = body
         }
-        
+
         return request
     }
 }
