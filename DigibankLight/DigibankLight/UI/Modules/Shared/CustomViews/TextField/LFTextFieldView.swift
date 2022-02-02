@@ -65,6 +65,9 @@ class LFTextFieldView: UIView {
         setupFeedbackLabel()
         setupTitleLabel()
         setupTextField()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapInView))
+        containerView.addGestureRecognizer(tapGesture)
     }
     
     func setText(_ text: String) {
@@ -155,6 +158,14 @@ extension LFTextFieldView {
         case .number:
             textField.keyboardType = .numbersAndPunctuation
         }
+    }
+}
+
+//MARK: - Actions
+extension LFTextFieldView {
+    
+    @objc func tapInView(_ sender: AnyObject) {
+        textField.becomeFirstResponder()
     }
 }
 
