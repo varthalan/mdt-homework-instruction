@@ -52,8 +52,7 @@ final class MakeTransferService {
         accountNumber: String,
         amount: Double,
         description: String? = nil) -> MakeTransferParams {
-            
-            return MakeTransferParams(
+            MakeTransferParams(
                 receipientAccountNo: accountNumber,
                 amount: amount,
                 description: description
