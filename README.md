@@ -49,6 +49,10 @@ Unit tests available for all Service classes, such as LoginService, Registration
 
 ### Known warnings
 
+2 warnings
+
 1 compiler warning in `groupTransactions` method of `DashboardViewModel.swift`.
+1 compiler warning in UIScrollView contentSize ambiguity.
+
 
 
