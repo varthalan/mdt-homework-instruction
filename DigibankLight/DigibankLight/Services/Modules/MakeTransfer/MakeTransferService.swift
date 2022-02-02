@@ -65,8 +65,7 @@ final class MakeTransferService {
             with: url,
             method: .post,
             jwtToken: jwtToken
-        )
-        
+        )        
         if let body = try? JSONEncoder().encode(params) {
             request.httpBody = body
         }
