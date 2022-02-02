@@ -4,8 +4,24 @@
 
 import UIKit
 
-final class RegistrationViewController: BaseViewController {
+final class RegistrationViewController: UIViewController {
         
+    private let backButton: UIButton = {
+        let button = UIButton(type: .roundedRect)
+        button.setImage(UIImage(named: "back"), for: .normal)
+        button.tintColor = .black
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 26, weight: .black)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     private let usernameField: LFTextFieldView = {
         let field = LFTextFieldView()
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -32,8 +48,12 @@ final class RegistrationViewController: BaseViewController {
 
     private let viewModel: RegistrationViewModel
     
+    typealias Observer<T> = (T) -> Void
+    typealias Empty = () -> Void
     var onBack: (Empty)?
     var onRegister: ((String, String) -> Void)?
+    var onJWTExpiry: (Empty)?
+
     
     init(viewModel: RegistrationViewModel) {
         self.viewModel = viewModel
@@ -46,24 +66,50 @@ final class RegistrationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
         
         setupUI()
-    }
-    
-    override func setupUI() {
-        super.setupUI()
-        customizeParent()
-        
-        setupUsernameField()
-        setupPasswordField()
-        setupConfirmPasswordField()
-        bindViewModelEvents()
     }
 }
 
 
 //MARK: - Setup
 extension RegistrationViewController {
+    
+    private func setupUI() {
+        setupBackButton()
+        setupTitleLabel()
+        setupUsernameField()
+        setupPasswordField()
+        setupConfirmPasswordField()
+        setupRegisterButton()
+        bindViewModelEvents()
+    }
+
+    private func setupBackButton() {
+        view.addSubview(backButton)
+        
+        NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40.0),
+            backButton.widthAnchor.constraint(equalToConstant: 40.0),
+            backButton.heightAnchor.constraint(equalToConstant: 40.0)
+        ])
+        backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+    }
+    
+    private func setupTitleLabel() {
+        view.addSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 95.0),
+            titleLabel.heightAnchor.constraint(equalToConstant: 40.0)
+        ])
+        
+        titleLabel.text = RegistrationViewModel.title
+    }
 
     private func setupUsernameField() {
         view.addSubview(usernameField)
@@ -99,20 +145,48 @@ extension RegistrationViewController {
         confirmPasswordField.setHeader(RegistrationViewModel.confirmPasswordFieldTitle)
         confirmPasswordField.setFieldType(.secured)
     }
+    
+    private func setupRegisterButton() {
+        view.addSubview(registerButton)
+        NSLayoutConstraint.activate([
+            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
+            registerButton.heightAnchor.constraint(equalToConstant: 60.0)
+        ])
+        
+        registerButton.setTitle(
+            RegistrationViewModel.registerButtonTitle,
+            for: .normal
+        )
+        registerButton.decorate(
+            .black,
+            textColor: .white,
+            font: .systemFont(ofSize: 18, weight: .black),
+            borderColor: .black,
+            cornerRadius: 30.0,
+            borderWidth: 1.0
+        )
+        registerButton.addTarget(
+            self,
+            action: #selector(register),
+            for: .touchUpInside
+        )
+    }
 }
 
 //MARK: - Customizations
 extension RegistrationViewController {
 
-    private func customizeParent() {
-        setTitle(RegistrationViewModel.title)
-        configureBottomActionButtonWith(
-            title: RegistrationViewModel.registerButtonTitle,
-            target: self,
-            action: #selector(register)
-        )
-        addBackButtonTarget(target: self, action: #selector(back))
-    }
+//    private func customizeParent() {
+//        setTitle(RegistrationViewModel.title)
+//        configureBottomActionButtonWith(
+//            title: RegistrationViewModel.registerButtonTitle,
+//            target: self,
+//            action: #selector(register)
+//        )
+//        addBackButtonTarget(target: self, action: #selector(back))
+//    }
 }
 
 //MARK: - ViewModel Events

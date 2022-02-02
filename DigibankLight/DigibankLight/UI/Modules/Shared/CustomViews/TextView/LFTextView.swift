@@ -5,6 +5,10 @@
 
 import UIKit
 
+protocol LFTextViewDelegate: AnyObject {
+    func textViewBeginEditing(_ isBegin: Bool)
+}
+
 final class LFTextView: UIView {
     
     private let containerView: UIView = {
@@ -41,6 +45,8 @@ final class LFTextView: UIView {
             textView.text
         }
     }
+    
+    weak var delegate: LFTextViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -116,6 +122,7 @@ extension LFTextView {
             textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: -4.0),
             textView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -4.0)
         ])
+        textView.delegate = self
         configureTextViewWithDone()
     }
     
@@ -171,5 +178,21 @@ extension LFTextView {
     
     @objc func done(_ sender: AnyObject) {
         textView.resignFirstResponder()
+    }
+}
+
+
+//MARK: - UITextViewDelegate implementation
+extension LFTextView: UITextViewDelegate {
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        //Move view up
+        delegate?.textViewBeginEditing(true)
+        return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        //move down
+        delegate?.textViewBeginEditing(false)
     }
 }

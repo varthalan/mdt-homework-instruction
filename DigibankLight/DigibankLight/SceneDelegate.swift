@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     
     private lazy var baseURL = URL(string: "https://green-thumb-64168.uc.r.appspot.com")!
-                
+                    
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }

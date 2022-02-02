@@ -5,7 +5,7 @@
 
 import UIKit
 
-final class DashboardViewController: BaseViewController {
+final class DashboardViewController: UIViewController {
     
     private let logoutButton: UIButton = {
         let button = UIButton(type: .roundedRect)
@@ -22,6 +22,13 @@ final class DashboardViewController: BaseViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+    
+    private(set) var makeTransferButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     private lazy var tableViewSectionHeader: UILabel = {
         let label = UILabel(frame: .init(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44))
@@ -30,16 +37,20 @@ final class DashboardViewController: BaseViewController {
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
+
     
     private lazy var balanceView = BalanceView(frame: .init(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 255.0))
 
 
     private let viewModel: DashboardViewModel
     
+    typealias Observer<T> = (T) -> Void
     typealias Refresh = ((Bool) -> Void)
-    
+    typealias Empty = () -> Void
+
     var onLogout: (Empty)?
     var onMakeTransfer: (Observer<Refresh?>)?
+    var onJWTExpiry: (Empty)?
 
     init(viewModel: DashboardViewModel) {
         self.viewModel = viewModel
@@ -53,16 +64,15 @@ final class DashboardViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = UIColor(red: 250.0/255.0, green: 250.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+        
         setupUI()
         viewModel.loadDashboard()
     }
         
-    override func setupUI() {
-        super.setupUI()
-       
-        customizeParent()
+    private func setupUI() {
         setupLogoutButton()
+        setupMakeTransferButton()
         setupTableView()
         setupRefreshControl()
         bindViewModelEvents()
@@ -85,13 +95,42 @@ extension DashboardViewController {
         logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
     }
     
+    func setupMakeTransferButton() {
+        view.addSubview(makeTransferButton)        
+        NSLayoutConstraint.activate([
+            makeTransferButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            makeTransferButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            makeTransferButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
+            makeTransferButton.heightAnchor.constraint(equalToConstant: 60.0)
+        ])
+        
+        makeTransferButton.setTitle(
+            DashboardViewModel.makeTransferButtonTitle,
+            for: .normal
+        )
+        makeTransferButton.decorate(
+            .black,
+            textColor: .white,
+            font: .systemFont(ofSize: 18, weight: .black),
+            borderColor: .black,
+            cornerRadius: 30.0,
+            borderWidth: 1.0
+        )        
+        makeTransferButton.addTarget(
+            self,
+            action: #selector(makeTransfer),
+            for: .touchUpInside
+        )
+
+    }
+    
     private func setupTableView() {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 20.0),
-            tableView.bottomAnchor.constraint(equalTo: bottomActionButton.topAnchor, constant: -20.0)
+            tableView.bottomAnchor.constraint(equalTo: makeTransferButton.topAnchor, constant: -20.0)
         ])
         tableView.dataSource = self
         tableView.delegate = self
@@ -128,14 +167,14 @@ extension DashboardViewController {
 extension DashboardViewController {
     
     private func customizeParent() {
-        setTitleHidden(true)
-        setBackButtonHidden(true)
+        //setTitleHidden(true)
+        //setBackButtonHidden(true)
         
-        configureBottomActionButtonWith(
-            title: DashboardViewModel.makeTransferButtonTitle,
-            target: self,
-            action: #selector(makeTransfer)
-        )
+//        configureBottomActionButtonWith(
+//            title: DashboardViewModel.makeTransferButtonTitle,
+//            target: self,
+//            action: #selector(makeTransfer)
+//        )
     }
 }
 

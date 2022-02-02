@@ -5,7 +5,15 @@
 
 import UIKit
 
-final class LoginViewController: BaseViewController {
+final class LoginViewController: UIViewController {
+
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 26, weight: .black)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     private let usernameField: LFTextFieldView = {
         let field = LFTextFieldView()
@@ -25,10 +33,16 @@ final class LoginViewController: BaseViewController {
         return button
     }()
     
+    private let registerButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    
     private let viewModel: LoginViewModel
     
     typealias Refresh = () -> Void
-    
     var onRegister: (() -> Void)?
     var onLogin: ((String, String, Refresh?) -> Void)?
     
@@ -47,21 +61,32 @@ final class LoginViewController: BaseViewController {
         setupUI()
         bindViewModelEvents()
     }
-
-    
-    override func setupUI() {
-        super.setupUI()
-        customizeParentSetup()
-        
-        setupUsernameField()
-        setupPasswordField()
-        setupLoginButtton()
-    }
 }
 
 //MARK: - UI Setup
 extension LoginViewController {
             
+    private func setupUI() {
+        setupTitleLabel()
+        setupUsernameField()
+        setupPasswordField()
+        setupRegisterButton()
+        setupLoginButtton()
+    }
+
+    private func setupTitleLabel() {
+        view.addSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 95.0),
+            titleLabel.heightAnchor.constraint(equalToConstant: 40.0)
+        ])
+        
+        titleLabel.text = LoginViewModel.title
+    }
+    
     private func setupUsernameField() {
         view.addSubview(usernameField)
         NSLayoutConstraint.activate([
@@ -85,13 +110,41 @@ extension LoginViewController {
         passwordField.setFieldType(.secured)
     }
     
+    private func setupRegisterButton() {
+        view.addSubview(registerButton)
+        NSLayoutConstraint.activate([
+            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
+            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
+            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40.0),
+            registerButton.heightAnchor.constraint(equalToConstant: 60.0)
+        ])
+        
+        registerButton.setTitle(
+            LoginViewModel.registerButtonTitle,
+            for: .normal
+        )
+        registerButton.decorate(
+            .white,
+            textColor: .black,
+            font: .systemFont(ofSize: 18, weight: .black),
+            borderColor: .black,
+            cornerRadius: 30.0,
+            borderWidth: 1.0
+        )
+        registerButton.addTarget(
+            self,
+            action: #selector(register),
+            for: .touchUpInside
+        )
+    }
+    
     private func setupLoginButtton() {
         view.addSubview(loginButton)
         NSLayoutConstraint.activate([
-            loginButton.leadingAnchor.constraint(equalTo: bottomActionButton.leadingAnchor),
-            loginButton.widthAnchor.constraint(equalTo: bottomActionButton.widthAnchor),
-            loginButton.bottomAnchor.constraint(equalTo: bottomActionButton.topAnchor, constant: -20.0),
-            loginButton.heightAnchor.constraint(equalTo: bottomActionButton.heightAnchor)
+            loginButton.leadingAnchor.constraint(equalTo: registerButton.leadingAnchor),
+            loginButton.widthAnchor.constraint(equalTo: registerButton.widthAnchor),
+            loginButton.bottomAnchor.constraint(equalTo: registerButton.topAnchor, constant: -20.0),
+            loginButton.heightAnchor.constraint(equalTo: registerButton.heightAnchor)
         ])
         loginButton.setTitle(LoginViewModel.loginButtonTitle, for: .normal)
         
@@ -106,25 +159,6 @@ extension LoginViewController {
         
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
     }
-}
-
-//MARK: - Customizations
-extension LoginViewController {
-
-    private func customizeParentSetup() {
-        setTitle(LoginViewModel.title)
-        setBackButtonHidden(true)
-
-        configureBottomActionButtonWith(
-            title: LoginViewModel.registerButtonTitle,
-            target: self,
-            action: #selector(register),
-            color: .white,
-            textColor: .black,
-            borderColor: .black
-        )        
-    }
-    
 }
 
 //MARK: - ViewModel Events
