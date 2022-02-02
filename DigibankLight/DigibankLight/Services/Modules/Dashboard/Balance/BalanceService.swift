@@ -33,12 +33,6 @@ final class BalanceService {
     }
     
     private func request(with jwtToken: String) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(jwtToken, forHTTPHeaderField: "Authorization")
-                
-        return request
+        URLRequest.makeRequest(with: url, method: .get, jwtToken: jwtToken)
     }
 }
