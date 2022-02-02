@@ -361,7 +361,7 @@ extension MakeTransferViewController: LFTextViewDelegate {
     
     func textViewBeginEditing(_ isBegin: Bool) {
         if isBegin {
-            scrollView.setContentOffset(.init(x: 0.0, y: 70.0), animated: true)
+            scrollView.setContentOffset(.init(x: 0.0, y: 100.0), animated: true)
         } else {
             scrollView.setContentOffset(.zero, animated: true)
         }
