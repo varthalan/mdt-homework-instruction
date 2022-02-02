@@ -70,7 +70,6 @@ class DashboardViewController: BaseViewController {
     }
 }
 
-
 //MARK: - Setup
 extension DashboardViewController {
     
@@ -141,7 +140,6 @@ extension DashboardViewController {
 }
 
 //MARK: - ViewModel Events
-
 extension DashboardViewController {
     
     private func bindViewModelEvents() {
@@ -256,10 +254,7 @@ extension DashboardViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return tableViewSectionHeader
-        }
-        return nil
+        section == 0 ? tableViewSectionHeader : nil
     }
         
     private func transactionType(_ amount: String, transactionType: String) -> (amount: String, color: UIColor) {
@@ -274,7 +269,6 @@ extension DashboardViewController: UITableViewDataSource {
 
 
 //MARK: - UITableViewDelegate protocol implementations
-
 extension DashboardViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
