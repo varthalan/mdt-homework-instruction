@@ -47,7 +47,7 @@ Eg: Loading indicator, error message, styling buttons etc
 
 Unit tests available for all Service classes, such as LoginService, RegistrationService etc, and followed TDD approach for implmentation of Service classes. 
 
-### Known warnings & errors
+### Known warnings
 
 1 compiler warning in `groupTransactions` method of `DashboardViewModel.swift`.
 
