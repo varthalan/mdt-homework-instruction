@@ -152,6 +152,7 @@ extension SceneDelegate {
     
     private func showDashboard() {
         guard let jwtToken = jwtToken,
+              jwtToken.isEmpty,
               let accountHolderName = username else { return }
         
         let dashboardViewController = ModuleComposer.composeDashboardWith(
@@ -186,7 +187,8 @@ extension SceneDelegate {
     }
     
     private func showMakeTransfer() {
-        guard let jwtToken = self.jwtToken else { return }
+        guard let jwtToken = self.jwtToken,
+              jwtToken.isEmpty else { return }
         
         let makeTransferViewController = ModuleComposer.composeMakeTransferWith(
             url: APIEndPoint.transfer.url(baseURL: baseURL),
@@ -218,7 +220,8 @@ extension SceneDelegate {
     }
     
     private func showPayees() {
-        guard let jwtToken = self.jwtToken else { return }
+        guard let jwtToken = self.jwtToken,
+              jwtToken.isEmpty else { return }
                 
         let payeesViewController = ModuleComposer.composePayeesWith(
             url: APIEndPoint.payees.url(baseURL: baseURL),
