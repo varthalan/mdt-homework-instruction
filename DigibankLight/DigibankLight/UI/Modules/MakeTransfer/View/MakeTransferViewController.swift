@@ -130,7 +130,6 @@ extension MakeTransferViewController {
 }
 
 //MARK: - ViewModel Events
-
 extension MakeTransferViewController {
     
     private func bindViewModelEvents() {

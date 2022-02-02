@@ -28,6 +28,7 @@
 "successful_transfer_alert_message" = "Would you like to make another transfer?";
 "make_transfer_action_title" = "Make Transfer";
 "goto_dashboard_action_title" = "Cancel";
+"amount_must_be_number" = "Amount must be a number";
 
 //Balance
 "you_have" = "You have";

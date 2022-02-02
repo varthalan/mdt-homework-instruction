@@ -25,7 +25,7 @@ final class MakeTransferViewModel {
         amount: String,
         description: String? = nil) {
             guard let amountAsDouble = Double(amount) else {
-                self.onError?("Amount must be an integer", false)
+                self.onError?(localize("amount_must_be_number"), false)
                 return
             }
             
