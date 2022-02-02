@@ -1,4 +1,4 @@
-### Home Assignment
+### Digibank Light iOS
 
 This assignment will be similar to what you will be doing in your daily task. As a mobile developer, you will be creating new features by working with the various stakeholders to deliver great user experience to our customers.
 
