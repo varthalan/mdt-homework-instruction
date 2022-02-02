@@ -16,13 +16,14 @@ extension URLRequest {
     static func makeRequest(
         with url: URL,
         method: HTTPMethod,
-        jwtToken: String) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(jwtToken, forHTTPHeaderField: "Authorization")
-                
-        return request
+        jwtToken: String? = nil) -> URLRequest {
+            var request = URLRequest(url: url)
+            request.httpMethod = method.rawValue
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            if let token = jwtToken {
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+            }                
+            return request
     }
 }
