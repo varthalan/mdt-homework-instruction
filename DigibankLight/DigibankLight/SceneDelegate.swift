@@ -71,7 +71,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
-//MARK: Navigations creation
+//MARK: Navigations
 extension SceneDelegate {
 
     private func push(_ viewController: UIViewController, animated: Bool = true) {
