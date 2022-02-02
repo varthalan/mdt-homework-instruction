@@ -37,10 +37,8 @@ final class DashboardViewController: UIViewController {
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
-
     
     private lazy var balanceView = BalanceView(frame: .init(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 255.0))
-
 
     private let viewModel: DashboardViewModel
     
@@ -60,7 +58,6 @@ final class DashboardViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +93,7 @@ extension DashboardViewController {
     }
     
     func setupMakeTransferButton() {
-        view.addSubview(makeTransferButton)        
+        view.addSubview(makeTransferButton)
         NSLayoutConstraint.activate([
             makeTransferButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.0),
             makeTransferButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32.0),
@@ -121,7 +118,6 @@ extension DashboardViewController {
             action: #selector(makeTransfer),
             for: .touchUpInside
         )
-
     }
     
     private func setupTableView() {
@@ -160,21 +156,6 @@ extension DashboardViewController {
         if tableView.tableHeaderView == nil {
             tableView.tableHeaderView = balanceView
         }
-    }
-}
-
-//MARK: - Customizations
-extension DashboardViewController {
-    
-    private func customizeParent() {
-        //setTitleHidden(true)
-        //setBackButtonHidden(true)
-        
-//        configureBottomActionButtonWith(
-//            title: DashboardViewModel.makeTransferButtonTitle,
-//            target: self,
-//            action: #selector(makeTransfer)
-//        )
     }
 }
 
@@ -305,7 +286,6 @@ extension DashboardViewController: UITableViewDataSource {
     }
     
 }
-
 
 //MARK: - UITableViewDelegate protocol implementations
 extension DashboardViewController: UITableViewDelegate {

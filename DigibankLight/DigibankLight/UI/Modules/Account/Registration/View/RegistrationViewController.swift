@@ -175,20 +175,6 @@ extension RegistrationViewController {
     }
 }
 
-//MARK: - Customizations
-extension RegistrationViewController {
-
-//    private func customizeParent() {
-//        setTitle(RegistrationViewModel.title)
-//        configureBottomActionButtonWith(
-//            title: RegistrationViewModel.registerButtonTitle,
-//            target: self,
-//            action: #selector(register)
-//        )
-//        addBackButtonTarget(target: self, action: #selector(back))
-//    }
-}
-
 //MARK: - ViewModel Events
 extension RegistrationViewController {
     

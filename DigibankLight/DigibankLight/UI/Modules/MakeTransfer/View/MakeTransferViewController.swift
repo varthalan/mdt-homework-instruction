@@ -37,7 +37,6 @@ final class MakeTransferViewController: UIViewController {
         return button
     }()
 
-    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear

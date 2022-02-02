@@ -24,7 +24,6 @@ final class PayeesViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
          
     private let viewModel: PayeesViewModel
     private var payees: [PayeesResponse.Payee]?
@@ -45,7 +44,6 @@ final class PayeesViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
