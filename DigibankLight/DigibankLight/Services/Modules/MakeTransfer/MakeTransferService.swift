@@ -27,7 +27,7 @@ final class MakeTransferService {
         amount: Double,
         description: String? = nil,
         jwtToken: String,
-        completion: @escaping (Result) -> Void) {            
+        completion: @escaping (Result) -> Void) {
             let params = createTransferParams(
                 accountNumber: accountNumber,
                 amount: amount,
@@ -61,16 +61,16 @@ final class MakeTransferService {
         }
     
     private func request(with params: MakeTransferParams, jwtToken: String) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(jwtToken, forHTTPHeaderField: "Authorization")
+        var request = URLRequest.makeRequest(
+            with: url,
+            method: .post,
+            jwtToken: jwtToken
+        )
         
         if let body = try? JSONEncoder().encode(params) {
             request.httpBody = body
         }
-
+        
         return request
     }
 }
