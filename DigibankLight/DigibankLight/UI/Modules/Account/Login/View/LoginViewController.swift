@@ -128,7 +128,6 @@ extension LoginViewController {
 }
 
 //MARK: - ViewModel Events
-
 extension LoginViewController {
     
     private func bindViewModelEvents() {
@@ -161,7 +160,6 @@ extension LoginViewController {
 }
 
 //MARK: - Actions
-
 extension LoginViewController {
     
     @objc func register(_ sender: AnyObject) {
