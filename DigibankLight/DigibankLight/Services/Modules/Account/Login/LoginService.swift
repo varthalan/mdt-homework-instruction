@@ -39,14 +39,15 @@ final class LoginService {
     }
     
     private func request(with bodyParams: LoginParams) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
+        var request = URLRequest.makeRequest(
+            with: url,
+            method: .post
+        )
         if let body = try? JSONEncoder().encode(bodyParams) {
             request.httpBody = body
         }
-        
+
         return request
-    }}
+    }
+    
+}
