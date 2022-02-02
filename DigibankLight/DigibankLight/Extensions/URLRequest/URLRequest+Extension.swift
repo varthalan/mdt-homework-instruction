@@ -2,8 +2,6 @@
 //  URLRequest+Extension.swift
 //  DigibankLight
 //
-//  Created by Nagaraju on 2/2/22.
-//
 
 import Foundation
 
