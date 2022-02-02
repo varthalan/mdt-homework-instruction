@@ -13,7 +13,7 @@ final class PayeesViewModel {
     
     var onLoadingStateChange: Observer<Bool>?
     var onPayees: Observer<[PayeesResponse.Payee]>?
-    var onError: Observer<String>?
+    var onError: ((String, Bool) -> Void)?
     
     init(service: PayeesService, jwtToken: String) {
         self.service = service
@@ -30,14 +30,15 @@ final class PayeesViewModel {
             switch result {
             case let .success(response):
                 if let error = response.error,
-                   let message = error.message {
-                    self.onError?(message)
+                   let message = error.message,
+                   let name = error.name {
+                    self.onError?(message, name == "TokenExpiredError")
                 } else {
                     self.onPayees?(response.payees ?? [])
                 }
                     
             case let .failure(error):
-                self.onError?(error.localizedDescription)
+                self.onError?(error.localizedDescription, false)
             }
         }
     }

@@ -13,7 +13,7 @@ final class MakeTransferViewModel {
     
     var onLoadingStateChange: Observer<Bool>?
     var onTransfer: Observer<MakeTransferResponse>?
-    var onError: Observer<String>?
+    var onError: ((String, Bool) -> Void)?
     
     init(service: MakeTransferService, jwtToken: String) {
         self.service = service
@@ -25,7 +25,7 @@ final class MakeTransferViewModel {
         amount: String,
         description: String? = nil) {
             guard let amountAsDouble = Double(amount) else {
-                self.onError?("Amount must be an integer")
+                self.onError?("Amount must be an integer", false)
                 return
             }
             
@@ -43,15 +43,16 @@ final class MakeTransferViewModel {
                 switch result {
                 case let .success(response):
                     if let errorMessage = response.errorMessage {
-                        self.onError?(errorMessage)
-                    } else if let errorMessage = response.error?.message {
-                        self.onError?(errorMessage)
+                        self.onError?(errorMessage, false)
+                    } else if let errorMessage = response.error?.message,
+                              let errorName = response.error?.name {
+                        self.onError?(errorMessage, errorName == "TokenExpiredError")
                     } else {
                         self.onTransfer?(response)
                     }
                     
                 case let .failure(error):
-                    self.onError?(error.localizedDescription)
+                    self.onError?(error.localizedDescription, false)
                 }
                 
             }

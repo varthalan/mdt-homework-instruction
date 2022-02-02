@@ -142,11 +142,18 @@ extension MakeTransferViewController {
             }
         }
         
-        viewModel.onError = {  [weak self] error in
+        viewModel.onError = {  [weak self] message, isSessionExpired in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
-                self.showError(message: error)
+                if isSessionExpired {
+                    self.showError(message: "session expired")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        self.onJWTExpiry?()
+                    }
+                } else {
+                    self.showError(message: message)
+                }
             }
         }
         

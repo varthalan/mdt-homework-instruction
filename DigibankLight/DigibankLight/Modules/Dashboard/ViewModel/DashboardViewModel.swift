@@ -19,7 +19,7 @@ final class DashboardViewModel {
     
     var onLoadingStateChange: Observer<Bool>?
     var onDashboardLoad: (()-> Void)?
-    var onError: Observer<String>?
+    var onError: ((String, Bool) -> Void)?
     
     typealias Balance = (accountBalance: String, accountNumber: String, accountHolder: String)
     
@@ -125,7 +125,7 @@ final class DashboardViewModel {
             self.onLoadingStateChange?(false)
             
             if let error = self.anyError {
-                self.onError?(error.localizedDescription)
+                self.onError?(error.localizedDescription, false)
             } else {
                 self.onDashboardLoad?()
             }

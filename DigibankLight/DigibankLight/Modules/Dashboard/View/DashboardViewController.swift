@@ -155,9 +155,13 @@ extension DashboardViewController {
             }
         }
         
-        viewModel.onError = {  [weak self] _ in
+        viewModel.onError = {  [weak self] message, isSessionExpired in
             guard let self = self else { return }
             
+            DispatchQueue.main.async {
+                self.showError(message: message)
+            }
+                        
             DispatchQueue.main.async {
                 self.tableView.refreshControl?.endRefreshing()
             }

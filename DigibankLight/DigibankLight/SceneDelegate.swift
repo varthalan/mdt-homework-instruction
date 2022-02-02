@@ -90,7 +90,7 @@ extension SceneDelegate {
         navigationController.present(viewController, animated: animated, completion: nil)
     }
     
-    private func dismiss(_ viewController: UIViewController, animated: Bool = true) {
+    private func dismiss(_ viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
         viewController.dismiss(animated: animated, completion: nil)
     }
 }
@@ -164,8 +164,7 @@ extension SceneDelegate {
         
         dashboardViewController.onLogout = { [weak self] in
             guard let self = self else { return }
-            
-            self.loginRefreshAction?()
+                        
             self.resetSession()
             self.popToRoot()
         }
@@ -175,6 +174,12 @@ extension SceneDelegate {
             
             self.dashboardRefreshAction = action
             self.showMakeTransfer()
+        }
+        
+        dashboardViewController.onJWTExpiry = { [weak self] in
+            guard let self = self else { return }
+            
+            self.onJWTExpiry()
         }
         
         push(dashboardViewController)
@@ -203,12 +208,18 @@ extension SceneDelegate {
             self.showPayees()
         }
         
+        makeTransferViewController.onJWTExpiry = { [weak self] in
+            guard let self = self else { return }
+            
+            self.onJWTExpiry()
+        }
+        
         push(makeTransferViewController)
     }
     
     private func showPayees() {
         guard let jwtToken = self.jwtToken else { return }
-        
+                
         let payeesViewController = ModuleComposer.composePayeesWith(
             url: APIEndPoint.payees.url(baseURL: baseURL),
             jwtToken: jwtToken,
@@ -227,12 +238,27 @@ extension SceneDelegate {
             self.dismiss(payeesViewController)
         }
         
+        payeesViewController.onJWTExpiry = { [weak self] in
+            guard let self = self else { return }
+                        
+            self.dismiss(payeesViewController, animated: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
+                self.onJWTExpiry()
+            }
+        }
+        
         let navigationController = UINavigationController(rootViewController: payeesViewController)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController)
     }
     
+    private func onJWTExpiry() {
+        resetSession()
+        popToRoot()
+    }
+    
     private func resetSession() {
+        loginRefreshAction?()
         username = nil
         jwtToken = nil
         payeeSelectedAction = nil

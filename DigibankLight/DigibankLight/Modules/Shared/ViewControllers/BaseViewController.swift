@@ -32,6 +32,7 @@ class BaseViewController: UIViewController {
     typealias Empty = () -> Void
     
     typealias Observer<T> = (T) -> Void
+    var onJWTExpiry: (Empty)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
